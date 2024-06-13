@@ -1,0 +1,77 @@
+
+
+h1{
+  width: 90%;
+  text-align: start;
+  font-size: 5vh;
+  font-weight: 300;
+  margin-left: 5vh;
+}
+
+.forms{
+  width: 70%;
+
+}
+
+.form-name{
+  width: 100%;
+}
+
+.form-app-url{
+  width: 100%;
+}
+
+.form-auth-url{
+  width: 100%;
+  margin-bottom: 2vh;
+}
+
+h2{
+  padding: 0.5vh;
+  font-size: 3vh;
+  font-weight: 400;
+  border-bottom: 1px solid rgb(255, 197, 72);
+
+}
+
+.end-description{
+  width: 80%;
+  margin-bottom: 2vh;
+
+}
+
+.button-addAPI{
+  text-align: center;
+  font-size: 2vh;
+  color: white;
+  background-color: rgb(255, 197, 72);
+  width: 25%;
+  margin-bottom: 5vh;
+}
+.button-addEnd{
+  padding: 3vh;
+  text-align: center;
+  font-size: 2vh;
+  color: rgb(255, 197, 72);
+  background-color: rgb(255, 197, 72);
+  width: 25%;
+}
+
+.value{
+  margin-left: 2vh;
+  margin-right: 2vh;
+}
+
+
+.endpoint-item{
+  margin-top: 2.5vh;
+  border-top: 2px solid rgb(255, 197, 72) ;
+  padding: 2vh;
+}
+
+
+
+.add-form{
+  margin-top: 2.5vh;
+  margin-bottom: 4vh;
+}

@@ -1,0 +1,46 @@
+<div *ngIf="selectedAplicativo">
+  <h1>{{selectedAplicativo.nameFormControl}}</h1>
+  <h2>{{selectedAplicativo.appUrlFormControl}}</h2>
+  <h2>{{selectedAplicativo.authUrlFormControl}}</h2>
+
+  <h4>Testar endpoints</h4>
+
+  <section class="content">
+    <ul class="endpoints">
+      <li class="li-endpoints" *ngFor="let endpoint of selectedAplicativo.endpoints; let i = index">
+        <mat-card class="card">
+          <mat-card-header fxLayout="row" fxLayoutAlign="space-between start">
+            <mat-card-title>
+              <span [ngClass]="{
+                'green-background': endpoint.reqFormControl === 'GET' || endpoint.reqFormControl === 'POST',
+                'yellow-background': endpoint.reqFormControl === 'PUT',
+                'red-background': endpoint.reqFormControl === 'DELETE'
+              }">{{endpoint.reqFormControl}}</span> {{endpoint.endpointUrlFormControl}}
+            </mat-card-title>
+            <mat-card-actions align="end">
+              <button class="action" mat-button (click)="abrirTeste(endpoint)">
+                <mat-icon class="icon_action">play_arrow</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card-header>
+
+          <button class="button-detalhes" mat-button (click)="detalhesEndpoint(i)">Detalhes</button>
+
+          <mat-card-actions [ngClass]="{'hidden': !detalhesVisiveis[i]}" align="start">
+            <mat-card class="example-card">
+              <mat-card-content>
+                <div class="content-details" *ngFor="let param of endpoint.params">
+                  <p>Parâmetro:</p>
+                  <p><strong>Name:</strong> {{param.paramNameFormControl}}</p>
+                  <p><strong>Value:</strong> {{param.value || 'N/A'}}</p>
+                  <p><strong>Required:</strong> {{param.required}}</p>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </mat-card-actions>
+        </mat-card>
+      </li>
+    </ul>
+  </section>
+
+</div>

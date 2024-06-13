@@ -1,0 +1,70 @@
+.container{
+  height: 100%;
+  width: 100%;
+}
+
+.sidenav {
+  width: 32vh;
+  padding-left: 2vh;
+  border: 1px rgb(255, 197, 72) solid;
+}
+
+.menu-true{
+  margin-right: 1.5vh;
+}
+
+.item-sidenav {
+  text-decoration: none;
+  display: block;
+  padding: 16px;
+  font-weight: 500;
+}
+
+.icon {
+  color: rgb(255, 197, 72);
+  margin-right: 1vh;
+}
+
+
+.madero-logo {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  width: 20vh;
+}
+
+.madero-logo {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  width: 20vh;
+}
+
+h4{
+  color: rgb(255, 197, 72);
+  font-size: 20px;
+  font-weight: 500;
+
+}
+
+.content-main{
+  margin: 2vh;
+  padding: 0 10vh 0 10vh;
+}
+
+.toggle-button {
+  position: fixed;
+  font-size: 54px;
+  top: 5vh;
+  left: 5vh;
+  z-index: 5000;
+  padding: 2vh;
+  display: flex; /* Add this */
+  justify-content: center; /* Add this */
+  align-items: center; /* Add this */
+
+}
+
+.mini-logo {
+  width: 4vh;
+  height: 3vh;
+  margin: 0; /* Remove margins */
+}

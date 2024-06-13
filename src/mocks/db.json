@@ -1,0 +1,149 @@
+{
+  "aplicativos": [
+    {
+      "id": 1,
+      "nameFormControl": "My App",
+      "appUrlFormControl": "https://example.com/app",
+      "authUrlFormControl": "https://example.com/auth",
+      "endpoints": [
+        {
+          "id": 1,
+          "reqFormControl": "GET",
+          "endpointUrlFormControl": "/users",
+          "params": [
+            {
+              "id": 1,
+              "paramNameFormControl": "userId",
+              "value": "123",
+              "required": true
+            },
+            {
+              "id": 2,
+              "paramNameFormControl": "userName",
+              "value": "John Doe",
+              "required": false
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "reqFormControl": "POST",
+          "endpointUrlFormControl": "/create-user",
+          "params": [
+            {
+              "id": 1,
+              "paramNameFormControl": "userName",
+              "value": "Jane Doe",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nameFormControl": "My Other App",
+      "appUrlFormControl": "https://example.com/other-app",
+      "authUrlFormControl": "https://example.com/other-auth",
+      "endpoints": [
+        {
+          "id": 1,
+          "reqFormControl": "PUT",
+          "endpointUrlFormControl": "/update-user",
+          "params": [
+            {
+              "id": 1,
+              "paramNameFormControl": "email",
+              "value": "johndoe@example.com",
+              "required": true
+            },
+            {
+              "id": 2,
+              "paramNameFormControl": "phoneNumber",
+              "value": "123-456-7890",
+              "required": false
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "reqFormControl": "DELETE",
+          "endpointUrlFormControl": "/delete-user",
+          "params": [
+            {
+              "id": 1,
+              "paramNameFormControl": "userId",
+              "value": "456",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nameFormControl": "StarWars",
+      "appUrlFormControl": "https://swapi.dev/api/",
+      "authUrlFormControl": "https://swapi.dev/auth/",
+      "endpoints": [
+        {
+          "id": 1,
+          "reqFormControl": "GET",
+          "endpointUrlFormControl": "https://swapi.dev/api/people",
+          "params": [
+            {
+              "id": 1,
+              "paramNameFormControl": "id",
+              "value": "",
+              "required": true
+            },
+            {
+              "id": 2,
+              "paramNameFormControl": "nome",
+              "value": "",
+              "required": false
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "reqFormControl": "POST",
+          "endpointUrlFormControl": "https://swapi.dev/api/people",
+          "params": [
+            {
+              "id": 3,
+              "paramNameFormControl": "id",
+              "value": "",
+              "required": true
+            },
+            {
+              "id": 4,
+              "paramNameFormControl": "nome",
+              "value": "",
+              "required": false
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "reqFormControl": "DELETE",
+          "endpointUrlFormControl": "https://swapi.dev/api/people",
+          "params": [
+            {
+              "id": 5,
+              "paramNameFormControl": "id",
+              "value": "",
+              "required": true
+            },
+            {
+              "id": 6,
+              "paramNameFormControl": "nome",
+              "value": "",
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

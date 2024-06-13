@@ -1,0 +1,218 @@
+import { Component } from '@angular/core';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { MatDialog} from '@angular/material/dialog';
+import { AplicativoService } from '../../../core/services/aplicativo.service';
+import { Aplicativo } from '../../../core/models/aplicativo.model';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { CommonModule } from '@angular/common';
+
+//Erro quando input esta invalido
+export class errorInput implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null): boolean {
+    return !!(control && control.invalid && (control.dirty || control.touched));
+  }
+}
+
+@Component({
+  selector: 'app-new-api',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatCardModule,
+    MatGridListModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+
+  ],
+  templateUrl: './new-api.component.html',
+  styleUrl: './new-api.component.css'
+})
+export class NewApiComponent {
+
+  formNewApi: FormGroup;
+  endpoints: FormArray;
+  params: FormArray;
+
+  activeEndpointIndex: number = 0;
+
+  public parameters: any[] = [];
+
+  urlPattern = '^(https?:\\/\\/)?' + // protocol
+  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name and extension
+  '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+  '(\\:\\d+)?' + // port
+  '(\\/[-a-z\\d%_.~+]*)*' + // path
+  '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+  '(\\#[-a-z\\d_]*)?$'; // fragment locator
+
+  matcher = new errorInput();
+
+  nameFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100)])
+  appUrlFormControl = new FormControl('', [Validators.required, Validators.pattern(this.urlPattern), Validators.minLength(3), Validators.maxLength(100)])
+  authUrlFormControl = new FormControl('', [Validators.minLength(3), Validators.maxLength(100)])
+
+  reqFormControl = new FormControl('', [Validators.required])
+  endpointUrlFormControl = new FormControl('', [Validators.required]);
+
+  paramNameFormControl = new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(50)])
+  value = new FormControl('')
+  required = new FormControl(false, [Validators.required])
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private dialog: MatDialog,
+    private aplicativoService: AplicativoService
+  )
+  {
+    this.formNewApi = this.formBuilder.group({
+      nameFormControl: this.nameFormControl,
+      appUrlFormControl: this.appUrlFormControl,
+      authUrlFormControl: this.authUrlFormControl,
+      endpoints: this.formBuilder.array([])
+    });
+
+    this.endpoints = this.formNewApi.get('endpoints') as FormArray;
+    this.params = this.formBuilder.array([])
+  }
+
+  get paramsDisplay(): string {
+    const paramsForms = (this.formNewApi.get('endpoints') as FormArray)
+      .at(this.activeEndpointIndex)
+      .get('params') as FormArray;
+
+    return paramsForms.controls
+      .map(control => control.get('paramNameFormControl')?.value)
+      .join(', ');
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  createEndpointGroup(): FormGroup {
+    console.log()
+    return this.formBuilder.group({
+      reqFormControl: this.reqFormControl,
+      endpointUrlFormControl: this.endpointUrlFormControl,
+      params: this.formBuilder.array([this.createParam()])
+    })
+  }
+
+  createParam(): FormGroup {
+    return this.formBuilder.group({
+      paramNameFormControl: ['', Validators.required],
+      value: [''],
+      required: new FormControl(false)
+    });
+  }
+
+  getFormControl(parent: AbstractControl, controlName: string): FormControl | null {
+    if (parent instanceof FormGroup) {
+      return parent.get(controlName) as FormControl;
+    } else {
+      return null;
+    }
+  }
+
+  createEmptyEndpointGroup(params?: FormArray): FormGroup {
+    return this.formBuilder.group({
+      reqFormControl: [''],
+      endpointUrlFormControl: [''],
+      params: params ? params : this.formBuilder.array([])
+    });
+  }
+
+  resetEndpointGroup(endpointGroup: FormGroup): void {
+    endpointGroup.reset();
+    endpointGroup.get('reqFormControl')?.setValue(''); // Set the default value for reqFormControl
+    endpointGroup.get('endpointUrlFormControl')?.setValue(''); // Clear the value for endpointUrlFormControl
+    endpointGroup.get('params')?.setValue([]); // Clear the values for params FormArray
+  }
+
+  addEndpoint(): void {
+    this.endpoints.push(this.createEndpointGroup());
+    this.activeEndpointIndex = this.endpoints.length - 1;
+    this.params = this.endpoints.at(this.activeEndpointIndex).get('params') as FormArray;
+  }
+
+  newEndpoint(): void {
+    const emptyEndpointGroup = this.createEmptyEndpointGroup();
+    this.endpoints.push(emptyEndpointGroup);
+    this.activeEndpointIndex = this.endpoints.length - 1;
+    this.params = this.endpoints.at(this.activeEndpointIndex).get('params') as FormArray;
+  }
+
+  newParam(endpoint: AbstractControl): void {
+    if (endpoint instanceof FormGroup) {
+        const params = endpoint.get('params') as FormArray;
+        params.push(this.formBuilder.group({
+            paramNameFormControl: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
+            value: [''],
+            required: [false]
+        }));
+    }
+  }
+
+  getParamsControls(endpoint: AbstractControl): AbstractControl[] {
+    if (endpoint instanceof FormGroup) {
+        const paramsArray = endpoint.get('params') as FormArray;
+        return paramsArray.controls;
+    }
+    return [];
+}
+
+toggleRequired(param: AbstractControl): void {
+  const control = this.getFormControl(param, 'required');
+  if (control) {
+    control.setValue(!control.value);
+  }
+}
+
+
+cadastrarAPI(): void {
+  if (this.formNewApi.valid) {
+    const aplicativo: Aplicativo = {
+      nameFormControl: this.formNewApi.get('nameFormControl')?.value,
+      appUrlFormControl: this.formNewApi.get('appUrlFormControl')?.value,
+      authUrlFormControl: this.formNewApi.get('authUrlFormControl')?.value,
+      endpoints: this.formNewApi.get('endpoints')?.value
+    };
+
+    // Adicione o seguinte código para adicionar os parâmetros aos endpoints
+    aplicativo.endpoints.forEach(endpoint => {
+      endpoint.params = this.params.controls.map(param => param.value);
+    });
+
+    this.aplicativoService.addAplicativo(aplicativo).subscribe(response => {
+      console.log('API form submitted:', response);
+      // Limpar campos do formulário e arrays relacionados após o sucesso no envio do formulário
+      this.formNewApi.reset();
+      this.endpoints.clear();
+      this.params.clear();
+    }, error => {
+      console.log('Error submitting API form:', error);
+    });
+  } else {
+    console.log('API form is invalid');
+  }
+}
+
+}

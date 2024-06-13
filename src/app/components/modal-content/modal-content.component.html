@@ -1,0 +1,55 @@
+<mat-card class="card">
+  <h2 mat-dialog-title>Executar endpoint</h2>
+  <p>{{endpoint.reqFormControl}}  {{endpoint.endpointUrlFormControl}}</p>
+  <mat-dialog-actions>
+    <button class="button-header" mat-button (click)="switchView('params')">Parâmetros</button>
+    <button class="button-header" mat-button (click)="switchView('headers')">Cabeçalho</button>
+    <button class="button-header" mat-button (click)="switchView('body')">Corpo</button>
+  </mat-dialog-actions>
+
+  <mat-dialog-content>
+    <div *ngIf="currentView === 'params'">
+      <div *ngFor="let param of endpoint.params">
+        <p><strong>Parametro:</strong></p>
+        <p><strong>Enable: </strong>{{ param.required }}</p>
+        <p>{{param.paramNameFormControl}}: <input type="text" [(ngModel)]="param.value"></p>
+      </div>
+    </div>
+
+    <div *ngIf="currentView === 'headers'">
+      <button mat-button (click)="addHeader()">Add Header</button>
+      <div *ngFor="let header of headers; let i = index">
+        <input type="text" placeholder="Chave do cabeçalho" [(ngModel)]="headers[i].key">
+        <input type="text" placeholder="Valor do cabeçalho" [(ngModel)]="headers[i].value">
+      </div>
+    </div>
+
+    <div *ngIf="currentView === 'body'">
+      <textarea placeholder="Corpo da requisição" [(ngModel)]="body"></textarea>
+    </div>
+
+    <div *ngIf="currentView === 'details'">
+      <h3>Detalhes da execução do endpoint</h3>
+      <p><strong>Status:</strong> Retorno HTTP</p>
+      <p><strong>Endpoint:</strong> {{executionDetails?.endpoint?.reqFormControl}} {{executionDetails?.endpoint?.endpointUrlFormControl}}</p>
+      <p><strong>Parâmetros:</strong></p>
+      <div *ngFor="let param of executionDetails?.endpoint?.params">
+        <p>{{param.paramNameFormControl}}: {{param.value}}</p>
+      </div>
+      <p><strong>Cabeçalhos:</strong></p>
+      <div *ngFor="let header of executionDetails?.headers">
+        <p>{{header.key}}: {{header.value}}</p>
+      </div>
+      <p><strong>Corpo:</strong></p>
+      <pre>{{executionDetails?.body | json}}</pre>
+    </div>
+
+  </mat-dialog-content>
+
+
+
+  <mat-dialog-actions>
+    <button class="button-execute" mat-button (click)="executeEndpoint()">Executar</button>
+    <button class="button-exit" mat-button (click)="close()">Fechar</button>
+  </mat-dialog-actions>
+</mat-card>

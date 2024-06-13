@@ -1,0 +1,100 @@
+h1{
+  width: 90%;
+  text-align: center;
+  font-size: 5vh;
+  font-weight: 300;
+  margin-left: 5vh;
+}
+
+strong{
+  color: red;
+}
+
+form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 6vh;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.mat-slide-toggle {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* Estilos específicos para erros */
+div.ng-invalid.ng-dirty,
+div.ng-invalid.ng-touched {
+  color: red;
+}
+
+div.ng-invalid.ng-dirty input,
+div.ng-invalid.ng-touched input {
+  border-color: red;
+}
+
+/* Estilos para grupos de inputs */
+div[formArrayName="endpoints"],
+div[formArrayName="params"] {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+div[formGroupName] > div {
+  margin-bottom: 10px;
+}
+
+
+
+

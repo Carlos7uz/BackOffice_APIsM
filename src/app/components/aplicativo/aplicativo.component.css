@@ -1,0 +1,70 @@
+h2{
+  font-weight: 500;
+}
+
+h4{
+  margin-top: 3vh;
+}
+
+.li-endpoints{
+  margin-bottom: 3vh;
+  list-style-type: none;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+.green-background {
+  background-color: rgb(108, 255, 108);
+  color: black; /* Opcional, para melhor contraste */
+  padding: 0 5px; /* Opcional, para adicionar algum espaço interno */
+  border-radius: 3px; /* Opcional, para bordas arredondadas */
+}
+
+.yellow-background {
+  background-color: yellow;
+  color: black;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+
+.red-background {
+  background-color: rgb(255, 87, 87);
+  color: black;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+
+
+.action{
+ background-color:rgb(255, 197, 72);
+}
+
+
+.button-detalhes{
+
+ width: 10%;
+ margin-left: 1.5vh;
+ border: 1px black solid;
+ margin-bottom: 2vh;
+}
+
+.content-details {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.detail-item p {
+  margin: 0;
+  white-space: nowrap;
+}

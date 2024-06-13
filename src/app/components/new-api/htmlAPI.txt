@@ -1,0 +1,182 @@
+<h1>Cadastre um novo aplicativo Madero</h1>
+
+<form class="forms" [formGroup]="formNewApi" >
+  <!-- Campos para o nome do aplicativo -->
+  <mat-form-field class="form-name" appearance="fill">
+    <mat-label for="nameFormControl">Nome do aplicativo</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="nameFormControl"
+      id="nameFormControl"
+      placeholder="Ex. Double Check"
+      minlength="3"
+      maxlength="100"
+    >
+    <mat-error *ngIf="nameFormControl.hasError('minlength')">
+      Nome deve ter no mínimo <strong>3 caracteres</strong>
+    </mat-error>
+    <mat-error *ngIf="nameFormControl.hasError('maxlength')">
+      Nome deve ter no máximo <strong>100 caracteres</strong>
+    </mat-error>
+    <mat-error *ngIf="nameFormControl.hasError('required')">
+      Nome é <strong>obrigatório.</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Campos para a URL do aplicativo -->
+  <mat-form-field class="form-app-url" appearance="fill">
+    <mat-label for="appUrlFormControl">URL do aplicativo</mat-label>
+    <input
+      type="url"
+      matInput
+      formControlName="appUrlFormControl"
+      id="appUrlFormControl"
+      placeholder="Ex. https://example.com"
+      required
+      [attr.pattern]="urlPattern"
+      minlength="3"
+      maxlength="100"
+    >
+    <mat-error *ngIf="appUrlFormControl.hasError('required')">
+      URL do aplicativo é <strong>obrigatória.</strong>
+    </mat-error>
+    <mat-error *ngIf="appUrlFormControl.hasError('pattern')">
+      URL do aplicativo é inválida.
+    </mat-error>
+    <mat-error *ngIf="appUrlFormControl.hasError('minlength')">
+      URL do aplicativo deve ter no mínimo <strong>3 caracteres</strong>
+    </mat-error>
+    <mat-error *ngIf="appUrlFormControl.hasError('maxlength')">
+      URL do aplicativo deve ter no máximo <strong>100 caracteres</strong>
+    </mat-error>
+  </mat-form-field>
+
+   <!-- Campo para a URL de autenticação do aplicativo -->
+  <mat-form-field class="form-auth-url" appearance="fill">
+    <mat-label for="authUrlFormControl">URL de autenticação do aplicativo</mat-label>
+    <input
+      type="url"
+      matInput
+      formControlName="authUrlFormControl"
+      id="authUrlFormControl"
+      placeholder="Ex. https://example.com/auth"
+      minlength="3"
+      maxlength="100"
+    >
+    <mat-error *ngIf="authUrlFormControl.hasError('minlength')">
+      URL de autenticação do aplicativo deve ter no mínimo <strong>3 caracteres</strong>
+    </mat-error>
+    <mat-error *ngIf="authUrlFormControl.hasError('maxlength')">
+      URL de autenticação do aplicativo deve ter no máximo <strong>100 caracteres</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <h2>Endpoints</h2>
+  <p class="end-description">Adicione os endpoints usados pelo aplicativo, estes serão usados para realizar chamadas com seus respectivos
+    parâmetros, verificar seus status e funcionalidades</p>
+
+  <div formArrayName="endpoints">
+    <div class="endpoint-item" *ngFor="let endpoint of endpoints.controls; index as i" [formGroupName]="i">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-form-field class="form-req" appearance="fill" >
+          <mat-label  for="reqFormControl">Tipo de requisição</mat-label>
+          <mat-select
+          formControlName="reqFormControl"
+          id="reqFormControl"
+          required
+          >
+            <mat-option value="GET">GET</mat-option>
+            <mat-option value="POST">POST</mat-option>
+            <mat-option value="PUT">PUT</mat-option>
+            <mat-option value="DELETE">DELETE</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form-urlEndpoint" appearance="fill">
+          <mat-label for="endpointUrlFormControl">URL do endpoint</mat-label>
+          <input
+            type="url"
+            matInput
+            formControlName="endpointUrlFormControl"
+            id="endpointUrlFormControl"
+            placeholder="Ex. /api/example"
+            required
+            [attr.pattern]="urlPattern"
+            minlength="3"
+            maxlength="100"
+          >
+            <mat-error *ngIf="endpointUrlFormControl.hasError('required')">
+              URL do endpoint é <strong>obrigatória.</strong>
+            </mat-error>
+            <mat-error *ngIf="endpointUrlFormControl.hasError('pattern')">
+              URL do endpoint é inválida.
+            </mat-error>
+            <mat-error *ngIf="endpointUrlFormControl.hasError('minlength')">
+              URL do endpoint deve ter no mínimo <strong>3 caracteres</strong>
+            </mat-error>
+            <mat-error *ngIf="endpointUrlFormControl.hasError('maxlength')">
+              URL do endpoint deve ter no máximo <strong>100 caracteres</strong>
+            </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div  *ngIf="endpoint.get('params')" >
+        <div formArrayName="params" fxLayout="column">
+          <p class="param">Parâmetros
+            <button class="new-param" mat-icon-button (click)="newParam(endpoint)">
+              <mat-icon>add_box</mat-icon>
+            </button>
+          </p>
+          <div *ngFor="let param of getParamsControls(endpoint); let j = index" [formGroupName]="j" fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field class="paramNameFormControl" appearance="fill">
+              <mat-label for="paramNameFormControl">Nome do parâmetro</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="paramNameFormControl"
+                id="paramNameFormControl"
+                placeholder="Ex. id"
+                minlength="1"
+                maxlength="100"
+              >
+                <mat-error *ngIf="paramNameFormControl.hasError('minlength')">
+                  URL do endpoint deve ter no mínimo <strong>3 caracteres</strong>
+                </mat-error>
+                <mat-error *ngIf="paramNameFormControl.hasError('maxlength')">
+                  URL do endpoint deve ter no máximo <strong>100 caracteres</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="value" appearance="fill">
+              <mat-label for="value">Valor (opcional)</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="value"
+                id="value"
+                placeholder="Ex. Valor opcional"
+              >
+            </mat-form-field>
+
+            <mat-slide-toggle [checked]="getFormControl(param, 'required')?.value" (change)="toggleRequired(param)">Obrigatório</mat-slide-toggle>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="add-endpoint" fxLayout="column" fxLayoutAlign="end end" fxLayoutGap="14px">
+    <h4>Para adicionar os endpoits você deve concordar em criar o aplicativo acima</h4>
+    <button class="button-addEnd" mat-raised-button (click)="newEndpoint()">Adicionar endpoint</button>
+  </div>
+
+  <div class="add-form" fxLayout="row" fxLayoutAlign="end center">
+    <button class="button-addAPI" mat-raised-button (click)="cadastrarAPI()" [disabled]="formNewApi.invalid">Cadastrar</button>
+  </div>
+
+</form>
+
+
