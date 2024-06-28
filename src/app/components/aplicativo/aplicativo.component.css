@@ -1,9 +1,33 @@
+.container {
+  display: flex;
+  justify-content: space-between; /* Distribui o espaço entre os elementos */
+  align-items: center; /* Alinha os elementos verticalmente ao centro */
+  padding: 16px; /* Ajuste conforme necessário */
+}
+
+.config-app {
+  font-size: 30px; /* Tamanho do ícone */
+  width: auto;
+  height: auto;
+  cursor: pointer;
+}
+
 h2{
   font-weight: 500;
 }
 
 h4{
   margin-top: 3vh;
+}
+
+.gap{
+  margin-bottom: 10vh;
+}
+
+.endpoints{
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .li-endpoints{
@@ -40,7 +64,7 @@ h4{
 
 
 .action{
- background-color:rgb(255, 197, 72);
+ background-color:var(--yellowJ);
 }
 
 
@@ -50,6 +74,12 @@ h4{
  margin-left: 1.5vh;
  border: 1px black solid;
  margin-bottom: 2vh;
+}
+
+.example-card{
+  margin-top: -4vh;
+  box-shadow: none;
+  width: 98%;
 }
 
 .content-details {
@@ -68,3 +98,38 @@ h4{
   margin: 0;
   white-space: nowrap;
 }
+
+.action-edit:hover{
+
+
+  border-radius: 20px;
+  background-color: rgb(255, 197, 72);
+}
+
+.action-trash:hover{
+
+  border-radius: 20px;
+  background-color: rgb(255, 53, 53);
+}
+
+.example-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-details {
+  display: flex;
+  align-items: center;
+}
+
+.button-container {
+  margin-left: auto;
+  display: flex;
+  gap: 8px; /* Espaçamento entre os botões */
+}
+
+.action-edit, .action-trash {
+  display: flex;
+  align-items: center;
+}
+

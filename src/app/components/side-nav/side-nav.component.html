@@ -9,11 +9,11 @@
     </div>
 
     <mat-nav-list>
-      <ng-container *ngIf="navItems.length; else noItems">
-        <ng-container *ngFor="let item of navItems; trackBy: trackByFn">
+      <ng-container *ngIf="navItems.length; else noItems" >
+        <ng-container *ngFor="let item of navItems; trackBy: trackByFn" >
           <mat-list-item [routerLink]="[item.route]" class="item-sidenav">
             <mat-icon class="icon">{{ item.icon }}</mat-icon>
-            {{ item.label }}
+            <span class="label">{{ item.label }}</span>
           </mat-list-item>
         </ng-container>
       </ng-container>

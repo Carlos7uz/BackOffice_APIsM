@@ -1,90 +1,127 @@
-<h1>Cadastre um novo aplicativo Madero</h1>
+<h1 class="titulo">Cadastre um novo aplicativo Madero</h1>
 
 <form [formGroup]="formNewApi" (ngSubmit)="cadastrarAPI()">
-  <div>
-    <label for="nameFormControl">Nome do Aplicativo</label>
-    <input id="nameFormControl" formControlName="nameFormControl" />
-    <div *ngIf="formNewApi.get('nameFormControl')?.invalid && (formNewApi.get('nameFormControl')?.dirty || formNewApi.get('nameFormControl')?.touched)">
-      <div *ngIf="formNewApi.get('nameFormControl')?.errors"><strong>Nome é obrigatório.</strong></div>
-      <div *ngIf="formNewApi.get('nameFormControl')?.errors"><strong>Nome deve ter no mínimo 3 caracteres.</strong></div>
-      <div *ngIf="formNewApi.get('nameFormControl')?.errors"><strong>Nome deve ter no máximo 100 caracteres.</strong></div>
-    </div>
-  </div>
 
-  <div>
-    <label for="appUrlFormControl">URL do Aplicativo</label>
-    <input id="appUrlFormControl" formControlName="appUrlFormControl" />
-    <div *ngIf="formNewApi.get('appUrlFormControl')?.invalid && (formNewApi.get('appUrlFormControl')?.dirty || formNewApi.get('appUrlFormControl')?.touched)">
-      <div *ngIf="formNewApi.get('appUrlFormControl')?.errors"><strong>URL é obrigatória.</strong></div>
-      <div *ngIf="formNewApi.get('appUrlFormControl')?.errors"><strong>URL inválida.</strong></div>
-    </div>
-  </div>
+  <mat-form-field class="input-nome" appearance="outline">
+    <mat-label>Nome do aplicativo</mat-label>
+    <input type="text" matInput id="nameFormControl" formControlName="nameFormControl" [errorStateMatcher]="matcher" required>
+    <mat-error *ngIf="formNewApi.get('nameFormControl')?.hasError('minlength')">
+      Nome deve ter no mínimo <strong>3 caracteres</strong>
+    </mat-error>
+    <mat-error *ngIf="formNewApi.get('nameFormControl')?.hasError('maxlength')">
+      Nome deve ter no máximo <strong>100 caracteres</strong>
+    </mat-error>
+    <mat-error *ngIf="formNewApi.get('nameFormControl')?.hasError('required')">
+      Nome é <strong>obrigatório.</strong>
+    </mat-error>
+  </mat-form-field>
 
-  <div>
-    <label for="authUrlFormControl">URL de Autenticação (Opcional)</label>
-    <input id="authUrlFormControl" formControlName="authUrlFormControl" />
-  </div>
+  <mat-form-field class="input-url" appearance="outline">
+    <mat-label>Url do aplicativo</mat-label>
+    <input matInput id="appUrlFormControl"  type="url" matInput id="appUrlFormControl" formControlName="appUrlFormControl" [errorStateMatcher]="matcher" required>
+    <mat-error *ngIf="formNewApi.get('appUrlFormControl')?.hasError('required')">
+      Url é <strong>obrigatória.</strong>
+    </mat-error>
+    <mat-error *ngIf="formNewApi.get('appUrlFormControl')?.hasError('pattern')">
+      Url <strong>invalida.</strong>
+    </mat-error>
+  </mat-form-field>
 
-  <h2>Endpoints</h2>
+  <mat-form-field class="input-url" appearance="outline">
+    <mat-label>Url de autenticação (opcional)</mat-label>
+    <input
+    matInput
+    id="authUrlFormControl"
+    type="url"
+    formControlName="authUrlFormControl"
+  />
+  </mat-form-field>
+
+  <h2 class="titulo-endpoint">Endpoints</h2>
   <p class="end-description">Adicione os endpoints usados pelo aplicativo, estes serão usados para realizar chamadas com seus respectivos
     parâmetros, verificar seus status e funcionalidades</p>
 
   <div formArrayName="endpoints">
-    <div *ngFor="let endpoint of endpoints.controls; let i = index" [formGroupName]="i">
-      <div>
-        <mat-form-field class="form-req" appearance="fill" >
+
+    <div *ngFor="let endpoint of endpoints.controls; let i = index; trackBy: trackByFn" [formGroupName]="i" class="endpoint-container">
+      <p class="linha"></p>
+      <h4>Endpoint {{i+1}}</h4>
+      <div class="box-endpoint-input" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start start">
+        <mat-form-field class="form-req" appearance="outline" >
           <mat-label  for="reqFormControl">Tipo de requisição</mat-label>
-          <mat-select
-          formControlName="reqFormControl"
-          id="reqFormControl"
-          required
-          >
+          <mat-select formControlName="reqFormControl" id="reqFormControl" required>
             <mat-option value="GET">GET</mat-option>
             <mat-option value="POST">POST</mat-option>
             <mat-option value="PUT">PUT</mat-option>
             <mat-option value="DELETE">DELETE</mat-option>
           </mat-select>
+          <mat-error *ngIf="endpoints.at(i).get('reqFormControl')?.hasError('required')">
+            <strong>Tipo da requisição é obrigatório.</strong>
+          </mat-error>
         </mat-form-field>
-        <div *ngIf="endpoints.at(i).get('reqFormControl')?.invalid && (endpoints.at(i).get('reqFormControl')?.dirty || endpoints.at(i).get('reqFormControl')?.touched)">
-        <div *ngIf="endpoints.at(i).get('reqFormControl')?.errors"><strong>URL é obrigatória.</strong></div>
-        </div>
+
+        <mat-form-field class="urlEndpoint" appearance="outline">
+          <mat-label>Url do endpoint</mat-label>
+          <input matInput type="url" formControlName="endpointUrlFormControl" [errorStateMatcher]="matcher" required>
+          <mat-error *ngIf="endpoints.at(i).get('endpointUrlFormControl')?.hasError('required')">
+            Url é <strong>obrigatória.</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <button  mat-icon-button type="button" class="remove" (click)="endpoints.removeAt(i)">
+          <mat-icon class="mat-18">delete</mat-icon>
+        </button>
+
+        <button class="button-detalhes"
+                mat-icon-button type="button"
+                (click)="detalhesEndpoint(i, $event)"
+                [matTooltip]="detalhesVisiveis[i] ? 'Ocultar parâmetros' : 'Exibir parâmetros'"
+        >
+          <mat-icon class="mat-18">{{ detalhesVisiveis[i] ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
       </div>
 
-      <div>
-        <label for="endpointUrlFormControl">URL do Endpoint</label>
-        <input id="endpointUrlFormControl" formControlName="endpointUrlFormControl" />
-        <div *ngIf="endpoints.at(i).get('endpointUrlFormControl')?.invalid && (endpoints.at(i).get('endpointUrlFormControl')?.dirty || endpoints.at(i).get('endpointUrlFormControl')?.touched)">
-          <div *ngIf="endpoints.at(i).get('endpointUrlFormControl')?.errors"><strong>URL é obrigatória.</strong></div>
-          <div *ngIf="endpoints.at(i).get('endpointUrlFormControl')?.errors"><strong>URL inválida.</strong></div>
-        </div>
-      </div>
+      <mat-card-actions *ngIf="detalhesVisiveis[i]">
 
-      <div formArrayName="params">
-        <div *ngFor="let param of getParamsControls(endpoint); let j = index" [formGroupName]="j">
-          <div>
-            <label for="paramNameFormControl">Nome do Parâmetro</label>
-            <input id="paramNameFormControl" formControlName="paramNameFormControl" />
-            <div *ngIf="param.get('paramNameFormControl')?.invalid && (param.get('paramNameFormControl')?.dirty || param.get('paramNameFormControl')?.touched)">
-              <div *ngIf="param.get('paramNameFormControl')?.errors"><strong>Nome é obrigatório.</strong></div>
+        <div class="boxAddParam" fxLayout="row" fxLayoutGap="14px" fxLayoutAlign="start center">
+          <p class="add-param-txt">Parâmetros</p>
+          <button mat-mini-fab type="button" class="addParam" (click)="addParam(i)" matTooltip="Adicionar parâmetro">
+           <mat-icon class="addParamIcon">plus_one</mat-icon>
+          </button>
+        </div>
+
+        <div formArrayName="params" >
+          <div *ngFor="let param of getParamsControls(endpoint); let j = index" [formGroupName]="j">
+            <h4>Parâmetro {{j+1}}</h4>
+            <div class="box-param-input" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start start">
+              <mat-form-field class="formNameParam" appearance="outline">
+                <mat-label>Nome do parâmetro</mat-label>
+                <input matInput type="text" formControlName="paramNameFormControl" required/>
+                <mat-error *ngIf="param.get('paramNameFormControl')?.hasError('required')">Nome do parâmetro é <strong>obrigatório.</strong></mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="formValueParam" appearance="outline">
+                <mat-label>Valor</mat-label>
+                <input matInput type="text" formControlName="value"/>
+              </mat-form-field>
+
+              <button  mat-icon-button type="button" class="removeParam" (click)="removeParam(i, j)">
+                <mat-icon class="mat-18">delete</mat-icon>
+              </button>
             </div>
+            <mat-slide-toggle color="warn" class="slide-required" [checked]="getFormControl(param, 'required')?.value" (change)="toggleRequired(param)">Obrigatório?</mat-slide-toggle>
+            <mat-slide-toggle color="warn" class="slide-required" [checked]="getFormControl(param, 'paramUrl')?.value" (change)="toggleUrlParam(param)">Parâmetro de url?</mat-slide-toggle>
           </div>
-
-          <div>
-            <label for="value">Valor</label>
-            <input id="value" formControlName="value" />
-          </div>
-
-          <mat-slide-toggle [checked]="getFormControl(param, 'required')?.value" (change)="toggleRequired(param)">Obrigatório</mat-slide-toggle>
-
-          <button type="button" (click)="removeParam(i, j)">Remover Parâmetro</button>
         </div>
-        <button type="button" (click)="addParam(i)">Adicionar Parâmetro</button>
-      </div>
+      </mat-card-actions>
 
-      <button type="button" (click)="endpoints.removeAt(i)">Remover Endpoint</button>
     </div>
-    <button type="button" (click)="addEndpoint()">Adicionar Endpoint</button>
+
   </div>
 
-  <button class="cadastrar" type="submit" [disabled]="formNewApi.invalid">Cadastrar API</button>
+  <div fxLayout="column" fxLayoutAlign="end end">
+    <button mat-flat-button type="button" class="button-addEndpoint" (click)="addEndpoint()">Adicionar Endpoint</button>
+    <button mat-flat-button class="cadastrar" type="submit" [disabled]="formNewApi.invalid">Cadastrar API</button>
+  </div>
+
 </form>

@@ -1,5 +1,6 @@
+import { Aplicativo } from './../../../core/models/aplicativo.model';
 import { Component, OnInit } from '@angular/core';
-import { Aplicativo, Endpoint } from '../../../core/models/aplicativo.model';
+import { Endpoint } from '../../../core/models/aplicativo.model';
 import { AplicativoService } from '../../../core/services/aplicativo.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -18,11 +19,11 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     MatCardModule,
     MatButtonModule,
+    MatDialogModule,
     MatExpansionModule,
     MatIconModule,
     FlexLayoutModule,
-    ModalContentComponent,
-    MatDialogModule,
+    ModalContentComponent
   ],
   templateUrl: './aplicativo.component.html',
   styleUrl: './aplicativo.component.css'
@@ -51,18 +52,38 @@ export class AplicativoComponent implements OnInit {
     });
   }
 
-  abrirTeste(endpoint: Endpoint): void {
+  abrirTeste(endpoint: Endpoint, app: Aplicativo): void {
     const dialogRef = this.dialog.open(ModalContentComponent, {
-      width: '400px',
-      data: { endpoint }
+      width: '450px',
+      height: '550px',
+      data: {
+        endpoint,
+        app,
+        appId: app.id,
+        appUrl: app.appUrlFormControl,
+        appAuth: app.authUrlFormControl,
+        endpointId: endpoint.id,
+        endpointReq: endpoint.reqFormControl,
+        endpointUrl: endpoint.endpointUrlFormControl
+      },
+
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log('The dialog was closed');
+      console.log(`Dialog result: ${result}`)
     });
   }
 
   detalhesEndpoint(index: number): void {
     this.detalhesVisiveis[index] = !this.detalhesVisiveis[index];
+  }
+
+  alterarEndpoint(endpoit: Endpoint): void{
+
+  }
+
+  excluirEndpoint(endpoit: Endpoint): void{
+
   }
 }

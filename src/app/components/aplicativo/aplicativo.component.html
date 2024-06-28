@@ -1,11 +1,15 @@
 <div *ngIf="selectedAplicativo">
-  <h1>{{selectedAplicativo.nameFormControl}}</h1>
+
+  <div class="container">
+    <h1>{{selectedAplicativo.nameFormControl}}</h1>
+    <mat-icon class="config-app">settings</mat-icon>
+  </div>
   <h2>{{selectedAplicativo.appUrlFormControl}}</h2>
   <h2>{{selectedAplicativo.authUrlFormControl}}</h2>
 
   <h4>Testar endpoints</h4>
 
-  <section class="content">
+  <section class="content" >
     <ul class="endpoints">
       <li class="li-endpoints" *ngFor="let endpoint of selectedAplicativo.endpoints; let i = index">
         <mat-card class="card">
@@ -18,7 +22,7 @@
               }">{{endpoint.reqFormControl}}</span> {{endpoint.endpointUrlFormControl}}
             </mat-card-title>
             <mat-card-actions align="end">
-              <button class="action" mat-button (click)="abrirTeste(endpoint)">
+              <button class="action" mat-button (click)="abrirTeste(endpoint, selectedAplicativo)">
                 <mat-icon class="icon_action">play_arrow</mat-icon>
               </button>
             </mat-card-actions>
@@ -27,20 +31,30 @@
           <button class="button-detalhes" mat-button (click)="detalhesEndpoint(i)">Detalhes</button>
 
           <mat-card-actions [ngClass]="{'hidden': !detalhesVisiveis[i]}" align="start">
-            <mat-card class="example-card">
-              <mat-card-content>
-                <div class="content-details" *ngFor="let param of endpoint.params">
-                  <p>Parâmetro:</p>
+
+              <mat-card-content class="example-card">
+                <h3>Parâmetros:</h3>
+                <div class="content-details" *ngFor="let param of endpoint.params" >
                   <p><strong>Name:</strong> {{param.paramNameFormControl}}</p>
-                  <p><strong>Value:</strong> {{param.value || 'N/A'}}</p>
+                  <p><strong>Value:</strong> {{param.paramValue || 'N/A'}}</p>
                   <p><strong>Required:</strong> {{param.required}}</p>
+                  <div class="button-container">
+                    <button class="action-edit" mat-button (click)="alterarEndpoint(endpoint)">
+                      <mat-icon class="icon_edit">edit</mat-icon>
+                    </button>
+                    <button class="action-trash" mat-button (click)="excluirEndpoint(endpoint)">
+                      <mat-icon class="icon_trash">delete</mat-icon>
+                    </button>
+                  </div>
                 </div>
               </mat-card-content>
-            </mat-card>
+
           </mat-card-actions>
         </mat-card>
       </li>
     </ul>
   </section>
+
+  <p class="gap"></p>
 
 </div>

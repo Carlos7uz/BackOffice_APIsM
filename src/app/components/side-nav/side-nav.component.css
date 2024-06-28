@@ -14,16 +14,18 @@
 }
 
 .item-sidenav {
-  text-decoration: none;
-  display: block;
-  padding: 16px;
-  font-weight: 500;
+  display: flex;
+  align-items: center;
+
 }
 
 .icon {
-  color: rgb(255, 197, 72);
+  color: var(--yellowJ);
   margin-right: 1vh;
+  vertical-align: middle;
+  font-size: 20px;
 }
+
 
 
 .madero-logo {
@@ -39,7 +41,7 @@
 }
 
 h4{
-  color: rgb(255, 197, 72);
+  color: var(--yellowJ);
   font-size: 20px;
   font-weight: 500;
 

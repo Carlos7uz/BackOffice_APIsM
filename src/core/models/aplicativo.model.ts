@@ -16,6 +16,7 @@ export interface Endpoint {
 export interface Parameter {
   id: number;
   paramNameFormControl: string;
-  value: string;
+  paramValue: string;
   required: boolean;
+  paramUrl: boolean;
 }

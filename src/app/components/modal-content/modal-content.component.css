@@ -1,5 +1,7 @@
 .card{
   padding: 2vh;
+  margin: auto;
+  width: 100%;
 }
 
 /* Modal container */
@@ -15,51 +17,44 @@
 }
 
 /* Modal title */
-h2[mat-dialog-title] {
-  margin: 0;
-  padding: 0;
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #333;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
-}
+
 
 /* Modal content */
-mat-dialog-content {
-  flex: 1;
-  padding: 20px 0;
-  overflow-y: auto;
+
+
+input:required {
+  border-color: red;
 }
 
+input:required:invalid {
+  border-color: red;
+  outline: none;
+}
+
+input:required:valid {
+  border-color: green;
+}
+
+
 /* Modal actions */
-mat-dialog-actions {
+.box-botõesF {
   display: flex;
   justify-content: flex-end;
   padding-top: 10px;
-  border-top: 1px solid #eee;
+
 }
+
+.button-execute{
+  background-color: rgb(80, 245, 80);
+  color: white;
+}
+
+
 
 .button-header{
   margin-left: 10px;
   padding: 10px 20px;
-  background-color: rgb(255, 197, 72);
-  color: black;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.button-header:hover{
-  background-color: #5a62;
-}
-
-/* Buttons
-button[mat-button] {
-  margin-left: 10px;
-  padding: 10px 20px;
-  background-color: rgb(255, 197, 72);
+  background-color: rgb(255, 143, 15);
   color: white;
   border: none;
   border-radius: 4px;
@@ -67,18 +62,10 @@ button[mat-button] {
   transition: background-color 0.3s ease;
 }
 
-button[mat-button]:hover {
-  background-color: #5a6268;
+.button-header:hover{
+  background-color: rgb(252, 186, 45);
 }
 
-button[mat-button]:first-child {
-  background-color: rgb(255, 197, 72);
-}
-
-button[mat-button]:first-child:hover {
-  background-color: #5a6268;
-}
-  */
 
 textarea {
   display: block;
@@ -89,14 +76,7 @@ textarea {
   box-sizing: border-box;
 }
 
-input[type="text"] {
-  width: calc(100% - 22px);
-  padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+
 
 /* Responsive design */
 @media (max-width: 600px) {
@@ -109,3 +89,8 @@ input[type="text"] {
     margin: 10px 0;
   }
 }
+
+
+
+
+

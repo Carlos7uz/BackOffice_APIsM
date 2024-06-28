@@ -144,6 +144,437 @@
           ]
         }
       ]
+    },
+    {
+      "id": 4,
+      "nameFormControl": "Rick and Morty API",
+      "appUrlFormControl": "https://rickandmortyapi.com/api",
+      "authUrlFormControl": "https://rickandmortyapi.com/auth",
+      "endpoints": [
+        {
+          "id": 1,
+          "reqFormControl": "GET",
+          "endpointUrlFormControl": "https://rickandmortyapi.com/api/character",
+          "params": [
+            {
+              "id": 1,
+              "paramNameFormControl": "id",
+              "value": "",
+              "required": true
+            },
+            {
+              "id": 2,
+              "paramNameFormControl": "id_default",
+              "value": "1",
+              "required": false
+            },
+            {
+              "id": 3,
+              "paramNameFormControl": "name",
+              "value": "",
+              "required": false
+            },
+            {
+              "id": 4,
+              "paramNameFormControl": "status",
+              "value": "",
+              "required": false
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "reqFormControl": "GET",
+          "endpointUrlFormControl": "https://rickandmortyapi.com/api/location",
+          "params": [
+            {
+              "id": 5,
+              "paramNameFormControl": "id",
+              "value": "",
+              "required": true
+            },
+            {
+              "id": 6,
+              "paramNameFormControl": "dimension",
+              "value": "",
+              "required": false
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "reqFormControl": "GET",
+          "endpointUrlFormControl": "https://rickandmortyapi.com/api/espisode",
+          "params": [
+            {
+              "id": 7,
+              "paramNameFormControl": "id",
+              "value": "",
+              "required": true
+            },
+            {
+              "id": 8,
+              "paramNameFormControl": "name",
+              "value": "",
+              "required": false
+            },
+            {
+              "id": 9,
+              "paramNameFormControl": "episode",
+              "value": "",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nameFormControl": "Etiqueta ",
+      "appUrlFormControl": "https://etiqueta.madero/api",
+      "authUrlFormControl": "https://etiqueta.madero/auth",
+      "endpoints": [
+        {
+          "id": 1,
+          "reqFormControl": "GET",
+          "endpointUrlFormControl": "/criar",
+          "params": [
+            {
+              "id": 1,
+              "paramNameFormControl": "id",
+              "value": "",
+              "required": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "reqFormControl": "POST",
+          "endpointUrlFormControl": "/criar",
+          "params": [
+            {
+              "id": 2,
+              "paramNameFormControl": "teste",
+              "value": "1",
+              "required": true
+            },
+            {
+              "id": 3,
+              "paramNameFormControl": "teste 2",
+              "value": "11",
+              "required": false
+            }
+          ]
+        }
+      ]
     }
+  ],
+  "requisicao": [
+    {
+      "id": 1,
+      "params": [
+        {
+          "id": 1
+        }
+      ],
+      "headers": [
+        {
+          "id": "",
+          "cabecalhoChave": "barrer",
+          "cabecalhoValor": "15618*65129*215/651"
+        }
+      ],
+      "body": "oi"
+    },
+    {
+      "id": 2,
+      "params": [
+        {
+          "id": 1,
+          "paramValue": "1"
+        },
+        {
+          "id": 2,
+          "paramValue": ""
+        },
+        {
+          "id": 3,
+          "paramValue": "rick"
+        },
+        {
+          "id": 4,
+          "paramValue": "alive"
+        }
+      ],
+      "headers": [
+        {
+          "id": "",
+          "cabecalhoChave": "garagemBarrer",
+          "cabecalhoValor": "olá garagem"
+        }
+      ],
+      "body": ""
+    },
+    {
+      "id": 3,
+      "aplicativoId": 5,
+      "endpointId": 1,
+      "params": [
+        {
+          "id": 1,
+          "paramValue": "1"
+        }
+      ],
+      "headers": [
+        {
+          "id": "",
+          "cabecalhoChave": "oi",
+          "cabecalhoValor": "oi"
+        }
+      ],
+      "body": "ola"
+    },
+    {
+      "id": 4,
+      "aplicativoId": 3,
+      "endpointId": 2,
+      "params": [
+        {
+          "id": 3,
+          "paramValue": "1"
+        },
+        {
+          "id": 4,
+          "paramValue": "luke skywalker"
+        }
+      ],
+      "headers": [
+        {
+          "id": "",
+          "cabecalhoChave": "Republica",
+          "cabecalhoValor": "1451218"
+        },
+        {
+          "id": "",
+          "cabecalhoChave": "Jedi",
+          "cabecalhoValor": "84982"
+        }
+      ],
+      "body": "{\n \"id\": 1,\n \"name\": Luke Skywalker\n}"
+    },
+    {
+      "id": 5,
+      "appId": 5,
+      "endpointId": 2,
+      "params": [
+        {
+          "id": 2,
+          "paramValue": "159"
+        },
+        {
+          "id": 3,
+          "paramValue": "Mostarda"
+        }
+      ],
+      "headers": [
+        {
+          "id": 1,
+          "cabecalhoChave": "ReqEtiqueta",
+          "cabecalhoValor": "1111111"
+        },
+        {
+          "id": 2,
+          "cabecalhoChave": "AuthEtiqueta",
+          "cabecalhoValor": "15935789/26"
+        }
+      ],
+      "body": {
+        "id": 159,
+        "Prod": "Mostarda"
+      }
+    },
+    {
+      "id": 6,
+      "appId": 5,
+      "endpointId": 1,
+      "params": [
+        {
+          "id": 1,
+          "paramValue": "160"
+        }
+      ],
+      "headers": [
+        {
+          "id": 1,
+          "cabecalhoChave": "Etiqueta",
+          "cabecalhoValor": "1111111111"
+        },
+        {
+          "id": 2,
+          "cabecalhoChave": "Auth",
+          "cabecalhoValor": "1549357/159"
+        }
+      ],
+      "body": null
+    },
+    {
+      "id": 7,
+      "appId": 3,
+      "endpointId": 3,
+      "params": [
+        {
+          "id": 5,
+          "paramValue": "1"
+        },
+        {
+          "id": 6,
+          "paramValue": "Luke Skywalker"
+        }
+      ],
+      "headers": [
+        {
+          "id": 1,
+          "cabecalhoChave": "auth",
+          "cabecalhoValor": "1598432"
+        },
+        {
+          "id": 2,
+          "cabecalhoChave": "Republica",
+          "cabecalhoValor": "159/51689"
+        },
+        {
+          "id": 3,
+          "cabecalhoChave": "Jedi",
+          "cabecalhoValor": "*8"
+        }
+      ],
+      "body": "{\n  \"id\": \"1\",\n  \"force\": true\n}"
+    },
+    {
+      "id": 8,
+      "appId": 3,
+      "endpointId": 1,
+      "params": [
+        {
+          "id": 1,
+          "paramValue": "5"
+        },
+        {
+          "id": 2,
+          "paramValue": "Darth Vader"
+        }
+      ],
+      "headers": [
+        {
+          "id": 1,
+          "cabecalhoChave": "Auth",
+          "cabecalhoValor": "19*/496"
+        }
+      ],
+      "body": "id: 5\nname: Darth Vader"
+    },
+    {
+      "id": 9,
+      "appId": 3,
+      "appUrl": "https://swapi.dev/api/",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "https://swapi.dev/api/people",
+      "params": [
+        {
+          "id": 1,
+          "paramValue": "16"
+        },
+        {
+          "id": 2,
+          "paramValue": "Darth Maul"
+        }
+      ],
+      "headers": [
+        {
+          "id": 1,
+          "cabecalhoChave": "Auth",
+          "cabecalhoValor": "19683/565*95"
+        }
+      ],
+      "body": "id: 16,\nname: Darth Maul"
+    },
+    {
+      "id": 10,
+      "appId": 4,
+      "appUrl": "https://rickandmortyapi.com/api",
+      "appAuth": "https://rickandmortyapi.com/auth",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "https://rickandmortyapi.com/api/character",
+      "params": [
+        {
+          "id": 1,
+          "paramValue": "1"
+        },
+        {
+          "id": 2,
+          "paramValue": ""
+        },
+        {
+          "id": 3,
+          "paramValue": ""
+        },
+        {
+          "id": 4,
+          "paramValue": ""
+        }
+      ],
+      "headers": [
+        {
+          "id": 1,
+          "cabecalhoChave": "Garagem",
+          "cabecalhoValor": "olá garagem"
+        }
+      ],
+      "body": null
+    },
+    {
+      "id": 11,
+      "appId": 4,
+      "appUrl": "https://rickandmortyapi.com/api",
+      "appAuth": "https://rickandmortyapi.com/auth",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "https://rickandmortyapi.com/api/character",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "1"
+        },
+        {
+          "id": 2,
+          "paramName": "id_default",
+          "paramValue": ""
+        },
+        {
+          "id": 3,
+          "paramName": "name",
+          "paramValue": ""
+        },
+        {
+          "id": 4,
+          "paramName": "status",
+          "paramValue": ""
+        }
+      ],
+      "headers": [
+        {
+          "id": 1,
+          "cabecalhoChave": "Auth",
+          "cabecalhoValor": "olá, Garagem"
+        }
+      ],
+      "body": null
+    }
+  ],
+  "detalhes": [
+    {}
   ]
 }

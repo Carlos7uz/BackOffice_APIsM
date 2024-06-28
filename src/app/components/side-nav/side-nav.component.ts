@@ -30,11 +30,11 @@ export class SideNavComponent {
 
   navItems = [
     { label: 'Home', route: '', icon: 'home'},
-    { label: 'Novo aplicativo', route: '/newapi', icon: 'add'},
+    { label: 'New app', route: '/newapi', icon: 'add'},
   ]
 
   trackByFn(index: number, item: any) {
-    return item.label; // Você pode retornar qualquer identificador único, como o próprio índice ou uma propriedade única do item
+    return item.label;
   }
 
   constructor(private aplicativoService: AplicativoService, private router: Router) { }

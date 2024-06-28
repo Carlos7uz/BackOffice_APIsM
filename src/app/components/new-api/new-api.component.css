@@ -2,98 +2,127 @@ h1{
   width: 90%;
   text-align: center;
   font-size: 5vh;
-  font-weight: 300;
+  font-weight: 500;
   margin-left: 5vh;
+}
+
+.input-nome{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.input-url{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.button-addEndpoint {
+  background-color: var(--yellowJ) !important; /* Cor amarela */
+  color: #fff !important; /* Cor do texto */
+  font-size: 18px;
+  border: none !important;
+  border-radius: 5px !important;
+  padding: 10px 20px !important;
+  margin-top: 2vh;
+  margin-bottom: 4vh;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.button-addEndpoint:hover {
+  background-color: var(--yellowJhover)!important;
 }
 
 strong{
   color: red;
 }
 
-form {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 6vh;
+.form-req{
+  width: 29%;
 }
 
-form div {
-  margin-bottom: 15px;
+.urlEndpoint{
+  width: 50%;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #333;
+.remove:hover{
+  background-color: var(--redHover);
 }
 
-input {
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
+
+.removeParam:hover{
+  background-color: var(--redHover);
 }
 
-input:focus {
-  border-color: #007bff;
-  outline: none;
+.boxAddParam{
+  margin-bottom: 4vh;
 }
 
-button {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-top: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.end-description{
+  font-size: 18px;
 }
 
-button:hover {
-  background-color: #0056b3;
+.add-param-txt{
+  font-size: 18px;
 }
 
-button[type="submit"]:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.addParam{
+  color: white !important;
+  background-color: var(--yellowJ)!important;
 }
 
-.mat-slide-toggle {
-  display: inline-block;
-  margin-top: 10px;
+.addParamIcon{
+  width: auto;
+  height: auto;
+  background-color: var(--yellowJ);
 }
 
-/* Estilos específicos para erros */
-div.ng-invalid.ng-dirty,
-div.ng-invalid.ng-touched {
+.formNameParam{
+  width: 29%;
+}
+
+.formValueParam{
+  width: 29%;
+}
+
+.slide-required{
+  margin-top: 11px;
+  font-size: 28px;
+
+}
+
+.input-urlendpoint{
+  width: 100%;
+  position: relative;
+  padding-bottom: 3vh;
+  margin-top: 3.5vh;
+  font-size: 16px;
+  text-align:start;
+
+}
+
+.error-messages {
+  height: 20px;
+  margin-top: 5px;
   color: red;
+  font-size: 12px;
 }
 
-div.ng-invalid.ng-dirty input,
-div.ng-invalid.ng-touched input {
-  border-color: red;
+.linha{
+  border-top: 2px rgb(255, 197, 72) solid;
 }
 
-/* Estilos para grupos de inputs */
-div[formArrayName="endpoints"],
-div[formArrayName="params"] {
-  margin-bottom: 20px;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.cadastrar{
+  cursor: pointer;
+  font-size: 18px;
+  margin-bottom: 5vh;
 }
 
-div[formGroupName] > div {
-  margin-bottom: 10px;
-}
+
+
+
 
 
 

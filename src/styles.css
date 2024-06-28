@@ -1,5 +1,13 @@
-
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root{
+  --yellowJ: rgb(255, 143, 15);
+  --yellowJhover: rgb(219, 167, 55);
+  --green: rgb(108, 255, 108);;
+  --red: rgb(255, 53, 53);
+  --redHover: rgb(214, 45, 45);
+}
+
+
 

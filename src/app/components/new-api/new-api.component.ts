@@ -2,9 +2,10 @@ import { Aplicativo } from './../../../core/models/aplicativo.model';
 import { Component } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { MatDialog} from '@angular/material/dialog';
+import { MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { AplicativoService } from '../../../core/services/aplicativo.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
@@ -16,6 +17,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { HttpErrorResponse } from '@angular/common/http';
 
 //Erro quando input esta invalido
 export class errorInput implements ErrorStateMatcher {
@@ -32,6 +36,7 @@ export class errorInput implements ErrorStateMatcher {
     FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,
+    MatTooltipModule,
     MatSidenavModule,
     MatListModule,
     MatCardModule,
@@ -41,6 +46,10 @@ export class errorInput implements ErrorStateMatcher {
     MatInputModule,
     MatSelectModule,
     MatSlideToggleModule,
+    MatDialogModule,
+    MatExpansionModule,
+    FlexLayoutModule,
+
 
   ],
   templateUrl: './new-api.component.html',
@@ -51,6 +60,11 @@ export class NewApiComponent {
   formNewApi: FormGroup;
   matcher = new errorInput();
 
+  detalhesVisiveis: boolean[] = [];
+
+  trackByFn(index: number, item: any): any {
+    return index;
+  }
 
   urlPattern = '^(https?:\\/\\/)?' + // protocol
   '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name and extension
@@ -73,6 +87,7 @@ export class NewApiComponent {
     authUrlFormControl: ['', [Validators.minLength(3), Validators.maxLength(100)]],
     endpoints: this.formBuilder.array([])
     });
+    this.endpoints.controls.forEach(() => this.detalhesVisiveis.push(true));
   }
 
   get endpoints(): FormArray {
@@ -83,9 +98,10 @@ export class NewApiComponent {
     return this.formBuilder.group({
       id: [this.aplicativoService.getNextEndpointId()],
       reqFormControl: ['', Validators.required],
-      endpointUrlFormControl: ['', [Validators.required, Validators.pattern(this.urlPattern), Validators.minLength(3), Validators.maxLength(100)]],
+      endpointUrlFormControl: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
       params: this.formBuilder.array([])
     });
+
   }
 
   createParamGroup(): FormGroup {
@@ -93,17 +109,25 @@ export class NewApiComponent {
       id: [this.aplicativoService.getNextParamId()],
       paramNameFormControl: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       value: [''],
-      required: [false]
+      required: [false],
+      paramUrl: [false]
     });
   }
 
   addEndpoint(): void {
     this.endpoints.push(this.createEndpointGroup());
+    this.detalhesVisiveis.push(true);
+  }
+
+  detalhesEndpoint(index: number, event: Event) {
+    event.preventDefault(); // Previne o comportamento padrão do formulário
+    this.detalhesVisiveis[index] = !this.detalhesVisiveis[index];
   }
 
   addParam(endpointIndex: number): void {
     const params = this.endpoints.at(endpointIndex).get('params') as FormArray;
     params.push(this.createParamGroup());
+    this.formNewApi.updateValueAndValidity();
   }
 
   getParamsControls(endpoint: AbstractControl): AbstractControl[] {
@@ -120,6 +144,13 @@ export class NewApiComponent {
 
   toggleRequired(param: AbstractControl): void {
     const control = this.getFormControl(param, 'required');
+    if (control) {
+      control.setValue(!control.value);
+    }
+  }
+
+  toggleUrlParam(param: AbstractControl): void {
+    const control = this.getFormControl(param, 'paramUrl');
     if (control) {
       control.setValue(!control.value);
     }
@@ -156,23 +187,51 @@ export class NewApiComponent {
                 id: currentParamId,
                 paramNameFormControl: param.paramNameFormControl,
                 value: param.value,
-                required: param.required
+                required: param.required,
+                paramUrl: param.paramUrl
               }
             })
           }
         })
       };
 
-      this.aplicativoService.addAplicativo(aplicativo).subscribe(response => {
-        alert('Cadastrado com sucesso!');
-        this.router.navigate(['']);
-        window.location.reload();
-      }, error => {
-        alert('Erro ao cadastrar: ' + error.message);
-        this.router.navigate(['']);
+      this.aplicativoService.addAplicativo(aplicativo).subscribe({
+        next: () => {
+          alert('Cadastrado com sucesso!');
+          this.router.navigate(['']);
+          window.location.reload();
+        },
+        error: (error: HttpErrorResponse) => { // Definimos o tipo explicitamente aqui
+          console.error('Erro ao cadastrar API:', error);
+        }
       });
     } else {
-      console.log('Form is invalid');
+      console.log('Formulário inválido', this.getFormValidationErrors(this.formNewApi));
     }
+  }
+
+  getFormValidationErrors(form: FormGroup): any[] {
+    const errors: any[] = [];
+    Object.keys(form.controls).forEach(key => {
+      const controlErrors: any = form.get(key)?.errors;
+      if (controlErrors) {
+        errors.push({ key, controlErrors });
+      }
+      if (form.get(key) instanceof FormArray) {
+        const formArray = form.get(key) as FormArray;
+        formArray.controls.forEach((control, index) => {
+          const arrayErrors = this.getFormValidationErrors(control as FormGroup);
+          arrayErrors.forEach(error => {
+            errors.push({ key: `${key}[${index}]`, ...error });
+          });
+        });
+      } else if (form.get(key) instanceof FormGroup) {
+        const groupErrors = this.getFormValidationErrors(form.get(key) as FormGroup);
+        groupErrors.forEach(error => {
+          errors.push({ key: `${key}`, ...error });
+        });
+      }
+    });
+    return errors;
   }
 }
