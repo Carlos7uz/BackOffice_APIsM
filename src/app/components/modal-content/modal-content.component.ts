@@ -1,18 +1,22 @@
-import { Detalhe } from './../../../core/models/detalhe.model';
+import { RequestHistoryService } from './../../../core/services/request-history.service';
 import { CommonModule } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, ViewEncapsulation } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
-import { Aplicativo, Endpoint, Parameter } from './../../../core/models/aplicativo.model';
+import { Application, Endpoint, Parameter } from '../../../core/models/application.model';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { RequisicaoService } from '../../../core/services/requisicao.service';
-import { Requisicao } from '../../../core/models/requisicao.model';
-import {MatTabsModule} from '@angular/material/tabs';
+import { RequestService } from '../../../core/services/request.service';
+import { Request } from '../../../core/models/request.model';
+import { MatTabsModule } from '@angular/material/tabs';
+import { HttpRequestService } from '../../../core/services/http-request.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ResponseDetails } from '../../../core/models/response-details';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-modal-content',
@@ -34,25 +38,31 @@ import {MatTabsModule} from '@angular/material/tabs';
 })
 export class ModalContentComponent {
 
+
   form!: FormGroup;
-  currentView: 'params' | 'headers' | 'body' | 'details' = 'params';
-  app: Aplicativo;
+  currentView!: 'details' | 'error';
+  app: Application;
   endpoint: Endpoint;
+  parameter: Parameter;
   executionDetails: any;
-  //endpoints: Endpoint[];
-  //detalhe!: Detalhe
-  //body: string = '';
-  //sla: HttpResponse
+  errorDetails: any;
+  responseHttp: any;
+  endpointRequests: { [key: number]: Request[] } = {};
 
 
   constructor(
     private fb: FormBuilder,
-    private requisicaoService: RequisicaoService,
+    private requestService: RequestService,
+    private httpRequestService: HttpRequestService,
     public dialogRef: MatDialogRef<ModalContentComponent>,
+    private spinner: NgxSpinnerService,
+    private cdr: ChangeDetectorRef,
+    private requestHistoryService: RequestHistoryService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.app = data.app;
     this.endpoint = data.endpoint;
+    this.parameter = data.parameter;
 
     this.form = this.fb.group({
       params: this.fb.array(this.initParams(this.endpoint.params)),
@@ -72,10 +82,11 @@ export class ModalContentComponent {
   */
 
   initParams(params: Parameter[]): FormGroup[] {
-   return params.map(param => this.fb.group({
+    return params.map(param => this.fb.group({
       id: [param.id],
       paramNameFormControl: [param.paramNameFormControl],
-      paramValue: [param.paramValue || '', param.required ? Validators.required : null]
+      paramValue: [param.value || '', param.required ? Validators.required : null],
+      paramUrl: [param.paramUrl || false]
     }));
   }
 
@@ -94,8 +105,8 @@ export class ModalContentComponent {
   addHeader(): void {
     this.headers.push(this.fb.group({
       id: [''],
-      cabecalhoChave: ['', Validators.required],
-      cabecalhoValor: ['', Validators.required]
+      key: ['Authorization', Validators.required],
+      value: ['Bearer', Validators.required]
     }));
   }
 
@@ -103,32 +114,68 @@ export class ModalContentComponent {
     this.headers.removeAt(index);
   }
 
-  switchView(view: 'params' | 'headers' | 'body' | 'details'): void {
-    this.currentView = view;
-  }
-
   executeRequest(): void {
     if (this.form.invalid) {
-      const invalidControls: string[]=[];
-
-      // Verifica cada controle dentro de 'params' e 'headers' para encontrar controles inválidos
-      this.params.controls.forEach((control, index) => {
-        if (control.invalid) {
-          invalidControls.push(`Parâmetro ${index + 1}: ParamValue`);
-        }
-      });
-
-      this.headers.controls.forEach((control, index) => {
-        if (control.invalid) {
-          invalidControls.push(`Cabeçalho ${index + 1}: ${control.value.cabecalhoChave}`);
-        }
-      });
-
-      console.error('Erro no formulário. Controles inválidos:', invalidControls);
+      this.handleInvalidForm();
       return;
     }
 
-    const requisicao: Requisicao = {
+    //Request Object
+    const request = this.createRequestObject();
+
+    //validacao do body
+    if (request.body && typeof request.body === 'string') {
+      try {
+        request.body = JSON.parse(request.body);
+      } catch (error) {
+        console.error('Erro no formulário. Body inválido:', error);
+        return;
+      }
+    }
+
+    console.log('Olha a request', request);
+
+    // Exibir loading
+    this.spinner.show();
+
+    this.httpRequestService.makeRequest(
+      request.appUrl,
+      request.endpointUrl,
+      request.endpointReq,
+      request.params,
+      request.body,
+      request.headers
+    ).subscribe({
+      next: (response: ResponseDetails) => {
+        this.handleSuccessResponse(response, request);
+      },
+      error: (error: HttpErrorResponse) => {
+        this.handleErrorResponse(error, request);
+      }
+    });
+  }
+
+// Metodos do ExecuteRequest
+  private handleInvalidForm(): void {
+    const invalidControls: string[] = [];
+
+    this.params.controls.forEach((control, index) => {
+      if (control.invalid) {
+        invalidControls.push(`Parâmetro ${index + 1}: ParamValue`);
+      }
+    });
+
+    this.headers.controls.forEach((control, index) => {
+      if (control.invalid) {
+        invalidControls.push(`Cabeçalho ${index + 1}: Chave: ${control.value.key || null} Valor: ${control.value.value || null}`);
+      }
+    });
+
+    alert('Erro no formulário. Controles inválidos: ' + invalidControls.join(', '));
+  }
+
+  private createRequestObject(): Request {
+    return {
       id: '',
       appId: this.data.appId,
       appUrl: this.data.appUrl,
@@ -139,22 +186,76 @@ export class ModalContentComponent {
       params: this.params.value.map((param: any) => ({
         id: param.id,
         paramName: param.paramNameFormControl,
-        paramValue: param.paramValue
+        paramValue: param.paramValue,
+        paramUrl: param.paramUrl
       })),
-      headers: this.headers.value.map((header: any, index: number) => ({
-        id: index + 1,
-        cabecalhoChave: header.cabecalhoChave,
-        cabecalhoValor: header.cabecalhoValor
-      })),
-      body: this.form.get('body')?.value || null
-    };;
+      headers: this.headers.value
+        .filter((header: any) => header.key && header.value)
+        .map((header: any, index: number) => ({
+          id: index + 1,
+          key: header.key,
+          value: header.value
+        })),
+      body: JSON.stringify(this.params.value.reduce((acc: any, param: any) => {
+        if (param.paramNameFormControl && param.paramValue) {
+          acc[param.paramNameFormControl] = param.paramValue;
+        }
+        return acc;
+      }, {}))
+    };
+  }
 
-    this.requisicaoService.addRequisicao(requisicao).subscribe(response => {
-      console.log('Requisição executada com sucesso', response);
-      this.executionDetails = response;
-      this.currentView = 'details';
-    }, error => {
-      console.error('Erro ao executar requisição', error);
+  private handleSuccessResponse(response: ResponseDetails, request: Request): void {
+    this.spinner.hide();
+    this.executionDetails = response;
+    this.currentView = 'details';
+    this.responseHttp = response.body;
+
+    this.saveRequest(request, response);
+  }
+
+  private handleErrorResponse(error: HttpErrorResponse, request: Request): void {
+    this.spinner.hide();
+    this.errorDetails = error;
+    this.currentView = 'error';
+
+    alert(`Erro na requisição: ${error.message}`);
+
+    this.saveRequest(request, undefined, error)
+  }
+
+  private saveRequest(request: Request, response?: ResponseDetails, error?: HttpErrorResponse): void {
+    this.requestService.addRequest({
+      ...request,
+      response: response,
+      error: error,
+      timestamp: new Date().toLocaleString('pt-BR', {
+        timeZone: 'America/Sao_Paulo',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      })
+    }).subscribe({
+      next: () => {
+        this.requestService.getRequestsByAppAndEndpoint(this.data.appId, this.data.endpointId)
+        .subscribe({
+          next: (requests: Request[]) => {
+            this.endpointRequests[this.data.endpointId] = requests;
+            this.cdr.detectChanges();
+            console.log('Histórico atualizado:', requests);
+          },
+          error: (error: HttpErrorResponse) => {
+            console.error('Erro ao carregar o histórico:', error);
+          }
+        });
+      },
+      error: (error: HttpErrorResponse) => {
+        console.error('Erro ao salvar a requisição:', error);
+      }
     });
   }
+  //Fim metodos ExecuteRequest
 }

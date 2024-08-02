@@ -25,10 +25,17 @@
 
     <h4>Lista de aplicativos</h4>
 
+    <app-applications-search class="search"></app-applications-search>
+
     <mat-nav-list>
-      <mat-list-item *ngFor="let aplicativo of aplicativos" routerLink="/aplicativo/{{aplicativo.id}}" class="item-sidenav">
-        {{ aplicativo.nameFormControl }}
-      </mat-list-item>
+      <ng-container *ngIf="applications.length; else noItems">
+        <mat-list-item *ngFor="let aplicativo of applications" routerLink="/aplicativo/{{aplicativo.id}}" class="item-sidenav">
+          {{ aplicativo.nameFormControl }}
+        </mat-list-item>
+        <ng-template #noItems>
+          <span>Não existem itens na lista</span>
+        </ng-template>
+      </ng-container>
     </mat-nav-list>
 
   </mat-sidenav>

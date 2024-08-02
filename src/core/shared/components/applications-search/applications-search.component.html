@@ -1,0 +1,16 @@
+<mat-form-field class="example-full-width" appearance="outline">
+  <mat-label>Search App</mat-label>
+  <input type="text"
+         placeholder="Type to search"
+         aria-label="App name"
+         matInput
+         [formControl]="searchControl"
+         [matAutocomplete]="auto"
+         displayWith="displayFn">
+  <mat-icon matSuffix>search</mat-icon>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      {{option.nameFormControl}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

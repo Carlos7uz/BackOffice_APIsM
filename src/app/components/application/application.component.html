@@ -1,0 +1,75 @@
+<div *ngIf="selectedApplication">
+  <div class="container">
+    <h1>{{selectedApplication.nameFormControl}}</h1>
+    <mat-icon class="config-app">settings</mat-icon>
+  </div>
+
+  <h2><strong>Url: </strong>{{selectedApplication.appUrlFormControl}}</h2>
+
+  <h2><strong>Auth: </strong>{{selectedApplication.authUrlFormControl}}</h2>
+
+  <p>card da auth (fazer dps)</p>
+
+  <h3>Testar endpoints:</h3>
+
+  <section class="content" >
+    <ul class="endpoints">
+      <li class="li-endpoints" *ngFor="let endpoint of selectedApplication.endpoints; let i = index">
+        <mat-card class="card">
+          <mat-card-header fxLayout="row" fxLayoutAlign="space-between start">
+            <mat-card-title>
+              <span [ngClass]="{
+                'green-background': endpoint.reqFormControl === 'GET' || endpoint.reqFormControl === 'POST',
+                'yellow-background': endpoint.reqFormControl === 'PUT',
+                'red-background': endpoint.reqFormControl === 'DELETE'
+              }">{{endpoint.reqFormControl}}</span> {{endpoint.endpointUrlFormControl}}
+            </mat-card-title>
+            <mat-card-actions align="end">
+              <button mat-mini-fab class="action" (click)="openTest(endpoint, selectedApplication, parameter)">
+                <mat-icon class="icon_action">play_arrow</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card-header>
+
+          <mat-expansion-panel class="extension-history" (click)="detailsEndpoint(i)">
+            <mat-expansion-panel-header class="box-history">
+              <mat-panel-title>Histórico de requisições:</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-card-content class="extension-history-open">
+              <mat-accordion>
+                <mat-expansion-panel class="extension-history-endpoint" *ngFor="let request of endpointRequests[endpoint.id]">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title fxLayout="row" fxLayoutGap="25px" >
+                      <p><strong>Date:</strong> {{ request.timestamp }}</p>
+                      <p><strong>Status:</strong> {{ request.response?.status }} {{ request.response?.statusText || request.error?.statusText }}</p>
+                      <p><strong>Method:</strong> {{ request.endpointReq }}</p>
+                      <p><strong>URL:</strong> {{ request.response?.url || request.error?.statusText }}</p>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="example-card" [ngClass]="{'error-card': request.error}">
+                    <p *ngIf="!request.error"><strong>Headers:</strong></p>
+                    <ul class="ul-headers" *ngIf="!request.error">
+                      <li class="li-headers" *ngFor="let header of request.headers">
+                        {{ header.key }}: {{ header.value }}
+                      </li>
+                    </ul>
+                    <p *ngIf="request.error"><strong>Error Details:</strong></p>
+                    <p *ngIf="request.error">{{ request.error.message }}</p>
+                    <p><strong>Body enviado:</strong> {{ request.body | json }}</p>
+                    <p><strong>Response:</strong></p>
+                    <pre *ngIf="!request.error">{{ request.response?.body | json }}</pre>
+                  </div>
+                </mat-expansion-panel>
+                <p *ngIf="!endpointRequests[endpoint.id] || endpointRequests[endpoint.id].length === 0">No requests found.</p>
+              </mat-accordion>
+            </mat-card-content>
+          </mat-expansion-panel>
+        </mat-card>
+      </li>
+    </ul>
+  </section>
+
+  <p class="gap"></p>
+
+</div>

@@ -1,77 +1,141 @@
-
-
-h1{
+h1 {
   width: 90%;
-  text-align: start;
+  text-align: center;
   font-size: 5vh;
-  font-weight: 300;
+  font-weight: 500;
   margin-left: 5vh;
 }
 
-.forms{
-  width: 70%;
-
-}
-
-.form-name{
+.input-nome,
+.input-url {
   width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
-.form-app-url{
-  width: 100%;
-}
-
-.form-auth-url{
-  width: 100%;
-  margin-bottom: 2vh;
-}
-
-h2{
-  padding: 0.5vh;
-  font-size: 3vh;
-  font-weight: 400;
-  border-bottom: 1px solid rgb(255, 197, 72);
-
-}
-
-.end-description{
-  width: 80%;
-  margin-bottom: 2vh;
-
-}
-
-.button-addAPI{
-  text-align: center;
-  font-size: 2vh;
-  color: white;
-  background-color: rgb(255, 197, 72);
-  width: 25%;
-  margin-bottom: 5vh;
-}
-.button-addEnd{
-  padding: 3vh;
-  text-align: center;
-  font-size: 2vh;
-  color: rgb(255, 197, 72);
-  background-color: rgb(255, 197, 72);
-  width: 25%;
-}
-
-.value{
-  margin-left: 2vh;
-  margin-right: 2vh;
-}
-
-
-.endpoint-item{
-  margin-top: 2.5vh;
-  border-top: 2px solid rgb(255, 197, 72) ;
-  padding: 2vh;
-}
-
-
-
-.add-form{
-  margin-top: 2.5vh;
+.button-addEndpoint {
+  background-color: var(--yellowJ) !important;
+  color: #fff !important;
+  font-size: 18px;
+  border: none !important;
+  border-radius: 5px !important;
+  padding: 10px 20px !important;
+  margin-top: 2vh;
   margin-bottom: 4vh;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.button-addEndpoint:hover {
+  background-color: var(--yellowJhover) !important;
+}
+
+strong {
+  color: red;
+}
+
+.form-req,
+.formNameParam,
+.formValueParam {
+  width: 29%;
+}
+
+.urlEndpoint {
+  width: 50%;
+}
+
+.remove:hover,
+.removeParam:hover {
+  background-color: var(--redHover);
+}
+
+.boxAddParam {
+  margin-bottom: 4vh;
+}
+
+.end-description,
+.add-param-txt {
+  font-size: 18px;
+}
+
+.add-param-txt {
+  color: var(--yellowJ);
+  font-weight: 700;
+}
+
+.addParam {
+  color: white !important;
+  background-color: var(--yellowJ) !important;
+  width: 30px;
+  height: 30px;
+}
+
+.addParamIcon {
+  width: auto;
+  height: auto;
+  font-size: 18px;
+  background-color: var(--yellowJ);
+}
+
+.slide-required {
+  margin-top: 11px;
+  font-size: 28px;
+}
+
+.input-urlendpoint {
+  width: 100%;
+  position: relative;
+  padding-bottom: 3vh;
+  margin-top: 3.5vh;
+  font-size: 16px;
+  text-align: start;
+}
+
+.error-messages {
+  height: 20px;
+  margin-top: 5px;
+  color: red;
+  font-size: 12px;
+}
+
+.linha {
+  border-top: 2px rgb(255, 197, 72) solid;
+}
+
+.cadastrar {
+  cursor: pointer;
+  font-size: 18px;
+  margin-bottom: 5vh;
+  background-color: var(--green) !important;
+}
+
+.cadastrar:disabled {
+  background-color: #ccc !important;
+  cursor: not-allowed;
+}
+
+.end-param-box {
+  padding: 16px;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  margin-bottom: 2vh;
+}
+
+.box-endpoint-input,
+.box-param-input {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.actions-container {
+  margin-top: 4vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }

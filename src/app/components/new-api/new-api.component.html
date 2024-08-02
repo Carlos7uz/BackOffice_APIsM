@@ -1,6 +1,5 @@
-<h1 class="titulo">Cadastre um novo aplicativo Madero</h1>
-
-<form [formGroup]="formNewApi" (ngSubmit)="cadastrarAPI()">
+<form [formGroup]="formNewApi" (ngSubmit)="cadastrarAPI()" class="end-param-box">
+  <h1 class="titulo">Cadastre um novo aplicativo Madero</h1>
 
   <mat-form-field class="input-nome" appearance="outline">
     <mat-label>Nome do aplicativo</mat-label>
@@ -37,91 +36,92 @@
   />
   </mat-form-field>
 
+  <div class="actions-container" fxLayout="column" fxLayoutAlign="end end">
+    <button mat-flat-button type="button" >Adicionar autenticação</button>
+  </div>
+
   <h2 class="titulo-endpoint">Endpoints</h2>
   <p class="end-description">Adicione os endpoints usados pelo aplicativo, estes serão usados para realizar chamadas com seus respectivos
     parâmetros, verificar seus status e funcionalidades</p>
 
-  <div formArrayName="endpoints">
+    <div formArrayName="endpoints">
+      <div *ngFor="let endpoint of endpoints.controls; let i = index; trackBy: trackByFn" [formGroupName]="i" class="endpoint-container end-param-box">
+        <p class="linha"></p>
+        <h4>Endpoint {{i + 1}}</h4>
+        <div class="box-endpoint-input" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start start">
+          <mat-form-field class="form-req" appearance="outline">
+            <mat-label for="reqFormControl">Tipo de requisição</mat-label>
+            <mat-select formControlName="reqFormControl" id="reqFormControl" required>
+              <mat-option value="GET">GET</mat-option>
+              <mat-option value="POST">POST</mat-option>
+              <mat-option value="PUT">PUT</mat-option>
+              <mat-option disabled selected value="DELETE">DELETE</mat-option>
+            </mat-select>
+            <mat-error *ngIf="endpoints.at(i).get('reqFormControl')?.hasError('required')">
+              <strong>Tipo da requisição é obrigatório.</strong>
+            </mat-error>
+          </mat-form-field>
 
-    <div *ngFor="let endpoint of endpoints.controls; let i = index; trackBy: trackByFn" [formGroupName]="i" class="endpoint-container">
-      <p class="linha"></p>
-      <h4>Endpoint {{i+1}}</h4>
-      <div class="box-endpoint-input" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start start">
-        <mat-form-field class="form-req" appearance="outline" >
-          <mat-label  for="reqFormControl">Tipo de requisição</mat-label>
-          <mat-select formControlName="reqFormControl" id="reqFormControl" required>
-            <mat-option value="GET">GET</mat-option>
-            <mat-option value="POST">POST</mat-option>
-            <mat-option value="PUT">PUT</mat-option>
-            <mat-option value="DELETE">DELETE</mat-option>
-          </mat-select>
-          <mat-error *ngIf="endpoints.at(i).get('reqFormControl')?.hasError('required')">
-            <strong>Tipo da requisição é obrigatório.</strong>
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field class="urlEndpoint" appearance="outline">
+            <mat-label>Url do endpoint</mat-label>
+            <input matInput type="url" formControlName="endpointUrlFormControl" [errorStateMatcher]="matcher" required>
+            <mat-error *ngIf="endpoints.at(i).get('endpointUrlFormControl')?.hasError('required')">
+              Url é <strong>obrigatória.</strong>
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field class="urlEndpoint" appearance="outline">
-          <mat-label>Url do endpoint</mat-label>
-          <input matInput type="url" formControlName="endpointUrlFormControl" [errorStateMatcher]="matcher" required>
-          <mat-error *ngIf="endpoints.at(i).get('endpointUrlFormControl')?.hasError('required')">
-            Url é <strong>obrigatória.</strong>
-          </mat-error>
-        </mat-form-field>
+          <button mat-icon-button type="button" class="remove" (click)="endpoints.removeAt(i)">
+            <mat-icon class="mat-18">delete</mat-icon>
+          </button>
 
-        <button  mat-icon-button type="button" class="remove" (click)="endpoints.removeAt(i)">
-          <mat-icon class="mat-18">delete</mat-icon>
-        </button>
-
-        <button class="button-detalhes"
-                mat-icon-button type="button"
-                (click)="detalhesEndpoint(i, $event)"
-                [matTooltip]="detalhesVisiveis[i] ? 'Ocultar parâmetros' : 'Exibir parâmetros'"
-        >
-          <mat-icon class="mat-18">{{ detalhesVisiveis[i] ? 'visibility_off' : 'visibility' }}</mat-icon>
-        </button>
-      </div>
-
-      <mat-card-actions *ngIf="detalhesVisiveis[i]">
-
-        <div class="boxAddParam" fxLayout="row" fxLayoutGap="14px" fxLayoutAlign="start center">
-          <p class="add-param-txt">Parâmetros</p>
-          <button mat-mini-fab type="button" class="addParam" (click)="addParam(i)" matTooltip="Adicionar parâmetro">
-           <mat-icon class="addParamIcon">plus_one</mat-icon>
+          <button class="button-detalhes" mat-icon-button type="button" (click)="detailsEndpoint(i, $event)" [matTooltip]="detailsVisible[i] ? 'Ocultar parâmetros' : 'Exibir parâmetros'">
+            <mat-icon class="mat-18">{{ detailsVisible[i] ? 'visibility_off' : 'visibility' }}</mat-icon>
           </button>
         </div>
 
-        <div formArrayName="params" >
-          <div *ngFor="let param of getParamsControls(endpoint); let j = index" [formGroupName]="j">
-            <h4>Parâmetro {{j+1}}</h4>
-            <div class="box-param-input" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start start">
-              <mat-form-field class="formNameParam" appearance="outline">
-                <mat-label>Nome do parâmetro</mat-label>
-                <input matInput type="text" formControlName="paramNameFormControl" required/>
-                <mat-error *ngIf="param.get('paramNameFormControl')?.hasError('required')">Nome do parâmetro é <strong>obrigatório.</strong></mat-error>
-              </mat-form-field>
-
-              <mat-form-field class="formValueParam" appearance="outline">
-                <mat-label>Valor</mat-label>
-                <input matInput type="text" formControlName="value"/>
-              </mat-form-field>
-
-              <button  mat-icon-button type="button" class="removeParam" (click)="removeParam(i, j)">
-                <mat-icon class="mat-18">delete</mat-icon>
-              </button>
-            </div>
-            <mat-slide-toggle color="warn" class="slide-required" [checked]="getFormControl(param, 'required')?.value" (change)="toggleRequired(param)">Obrigatório?</mat-slide-toggle>
-            <mat-slide-toggle color="warn" class="slide-required" [checked]="getFormControl(param, 'paramUrl')?.value" (change)="toggleUrlParam(param)">Parâmetro de url?</mat-slide-toggle>
+        <mat-card-actions *ngIf="detailsVisible[i]">
+          <div class="boxAddParam" fxLayout="row" fxLayoutGap="14px" fxLayoutAlign="start center">
+            <p class="add-param-txt">Parâmetros</p>
+            <button mat-mini-fab type="button" class="addParam" (click)="addParam(i)" matTooltip="Adicionar parâmetro">
+              <mat-icon class="addParamIcon">plus_one</mat-icon>
+            </button>
           </div>
-        </div>
-      </mat-card-actions>
 
+          <div formArrayName="params">
+            <div *ngFor="let param of getParamsControls(endpoint); let j = index" [formGroupName]="j">
+              <h4>Parâmetro {{j + 1}}</h4>
+              <div class="box-param-input" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start start">
+                <mat-form-field class="formNameParam" appearance="outline">
+                  <mat-label>Nome do parâmetro</mat-label>
+                  <input matInput type="text" formControlName="paramNameFormControl" required />
+                  <mat-error *ngIf="param.get('paramNameFormControl')?.hasError('required')">
+                    Nome do parâmetro é <strong>obrigatório.</strong>
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="formValueParam" appearance="outline">
+                  <mat-label>Valor</mat-label>
+                  <input matInput type="text" formControlName="value" />
+                </mat-form-field>
+
+                <button mat-icon-button type="button" class="removeParam" (click)="removeParam(i, j)">
+                  <mat-icon class="mat-18">delete</mat-icon>
+                </button>
+              </div>
+              <div class="toggle-container" fxLayout="row" fxLayoutGap="24px" fxLayoutAlign="start center">
+                <mat-slide-toggle color="warn" class="slide-required" [checked]="getFormControl(param, 'required')?.value" (change)="toggleRequired(param)">Obrigatório?</mat-slide-toggle>
+                <mat-slide-toggle color="warn" class="slide-required" [checked]="getFormControl(param, 'paramUrl')?.value" (change)="toggleUrlParam(param)">Parâmetro de url?</mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+        </mat-card-actions>
+      </div>
     </div>
 
-  </div>
+    <div class="actions-container" fxLayout="column" fxLayoutAlign="end end">
+      <button mat-flat-button type="button" class="button-addEndpoint" (click)="addEndpoint()">Adicionar Endpoint</button>
+      <button mat-flat-button class="cadastrar" type="submit" [disabled]="formNewApi.invalid">Cadastrar API</button>
+    </div>
 
-  <div fxLayout="column" fxLayoutAlign="end end">
-    <button mat-flat-button type="button" class="button-addEndpoint" (click)="addEndpoint()">Adicionar Endpoint</button>
-    <button mat-flat-button class="cadastrar" type="submit" [disabled]="formNewApi.invalid">Cadastrar API</button>
-  </div>
 
 </form>

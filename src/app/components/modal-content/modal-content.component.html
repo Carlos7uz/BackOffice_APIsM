@@ -1,73 +1,102 @@
-<button mat-icon-button color="warn" (click)="close()">
-  <mat-icon>close</mat-icon>
-</button>
-
-<div fxLayout="column" fxLayoutAlign="space-evenly center" >
-  <h2 mat-dialog-title class="title">Executar endpoint</h2>
-  <p class="sub-title">{{app.appUrlFormControl}}{{endpoint.endpointUrlFormControl}}</p>
-  <p class="sub-title">{{endpoint.reqFormControl}}  {{endpoint.endpointUrlFormControl}}</p>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <h1 mat-dialog-title class="title">
+    <strong>{{ currentView === 'details' || currentView === 'error' ? 'Endpoint executado' : 'Executar endpoint' }}</strong>
+  </h1>
+  <button mat-icon-button color="warn" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
 </div>
 
-<form [formGroup]="form">
-  <mat-tab-group>
-    <mat-tab label="Parâmetros">
+<div class="subtitle-modal" fxLayout="column" fxLayoutAlign="space-between start">
+  <p mat-dialog-title class="sub-title">
+    <strong>URL: </strong>{{app.appUrlFormControl}}{{endpoint.endpointUrlFormControl}}
+  </p>
+  <p mat-dialog-title class="sub-title">
+    <strong>Endpoint: </strong><span [ngClass]="{
+      'green-background': endpoint.reqFormControl === 'GET' || endpoint.reqFormControl === 'POST',
+      'yellow-background': endpoint.reqFormControl === 'PUT',
+      'red-background': endpoint.reqFormControl === 'DELETE'
+    }">{{endpoint.reqFormControl}}</span> {{endpoint.endpointUrlFormControl}}
+  </p>
+</div>
 
-        <div formArrayName="params">
-          <div *ngFor="let paramCtrl of params.controls; let i = index" [formGroupName]="i" >
-            <mat-form-field class="form-req" appearance="outline">
-              <mat-label>{{ paramCtrl.get('paramNameFormControl')?.value }}</mat-label>
-              <input matInput type="text" formControlName="paramValue" >
-            </mat-form-field>
-            <div *ngIf="paramCtrl.get('paramValue')?.invalid && paramCtrl.get('paramValue')?.touched">
-              <span *ngIf="paramCtrl.get('paramValue')?.errors?.['required']">Este campo é obrigatório.</span>
+<div class="modal-content">
+  <form [formGroup]="form" class="form-content">
+    <mat-tab-group *ngIf="currentView !== 'details' && currentView !== 'error'">
+      <mat-tab label="Parâmetros">
+        <ng-container *ngIf="params.length; else noItems">
+           <div formArrayName="params">
+              <div class="tab-content" *ngFor="let paramCtrl of params.controls; let i = index" [formGroupName]="i">
+                <mat-form-field class="form-req" appearance="outline">
+                  <mat-label>{{ paramCtrl.get('paramNameFormControl')?.value }}</mat-label>
+                  <input matInput type="text" formControlName="paramValue">
+                </mat-form-field>
+                <span>Query Param: {{ paramCtrl.get('paramUrl')?.value }}</span>
+                <div *ngIf="paramCtrl.get('paramValue')?.invalid && paramCtrl.get('paramValue')?.touched">
+                  <span *ngIf="paramCtrl.get('paramValue')?.errors?.['required']">Este campo é obrigatório.</span>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </ng-container>
+          <ng-template #noItems>
+            <span class="noItems">Não existem itens na lista</span>
+          </ng-template>
+      </mat-tab>
 
-    </mat-tab>
-    <mat-tab label="Cabeçalho">
-
+      <mat-tab label="Cabeçalho" class="tab-label">
         <button mat-button (click)="addHeader()">Adicionar cabeçalho<mat-icon class="mat-18">add</mat-icon></button>
         <div formArrayName="headers">
           <div *ngFor="let headerCtrl of headers.controls; let i = index" [formGroupName]="i" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
             <mat-form-field appearance="outline">
               <mat-label>Chave do cabeçalho</mat-label>
-              <input matInput type="text" formControlName="cabecalhoChave">
+              <input matInput type="text" formControlName="key">
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Valor do cabeçalho</mat-label>
-              <input matInput type="text" formControlName="cabecalhoValor">
+              <input matInput type="text" formControlName="value">
             </mat-form-field>
             <button class="action-trash" mat-button (click)="removeHeader(i)">
               <mat-icon class="icon_trash">delete</mat-icon>
             </button>
           </div>
         </div>
+      </mat-tab>
+      <mat-tab label="Corpo" class="tab-label">
+        <div fxLayout="center" fxLayoutAlign="center">
+          <textarea
+            formControlName="body"
+            placeholder="{ ''Key'': ''Value'', ''Key''': ''Value'', }"
+            style="width: 80%; height: 200px;"
+          >
+          </textarea>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
 
-    </mat-tab>
-    <mat-tab label="Corpo">
-      <textarea formControlName="body" placeholder="Corpo da requisição"></textarea>
-    </mat-tab>
-  </mat-tab-group>
-
-  <div *ngIf="currentView === 'details'">
-    <h3>Detalhes da execução do endpoint</h3>
-    <p><strong>Status:</strong> Retorno HTTP</p>
-    <p><strong>Url:</strong> {{executionDetails?.endpoint?.endpointUrlFormControl}}</p>
-    <p><strong>Tipo:</strong> {{executionDetails?.endpoint?.reqFormControl}}</p>
-    <p><strong>Cabeçalhos:</strong></p>
-    <div *ngFor="let header of executionDetails?.headers">
-      <p>{{header.cabecalhoChave}}: {{header.cabecalhoValor}}</p>
+    <div class="details-box" *ngIf="currentView === 'details'">
+      <h3>Detalhes da execução do endpoint</h3>
+      <p><strong>Status:</strong> {{executionDetails.status}} {{executionDetails.statusText}}</p>
+      <p><strong>Url:</strong> {{executionDetails.url}}</p>
+      <p><strong>Tipo:</strong> {{executionDetails.type}}</p>
+      <p><strong>Cabeçalhos:</strong></p>
+      <div *ngFor="let header of executionDetails.headers | keyvalue">
+        <p>{{header.key}}: {{header.value}}</p>
+      </div>
+      <p><strong>Payload:</strong></p>
+      <pre>{{executionDetails.body | json}}</pre>
     </div>
-    <p><strong>Payload:</strong></p>
-    <pre>{{executionDetails?.body | json}}</pre>
-  </div>
 
-  <mat-dialog-actions class="box-botõesF" fxLayout="row" fxLayoutAlign="end center">
+    <div class="details-box" *ngIf="currentView === 'error'">
+      <h4 class="erroTitle">Erro!</h4>
+      <p><strong>Status:</strong> {{errorDetails.status}} {{errorDetails.statusText}}</p>
+      <p><strong>Mensagem:</strong> {{errorDetails.message}}</p>
+      <p><strong>Payload:</strong></p>
+      <pre>{{errorDetails.error | json}}</pre>
+    </div>
+
+  </form>
+
+  <footer mat-dialog-actions class="modal-footer mat-dialog-actions">
     <button mat-flat-button class="button-execute" (click)="executeRequest()">Executar</button>
-  </mat-dialog-actions>
-
-</form>
-
-
-
+  </footer>
+</div>

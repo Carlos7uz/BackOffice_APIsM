@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between; /* Distribui o espaço entre os elementos */
   align-items: center; /* Alinha os elementos verticalmente ao centro */
-  padding: 16px; /* Ajuste conforme necessário */
+  padding: 0; /* Ajuste conforme necessário */
 }
 
 .config-app {
@@ -12,12 +12,18 @@
   cursor: pointer;
 }
 
-h2{
+h1{
   font-weight: 500;
 }
 
-h4{
-  margin-top: 3vh;
+h2{
+  font-weight: 400;
+}
+
+h3{
+  font-size: 2.5vh;
+  font-weight: 500;
+  margin-top: 8vh;
 }
 
 .gap{
@@ -65,14 +71,15 @@ h4{
 
 .action{
  background-color:var(--yellowJ);
+
 }
 
 
 .button-detalhes{
-
+ padding: 2vh;
  width: 10%;
- margin-left: 1.5vh;
- border: 1px black solid;
+ margin-left: 2.2vh;
+ border-bottom: 1px orangered solid;
  margin-bottom: 2vh;
 }
 
@@ -132,4 +139,40 @@ h4{
   display: flex;
   align-items: center;
 }
+
+.extension-history{
+  margin-top: 2vh !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.extension-history-endpoint{
+  width: 100% !important;
+  margin-bottom: 4vh !important;
+  padding: 1vh;
+
+}
+
+.example-card{
+  margin-top: 2vh;
+}
+
+.ul-headers {
+  max-width: 100%;
+  max-height: 200px; /* ajuste o valor conforme necessário */
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin-bottom: 2vh;
+}
+
+.li-headers {
+  white-space: pre-wrap; /* quebra a linha automaticamente */
+  word-break: break-word; /* quebra o texto em palavras */
+  hyphens: auto; /* quebra o texto em sílabas */
+  padding: 2px 5px;
+}
+
+
+
 

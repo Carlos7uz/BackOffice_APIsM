@@ -1,4 +1,4 @@
-export interface Aplicativo {
+export interface Application {
   id: number;
   nameFormControl: string;
   appUrlFormControl: string;
@@ -16,7 +16,7 @@ export interface Endpoint {
 export interface Parameter {
   id: number;
   paramNameFormControl: string;
-  paramValue: string;
+  value: string;
   required: boolean;
   paramUrl: boolean;
 }

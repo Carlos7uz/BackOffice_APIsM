@@ -4,9 +4,9 @@
 }
 
 .sidenav {
-  width: 32vh;
+  width: 35vh;
   padding-left: 2vh;
-  border: 1px rgb(255, 197, 72) solid;
+  border-right: 2px rgb(255, 197, 72) solid;
 }
 
 .menu-true{
@@ -16,7 +16,6 @@
 .item-sidenav {
   display: flex;
   align-items: center;
-
 }
 
 .icon {
@@ -48,14 +47,14 @@ h4{
 }
 
 .content-main{
-  margin: 2vh;
-  padding: 0 10vh 0 10vh;
+  margin: 0;
+  padding: 0 5vh 0 15vh;
 }
 
 .toggle-button {
   position: fixed;
   font-size: 54px;
-  top: 5vh;
+  top: 2.4vh;
   left: 5vh;
   z-index: 5000;
   padding: 2vh;
@@ -70,3 +69,4 @@ h4{
   height: 3vh;
   margin: 0; /* Remove margins */
 }
+

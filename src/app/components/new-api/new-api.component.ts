@@ -1,9 +1,9 @@
-import { Aplicativo } from './../../../core/models/aplicativo.model';
+import { Application } from '../../../core/models/application.model';
 import { Component } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog, MatDialogModule} from '@angular/material/dialog';
-import { AplicativoService } from '../../../core/services/aplicativo.service';
+import { ApplicationService } from '../../../core/services/application.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -20,6 +20,7 @@ import { Router } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 //Erro quando input esta invalido
 export class errorInput implements ErrorStateMatcher {
@@ -49,7 +50,7 @@ export class errorInput implements ErrorStateMatcher {
     MatDialogModule,
     MatExpansionModule,
     FlexLayoutModule,
-
+    MatFormFieldModule
 
   ],
   templateUrl: './new-api.component.html',
@@ -60,7 +61,7 @@ export class NewApiComponent {
   formNewApi: FormGroup;
   matcher = new errorInput();
 
-  detalhesVisiveis: boolean[] = [];
+  detailsVisible: boolean[] = [];
 
   trackByFn(index: number, item: any): any {
     return index;
@@ -78,7 +79,7 @@ export class NewApiComponent {
   constructor(
     private formBuilder: FormBuilder,
     private dialog: MatDialog,
-    private aplicativoService: AplicativoService,
+    private applicationService: ApplicationService,
     private router: Router
   ){
     this.formNewApi = this.formBuilder.group({
@@ -87,7 +88,7 @@ export class NewApiComponent {
     authUrlFormControl: ['', [Validators.minLength(3), Validators.maxLength(100)]],
     endpoints: this.formBuilder.array([])
     });
-    this.endpoints.controls.forEach(() => this.detalhesVisiveis.push(true));
+    this.endpoints.controls.forEach(() => this.detailsVisible.push(true));
   }
 
   get endpoints(): FormArray {
@@ -96,9 +97,9 @@ export class NewApiComponent {
 
   createEndpointGroup(): FormGroup {
     return this.formBuilder.group({
-      id: [this.aplicativoService.getNextEndpointId()],
+      id: [this.applicationService.getNextEndpointId()],
       reqFormControl: ['', Validators.required],
-      endpointUrlFormControl: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      endpointUrlFormControl: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       params: this.formBuilder.array([])
     });
 
@@ -106,7 +107,7 @@ export class NewApiComponent {
 
   createParamGroup(): FormGroup {
     return this.formBuilder.group({
-      id: [this.aplicativoService.getNextParamId()],
+      id: [this.applicationService.getNextParamId()],
       paramNameFormControl: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       value: [''],
       required: [false],
@@ -116,12 +117,12 @@ export class NewApiComponent {
 
   addEndpoint(): void {
     this.endpoints.push(this.createEndpointGroup());
-    this.detalhesVisiveis.push(true);
+    this.detailsVisible.push(true);
   }
 
-  detalhesEndpoint(index: number, event: Event) {
+  detailsEndpoint(index: number, event: Event) {
     event.preventDefault(); // Previne o comportamento padrão do formulário
-    this.detalhesVisiveis[index] = !this.detalhesVisiveis[index];
+    this.detailsVisible[index] = !this.detailsVisible[index];
   }
 
   addParam(endpointIndex: number): void {
@@ -170,7 +171,7 @@ export class NewApiComponent {
       let endpointId = 1; // Counter for endpoint IDs
       let paramId = 1; // Counter for parameter IDs
 
-      const aplicativo: Aplicativo = {
+      const aplicativo: Application = {
         id: 0,  // Assuming 0 for new records
         nameFormControl: formValue.nameFormControl,
         appUrlFormControl: formValue.appUrlFormControl,
@@ -195,11 +196,12 @@ export class NewApiComponent {
         })
       };
 
-      this.aplicativoService.addAplicativo(aplicativo).subscribe({
+      this.applicationService.addAplicativo(aplicativo).subscribe({
         next: () => {
           alert('Cadastrado com sucesso!');
-          this.router.navigate(['']);
-          window.location.reload();
+          this.router.navigate(['']).then(() => {
+            location.reload();
+          });
         },
         error: (error: HttpErrorResponse) => { // Definimos o tipo explicitamente aqui
           console.error('Erro ao cadastrar API:', error);
