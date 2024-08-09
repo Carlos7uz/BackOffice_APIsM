@@ -130,6 +130,16 @@ strong{
   background-color: #ccc !important; /* cor cinza */
   cursor: not-allowed;
 }
+
+.add-params-auth{
+  color: white !important;
+  background-color: var(--yellowJ);
+}
+
+.add-params-auth:hover{
+  color: white;
+  background-color: var(--yellowJhover);
+}
 /*
 .end-param-box{
   padding: 16px;

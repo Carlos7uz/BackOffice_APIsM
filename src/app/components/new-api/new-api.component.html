@@ -36,8 +36,37 @@
   />
   </mat-form-field>
 
-  <div class="actions-container" fxLayout="column" fxLayoutAlign="end end">
-    <button mat-flat-button type="button" >Adicionar autenticação</button>
+  <mat-radio-group formControlName="authFormat" class="format-selection">
+    <mat-radio-button value="JSON">JSON</mat-radio-button>
+    <mat-radio-button value="x-www-form-urlencoded">x-www-form-urlencoded</mat-radio-button>
+  </mat-radio-group>
+
+  <div formArrayName="authParams">
+    <div *ngFor="let authParam of authParams.controls; let i = index" [formGroupName]="i">
+      <div class="auth-param-group">
+
+        <mat-form-field class="auth-param-name" appearance="outline">
+          <mat-label>Nome do Parâmetro</mat-label>
+          <input type="text" matInput formControlName="authParamName" [errorStateMatcher]="matcher" required>
+          <mat-error *ngIf="authParam.get('authParamName')?.hasError('required')">
+            Nome é <strong>obrigatório</strong>
+          </mat-error>
+          <mat-error *ngIf="authParam.get('authParamName')?.hasError('minlength')">
+            Nome deve ter no mínimo <strong>1 caractere</strong>
+          </mat-error>
+          <mat-error *ngIf="authParam.get('authParamName')?.hasError('maxlength')">
+            Nome deve ter no máximo <strong>100 caracteres</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="auth-value-name" appearance="outline">
+          <mat-label>Valor do Parâmetro</mat-label>
+          <input type="text" matInput formControlName="authParamValue">
+        </mat-form-field>
+
+      </div>
+    </div>
+    <button class="add-params-auth" mat-button type="button" (click)="addAuthParam()">Adicionar Parâmetro de Autenticação</button>
   </div>
 
   <h2 class="titulo-endpoint">Endpoints</h2>
@@ -54,7 +83,7 @@
             <mat-select formControlName="reqFormControl" id="reqFormControl" required>
               <mat-option value="GET">GET</mat-option>
               <mat-option value="POST">POST</mat-option>
-              <mat-option value="PUT">PUT</mat-option>
+              <mat-option disabled selected value="PUT">PUT</mat-option>
               <mat-option disabled selected value="DELETE">DELETE</mat-option>
             </mat-select>
             <mat-error *ngIf="endpoints.at(i).get('reqFormControl')?.hasError('required')">
@@ -70,12 +99,12 @@
             </mat-error>
           </mat-form-field>
 
-          <button mat-icon-button type="button" class="remove" (click)="endpoints.removeAt(i)">
-            <mat-icon class="mat-18">delete</mat-icon>
-          </button>
-
           <button class="button-detalhes" mat-icon-button type="button" (click)="detailsEndpoint(i, $event)" [matTooltip]="detailsVisible[i] ? 'Ocultar parâmetros' : 'Exibir parâmetros'">
             <mat-icon class="mat-18">{{ detailsVisible[i] ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+
+          <button mat-icon-button type="button" class="remove" (click)="endpoints.removeAt(i)">
+            <mat-icon class="mat-18">delete</mat-icon>
           </button>
         </div>
 

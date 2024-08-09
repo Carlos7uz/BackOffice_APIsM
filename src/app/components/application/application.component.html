@@ -1,4 +1,5 @@
 <div *ngIf="selectedApplication">
+    <!-- Exibindo detalhes da aplicação -->
   <div class="container">
     <h1>{{selectedApplication.nameFormControl}}</h1>
     <mat-icon class="config-app">settings</mat-icon>
@@ -8,7 +9,33 @@
 
   <h2><strong>Auth: </strong>{{selectedApplication.authUrlFormControl}}</h2>
 
-  <p>card da auth (fazer dps)</p>
+  <button class="open-auth" mat-raised-button color="primary" (click)="toggleAuthParamsVisibility()">Configurar Autenticação</button>
+
+  <!-- Exibindo e editando authParams -->
+  <section *ngIf="authParamsVisible" class="auth-params">
+    <form [formGroup]="authForm" class="auth-form">
+      <ng-container *ngIf="authParams.length; else noItems">
+        <div formArrayName="authParams" class="auth-params-list">
+          <div *ngFor="let paramAuth of authParams.controls; let i = index" [formGroupName]="i" class="auth-param">
+            <mat-form-field appearance="outline" class="auth-form-field">
+              <mat-label class="auth-label">{{ paramAuth.get('authParamName')?.value }}</mat-label>
+              <div fxlayput="row" fxLayoutAlign="space-between center" class="div-teste">
+                <input matInput [type]="visibilityStates[i] ? 'text' : 'password'" formControlName="authParamValue" class="auth-input">
+                <button type="button" mat-icon-button (click)="toggleVisibility(i)" [matTooltip]="visibilityStates[i] ? 'Ocultar' : 'Mostrar'" class="visibility-toggle">
+                  <mat-icon>{{ visibilityStates[i] ? 'visibility' : 'visibility_off' }}</mat-icon>
+                </button>
+              </div>
+            </mat-form-field>
+          </div>
+        </div>
+        <button mat-raised-button color="primary" (click)="receiveAuthorization()" class="submit-button">Receber autorização</button>
+        <button mat-raised-button color="warn" (click)="getStoredToken()" class="submit-button">Copiar Token</button>
+      </ng-container>
+      <ng-template #noItems>
+        <span class="noItems">Não é necessário</span>
+      </ng-template>
+    </form>
+  </section>
 
   <h3>Testar endpoints:</h3>
 
@@ -38,13 +65,13 @@
 
             <mat-card-content class="extension-history-open">
               <mat-accordion>
-                <mat-expansion-panel class="extension-history-endpoint" *ngFor="let request of endpointRequests[endpoint.id]">
+                <mat-expansion-panel class="extension-history-endpoint" *ngFor="let request of endpointRequests[endpoint.id]"  [ngClass]="{'error-card': request.error}">
                   <mat-expansion-panel-header>
                     <mat-panel-title fxLayout="row" fxLayoutGap="25px" >
                       <p><strong>Date:</strong> {{ request.timestamp }}</p>
-                      <p><strong>Status:</strong> {{ request.response?.status }} {{ request.response?.statusText || request.error?.statusText }}</p>
+                      <p><strong>Status:</strong> {{ request.response?.status || request.error?.status }} {{ request.response?.statusText || request.error?.statusText }}</p>
                       <p><strong>Method:</strong> {{ request.endpointReq }}</p>
-                      <p><strong>URL:</strong> {{ request.response?.url || request.error?.statusText }}</p>
+                      <p><strong>URL:</strong> {{ request.response?.url || request.error?.url }}</p>
                     </mat-panel-title>
                   </mat-expansion-panel-header>
                   <div class="example-card" [ngClass]="{'error-card': request.error}">

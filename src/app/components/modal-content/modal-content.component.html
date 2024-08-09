@@ -25,13 +25,12 @@
     <mat-tab-group *ngIf="currentView !== 'details' && currentView !== 'error'">
       <mat-tab label="Parâmetros">
         <ng-container *ngIf="params.length; else noItems">
-           <div formArrayName="params">
+           <div formArrayName="params" >
               <div class="tab-content" *ngFor="let paramCtrl of params.controls; let i = index" [formGroupName]="i">
-                <mat-form-field class="form-req" appearance="outline">
+                <mat-form-field class="form-req" appearance="outline" >
                   <mat-label>{{ paramCtrl.get('paramNameFormControl')?.value }}</mat-label>
                   <input matInput type="text" formControlName="paramValue">
                 </mat-form-field>
-                <span>Query Param: {{ paramCtrl.get('paramUrl')?.value }}</span>
                 <div *ngIf="paramCtrl.get('paramValue')?.invalid && paramCtrl.get('paramValue')?.touched">
                   <span *ngIf="paramCtrl.get('paramValue')?.errors?.['required']">Este campo é obrigatório.</span>
                 </div>
@@ -74,29 +73,38 @@
     </mat-tab-group>
 
     <div class="details-box" *ngIf="currentView === 'details'">
-      <h3>Detalhes da execução do endpoint</h3>
-      <p><strong>Status:</strong> {{executionDetails.status}} {{executionDetails.statusText}}</p>
-      <p><strong>Url:</strong> {{executionDetails.url}}</p>
-      <p><strong>Tipo:</strong> {{executionDetails.type}}</p>
-      <p><strong>Cabeçalhos:</strong></p>
-      <div *ngFor="let header of executionDetails.headers | keyvalue">
-        <p>{{header.key}}: {{header.value}}</p>
+      <h3 class="details-title">Detalhes da execução do endpoint</h3>
+      <div class="details-section">
+        <p><strong>Status:</strong> {{executionDetails.status}} {{executionDetails.statusText}}</p>
+        <p><strong>Url:</strong> {{executionDetails.url}}</p>
+        <p><strong>Tipo:</strong> {{executionDetails.type}}</p>
       </div>
-      <p><strong>Payload:</strong></p>
-      <pre>{{executionDetails.body | json}}</pre>
+      <div class="details-section">
+        <p><strong>Cabeçalhos:</strong></p>
+        <div *ngFor="let header of executionDetails.headers | keyvalue">
+          <p><strong>{{header.key}}:</strong> {{header.value}}</p>
+        </div>
+      </div>
+      <div class="details-section">
+        <p><strong>Payload:</strong></p>
+        <pre class="json-output">{{executionDetails.body | json}}</pre>
+      </div>
     </div>
 
-    <div class="details-box" *ngIf="currentView === 'error'">
-      <h4 class="erroTitle">Erro!</h4>
-      <p><strong>Status:</strong> {{errorDetails.status}} {{errorDetails.statusText}}</p>
-      <p><strong>Mensagem:</strong> {{errorDetails.message}}</p>
-      <p><strong>Payload:</strong></p>
-      <pre>{{errorDetails.error | json}}</pre>
+    <div class="details-box error" *ngIf="currentView === 'error'">
+      <h4 class="error-title">Erro!</h4>
+      <div class="details-section">
+        <p><strong>Status:</strong> {{errorDetails.status}} {{errorDetails.statusText}}</p>
+        <p><strong>Mensagem:</strong> {{errorDetails.message}}</p>
+      </div>
+      <div class="details-section">
+        <p><strong>Payload:</strong></p>
+        <pre class="json-output">{{errorDetails.error | json}}</pre>
+      </div>
     </div>
-
   </form>
 
-  <footer mat-dialog-actions class="modal-footer mat-dialog-actions">
+  <footer fxLayout="row" fxLayoutAlign="end center" mat-dialog-actions   >
     <button mat-flat-button class="button-execute" (click)="executeRequest()">Executar</button>
   </footer>
 </div>

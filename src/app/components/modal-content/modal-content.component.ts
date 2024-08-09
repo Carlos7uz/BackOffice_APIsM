@@ -37,8 +37,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrl: './modal-content.component.css'
 })
 export class ModalContentComponent {
-
-
   form!: FormGroup;
   currentView!: 'details' | 'error';
   app: Application;
@@ -57,7 +55,6 @@ export class ModalContentComponent {
     public dialogRef: MatDialogRef<ModalContentComponent>,
     private spinner: NgxSpinnerService,
     private cdr: ChangeDetectorRef,
-    private requestHistoryService: RequestHistoryService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.app = data.app;

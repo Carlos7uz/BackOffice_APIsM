@@ -131,7 +131,30 @@
       "id": 6,
       "nameFormControl": "BranchOffice",
       "appUrlFormControl": "https://api-dev-bff-branchoffice.azurewebsites.net",
-      "authUrlFormControl": "https://front-dev-barramento.azurewebsites.net/login",
+      "authUrlFormControl": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "authFormat": "x-www-form-urlencoded",
+      "authParams": [
+        {
+          "id": 1,
+          "authParamName": "grant_type",
+          "authParamValue": "password"
+        },
+        {
+          "id": 2,
+          "authParamName": "client_id",
+          "authParamValue": "gerenciador_filial_front"
+        },
+        {
+          "id": 3,
+          "authParamName": "username",
+          "authParamValue": "carlos.pilati"
+        },
+        {
+          "id": 4,
+          "authParamName": "password",
+          "authParamValue": "Madero@123"
+        }
+      ],
       "endpoints": [
         {
           "id": 1,
@@ -282,9 +305,9 @@
     },
     {
       "id": 8,
-      "nameFormControl": "Conferencia ",
-      "appUrlFormControl": "https://api-prd-conference.azurewebsites.net",
-      "authUrlFormControl": "https://api-prd-conference.azurewebsites.net/api/Operador/loginAdTotvs",
+      "nameFormControl": "Conferencia",
+      "appUrlFormControl": "https://api-hml-conferencia-totvs.azurewebsites.net",
+      "authUrlFormControl": "https://api-hml-conferencia-totvs.azurewebsites.net/api/Operador/loginAdTotvs",
       "endpoints": [
         {
           "id": 1,
@@ -365,6 +388,73 @@
               "paramUrl": false
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "nameFormControl": "teste",
+      "appUrlFormControl": "https://swapi.dev/api/",
+      "authUrlFormControl": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "authFormat": "JSON",
+      "authParams": [
+        {
+          "id": 1,
+          "authParamName": "grant_type",
+          "authParamValue": "password"
+        },
+        {
+          "id": 2,
+          "authParamName": "client_id",
+          "authParamValue": "gerenciador_filial_front"
+        },
+        {
+          "id": 3,
+          "authParamName": "username",
+          "authParamValue": ""
+        },
+        {
+          "id": 4,
+          "authParamName": "password",
+          "authParamValue": ""
+        }
+      ],
+      "endpoints": []
+    },
+    {
+      "id": 10,
+      "nameFormControl": "teste 2",
+      "appUrlFormControl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "authUrlFormControl": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "authFormat": "x-www-form-urlencoded",
+      "authParams": [
+        {
+          "id": 1,
+          "authParamName": "grant_type",
+          "authParamValue": "password"
+        },
+        {
+          "id": 2,
+          "authParamName": "client_id",
+          "authParamValue": "gerenciador_filial_front"
+        },
+        {
+          "id": 3,
+          "authParamName": "username",
+          "authParamValue": "carlos.pilati"
+        },
+        {
+          "id": 4,
+          "authParamName": "password",
+          "authParamValue": "Madero@123"
+        }
+      ],
+      "endpoints": [
+        {
+          "id": 1,
+          "reqFormControl": "GET",
+          "endpointUrlFormControl": "/api/ContactType",
+          "params": []
         }
       ]
     }
@@ -947,6 +1037,1147 @@
         }
       },
       "timestamp": "01/08/2024, 12:00:58"
+    },
+    {
+      "id": 45,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/character",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "fmjihdv7&&*Afjn",
+          "paramUrl": true
+        },
+        {
+          "id": 2,
+          "paramName": "name",
+          "paramValue": "",
+          "paramUrl": true
+        },
+        {
+          "id": 3,
+          "paramName": "status",
+          "paramValue": "",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "fmjihdv7&&*Afjn"
+      },
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 500,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/character/fmjihdv7%26%26*Afjn",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://rickandmortyapi.com/api/character/fmjihdv7%26%26*Afjn: 500 OK",
+        "error": {
+          "error": "Hey! you must provide an id"
+        }
+      },
+      "timestamp": "02/08/2024, 09:28:20"
+    },
+    {
+      "id": 46,
+      "appId": 8,
+      "appUrl": "https://api-prd-conference.azurewebsites.net",
+      "appAuth": "https://api-prd-conference.azurewebsites.net/api/Operador/loginAdTotvs",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "status": 0,
+        "statusText": "Unknown Error",
+        "url": "https://api-prd-conference.azurewebsites.net/",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-prd-conference.azurewebsites.net/: 0 Unknown Error",
+        "error": {
+          "isTrusted": true
+        }
+      },
+      "timestamp": "02/08/2024, 09:46:31"
+    },
+    {
+      "id": 47,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://front-dev-barramento.azurewebsites.net/login",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjI2MDY3MTMsImV4cCI6MTcyMjYxMDMxMywiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMjYwNjcxMywiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IkQzQkQ0QzVEMzc3NEY2NTAzOUM1MjM0MEREMTc4NTM3IiwiaWF0IjoxNzIyNjA2NzEzLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiXSwiYW1yIjpbInB3ZCJdfQ.BoNHbR6jGhVfFu0SCWQvRH739Yq-uZiTzmb9KwftRMG_FBC-5P6diQt12V3Jx6OSQWXERwAvBfB2r4RVFKsUuNycieRie3iDJACRaFaVJpLlaY7esDrotEySRtbFjxEDFGwIMgpFFtTS3J4cLbDkkG2YrB4_faq0BQ7S3XVDCZ1QPrk62mpUx1f4gGHnMBciyGaFFQBSWmogsfMD7cInQzU1YFMYyO1GchyAd5JJHtb7XBvG_Z3sczmcF67LT_27uZVewABeXhRJ05I25Jl5qmbpWehfy2f4H3h-Q20J92Z73-7qf71g6W-v_n_oinaps13hqldFZdbzJvbYsxir2Q"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": [
+          {
+            "id": 2,
+            "name": "Gerente de Filial"
+          },
+          {
+            "id": 3,
+            "name": "Gerente de Regional"
+          },
+          {
+            "id": 4,
+            "name": "Diretor de Regional"
+          },
+          {
+            "id": 5,
+            "name": "Inspetor de Qualidade"
+          }
+        ]
+      },
+      "timestamp": "02/08/2024, 10:52:20"
+    },
+    {
+      "id": 48,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://front-dev-barramento.azurewebsites.net/login",
+      "endpointId": 3,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/Contact",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+          "paramUrl": true
+        }
+      ],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjI2MDY3MTMsImV4cCI6MTcyMjYxMDMxMywiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMjYwNjcxMywiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IkQzQkQ0QzVEMzc3NEY2NTAzOUM1MjM0MEREMTc4NTM3IiwiaWF0IjoxNzIyNjA2NzEzLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiXSwiYW1yIjpbInB3ZCJdfQ.BoNHbR6jGhVfFu0SCWQvRH739Yq-uZiTzmb9KwftRMG_FBC-5P6diQt12V3Jx6OSQWXERwAvBfB2r4RVFKsUuNycieRie3iDJACRaFaVJpLlaY7esDrotEySRtbFjxEDFGwIMgpFFtTS3J4cLbDkkG2YrB4_faq0BQ7S3XVDCZ1QPrk62mpUx1f4gGHnMBciyGaFFQBSWmogsfMD7cInQzU1YFMYyO1GchyAd5JJHtb7XBvG_Z3sczmcF67LT_27uZVewABeXhRJ05I25Jl5qmbpWehfy2f4H3h-Q20J92Z73-7qf71g6W-v_n_oinaps13hqldFZdbzJvbYsxir2Q"
+        }
+      ],
+      "body": {
+        "id": "5282757f-60d5-4dfb-bb82-6c455c5b84fc"
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/Contact/5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": {
+          "id": "5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+          "cpf": "14907620942",
+          "name": "Carlos Luz",
+          "email": "carlosluz12892@gmail.com",
+          "phone": "41920034148",
+          "contactTypeId": 2,
+          "contactType": null,
+          "tagNumber": null
+        }
+      },
+      "timestamp": "02/08/2024, 10:52:40"
+    },
+    {
+      "id": 49,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://front-dev-barramento.azurewebsites.net/login",
+      "endpointId": 3,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/Contact",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+          "paramUrl": true
+        }
+      ],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjI2MDY3MTMsImV4cCI6MTcyMjYxMDMxMywiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMjYwNjcxMywiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IkQzQkQ0QzVEMzc3NEY2NTAzOUM1MjM0MEREMTc4NTM3IiwiaWF0IjoxNzIyNjA2NzEzLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiXSwiYW1yIjpbInB3ZCJdfQ.BoNHbR6jGhVfFu0SCWQvRH739Yq-uZiTzmb9KwftRMG_FBC-5P6diQt12V3Jx6OSQWXERwAvBfB2r4RVFKsUuNycieRie3iDJACRaFaVJpLlaY7esDrotEySRtbFjxEDFGwIMgpFFtTS3J4cLbDkkG2YrB4_faq0BQ7S3XVDCZ1QPrk62mpUx1f4gGHnMBciyGaFFQBSWmogsfMD7cInQzU1YFMYyO1GchyAd5JJHtb7XBvG_Z3sczmcF67LT_27uZVewABeXhRJ05I25Jl5qmbpWehfy2f4H3h-Q20J92Z73-7qf71g6W-v_n_oinaps13hqldFZdbzJvbYsxir2"
+        }
+      ],
+      "body": {
+        "id": "5282757f-60d5-4dfb-bb82-6c455c5b84fc"
+      },
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 401,
+        "statusText": "Unauthorized",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/Contact/5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-dev-bff-branchoffice.azurewebsites.net/api/Contact/5282757f-60d5-4dfb-bb82-6c455c5b84fc: 401 Unauthorized",
+        "error": null
+      },
+      "timestamp": "02/08/2024, 10:52:53"
+    },
+    {
+      "id": 50,
+      "appId": 8,
+      "appUrl": "https://api-hml-conferencia-totvs.azurewebsites.net",
+      "appAuth": "https://api-hml-conferencia-totvs.azurewebsites.net/api/Operador/loginAdTotvs",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "status": 0,
+        "statusText": "Unknown Error",
+        "url": "https://api-hml-conferencia-totvs.azurewebsites.net/",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-hml-conferencia-totvs.azurewebsites.net/: 0 Unknown Error",
+        "error": {
+          "isTrusted": true
+        }
+      },
+      "timestamp": "05/08/2024, 09:47:53"
+    },
+    {
+      "id": 51,
+      "appId": 8,
+      "appUrl": "https://api-hml-conferencia-totvs.azurewebsites.net",
+      "appAuth": "https://api-hml-conferencia-totvs.azurewebsites.net/api/Operador/loginAdTotvs",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "status": 0,
+        "statusText": "Unknown Error",
+        "url": "https://api-hml-conferencia-totvs.azurewebsites.net/",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-hml-conferencia-totvs.azurewebsites.net/: 0 Unknown Error",
+        "error": {
+          "isTrusted": true
+        }
+      },
+      "timestamp": "05/08/2024, 09:48:33"
+    },
+    {
+      "id": 52,
+      "appId": 8,
+      "appUrl": "https://api-hml-conferencia-totvs.azurewebsites.net",
+      "appAuth": "https://api-hml-conferencia-totvs.azurewebsites.net/api/Operador/loginAdTotvs",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "status": 0,
+        "statusText": "Unknown Error",
+        "url": "https://api-hml-conferencia-totvs.azurewebsites.net/",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-hml-conferencia-totvs.azurewebsites.net/: 0 Unknown Error",
+        "error": {
+          "isTrusted": true
+        }
+      },
+      "timestamp": "05/08/2024, 09:54:01"
+    },
+    {
+      "id": 53,
+      "appId": 4,
+      "appUrl": "https://totvsinventarioapi.grupomadero.com.br:4041",
+      "appAuth": "",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://totvsinventarioapi.grupomadero.com.br:4041/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "Durski.Service.Inventario.exe",
+          "Environment": "Production",
+          "Now": "2024-08-05T10:30:03.3029379-03:00",
+          "Git": {
+            "Branch": "main",
+            "Commit": "5a7a575",
+            "CommitDate": "2023-04-18T20:09:51+00:00",
+            "IsDirty": true,
+            "Sha": "5a7a5757b5030a7d19c7dcf542b9645deb8166d2"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 10:30:03"
+    },
+    {
+      "id": 54,
+      "appId": 4,
+      "appUrl": "https://totvsinventarioapi.grupomadero.com.br:4041",
+      "appAuth": "",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://totvsinventarioapi.grupomadero.com.br:4041/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "Durski.Service.Inventario.exe",
+          "Environment": "Production",
+          "Now": "2024-08-05T10:35:52.2840873-03:00",
+          "Git": {
+            "Branch": "main",
+            "Commit": "5a7a575",
+            "CommitDate": "2023-04-18T20:09:51+00:00",
+            "IsDirty": true,
+            "Sha": "5a7a5757b5030a7d19c7dcf542b9645deb8166d2"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 10:35:52"
+    },
+    {
+      "id": 55,
+      "appId": 8,
+      "appUrl": "https://api-hml-conferencia-totvs.azurewebsites.net",
+      "appAuth": "https://api-hml-conferencia-totvs.azurewebsites.net/api/Operador/loginAdTotvs",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "status": 0,
+        "statusText": "Unknown Error",
+        "url": "https://api-hml-conferencia-totvs.azurewebsites.net/",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-hml-conferencia-totvs.azurewebsites.net/: 0 Unknown Error",
+        "error": {
+          "isTrusted": true
+        }
+      },
+      "timestamp": "05/08/2024, 10:36:22"
+    },
+    {
+      "id": 56,
+      "appId": 4,
+      "appUrl": "https://totvsinventarioapi.grupomadero.com.br:4041",
+      "appAuth": "",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://totvsinventarioapi.grupomadero.com.br:4041/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": {
+          "AppName": "Durski.Service.Inventario.exe",
+          "Environment": "Production",
+          "Now": "2024-08-05T10:41:04.6582186-03:00",
+          "Git": {
+            "Branch": "main",
+            "Commit": "5a7a575",
+            "CommitDate": "2023-04-18T20:09:51+00:00",
+            "IsDirty": true,
+            "Sha": "5a7a5757b5030a7d19c7dcf542b9645deb8166d2"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 10:41:04"
+    },
+    {
+      "id": 57,
+      "appId": 4,
+      "appUrl": "https://totvsinventarioapi.grupomadero.com.br:4041",
+      "appAuth": "",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://totvsinventarioapi.grupomadero.com.br:4041/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": {
+          "AppName": "Durski.Service.Inventario.exe",
+          "Environment": "Production",
+          "Now": "2024-08-05T10:41:44.2872862-03:00",
+          "Git": {
+            "Branch": "main",
+            "Commit": "5a7a575",
+            "CommitDate": "2023-04-18T20:09:51+00:00",
+            "IsDirty": true,
+            "Sha": "5a7a5757b5030a7d19c7dcf542b9645deb8166d2"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 10:41:44"
+    },
+    {
+      "id": 58,
+      "appId": 4,
+      "appUrl": "https://totvsinventarioapi.grupomadero.com.br:4041",
+      "appAuth": "",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://totvsinventarioapi.grupomadero.com.br:4041/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": {
+          "AppName": "Durski.Service.Inventario.exe",
+          "Environment": "Production",
+          "Now": "2024-08-05T10:41:45.4973009-03:00",
+          "Git": {
+            "Branch": "main",
+            "Commit": "5a7a575",
+            "CommitDate": "2023-04-18T20:09:51+00:00",
+            "IsDirty": true,
+            "Sha": "5a7a5757b5030a7d19c7dcf542b9645deb8166d2"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 10:41:45"
+    },
+    {
+      "id": 59,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://front-dev-barramento.azurewebsites.net/login",
+      "endpointId": 3,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/Contact",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "5282757f-60d5-4dfb-bb82-6c455c5b84fc"
+      },
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 401,
+        "statusText": "Unauthorized",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/Contact/5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-dev-bff-branchoffice.azurewebsites.net/api/Contact/5282757f-60d5-4dfb-bb82-6c455c5b84fc: 401 Unauthorized",
+        "error": null
+      },
+      "timestamp": "05/08/2024, 10:42:11"
+    },
+    {
+      "id": 60,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://front-dev-barramento.azurewebsites.net/login",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "BranchOffice.BFF",
+          "Environment": "Development",
+          "Now": "2024-08-05T13:51:29.619112+00:00",
+          "Git": {
+            "Branch": "2246bc2",
+            "Commit": "2246bc2",
+            "CommitDate": "2024-04-04T19:01:21+00:00",
+            "IsDirty": false,
+            "Sha": "2246bc247eccab1551cd18d05fe97614dadf6837"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 10:51:29"
+    },
+    {
+      "id": 61,
+      "appId": 8,
+      "appUrl": "https://api-hml-conferencia-totvs.azurewebsites.net",
+      "appAuth": "https://api-hml-conferencia-totvs.azurewebsites.net/api/Operador/loginAdTotvs",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "status": 0,
+        "statusText": "Unknown Error",
+        "url": "https://api-hml-conferencia-totvs.azurewebsites.net/",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-hml-conferencia-totvs.azurewebsites.net/: 0 Unknown Error",
+        "error": {
+          "isTrusted": true
+        }
+      },
+      "timestamp": "05/08/2024, 10:52:24"
+    },
+    {
+      "id": 62,
+      "appId": 4,
+      "appUrl": "https://totvsinventarioapi.grupomadero.com.br:4041",
+      "appAuth": "",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://totvsinventarioapi.grupomadero.com.br:4041/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "Durski.Service.Inventario.exe",
+          "Environment": "Production",
+          "Now": "2024-08-05T11:04:03.7435921-03:00",
+          "Git": {
+            "Branch": "main",
+            "Commit": "5a7a575",
+            "CommitDate": "2023-04-18T20:09:51+00:00",
+            "IsDirty": true,
+            "Sha": "5a7a5757b5030a7d19c7dcf542b9645deb8166d2"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 11:04:03"
+    },
+    {
+      "id": 63,
+      "appId": 4,
+      "appUrl": "https://totvsinventarioapi.grupomadero.com.br:4041",
+      "appAuth": "",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://totvsinventarioapi.grupomadero.com.br:4041/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "Durski.Service.Inventario.exe",
+          "Environment": "Production",
+          "Now": "2024-08-05T11:05:52.645348-03:00",
+          "Git": {
+            "Branch": "main",
+            "Commit": "5a7a575",
+            "CommitDate": "2023-04-18T20:09:51+00:00",
+            "IsDirty": true,
+            "Sha": "5a7a5757b5030a7d19c7dcf542b9645deb8166d2"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 11:05:52"
+    },
+    {
+      "id": 64,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://front-dev-barramento.azurewebsites.net/login",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "BranchOffice.BFF",
+          "Environment": "Development",
+          "Now": "2024-08-05T14:12:27.7292735+00:00",
+          "Git": {
+            "Branch": "2246bc2",
+            "Commit": "2246bc2",
+            "CommitDate": "2024-04-04T19:01:21+00:00",
+            "IsDirty": false,
+            "Sha": "2246bc247eccab1551cd18d05fe97614dadf6837"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 11:12:27"
+    },
+    {
+      "id": 65,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://front-dev-barramento.azurewebsites.net/login",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "BranchOffice.BFF",
+          "Environment": "Development",
+          "Now": "2024-08-05T14:15:12.1215599+00:00",
+          "Git": {
+            "Branch": "2246bc2",
+            "Commit": "2246bc2",
+            "CommitDate": "2024-04-04T19:01:21+00:00",
+            "IsDirty": false,
+            "Sha": "2246bc247eccab1551cd18d05fe97614dadf6837"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 11:15:12"
+    },
+    {
+      "id": 66,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://front-dev-barramento.azurewebsites.net/login",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "BranchOffice.BFF",
+          "Environment": "Development",
+          "Now": "2024-08-05T14:15:35.3412325+00:00",
+          "Git": {
+            "Branch": "2246bc2",
+            "Commit": "2246bc2",
+            "CommitDate": "2024-04-04T19:01:21+00:00",
+            "IsDirty": false,
+            "Sha": "2246bc247eccab1551cd18d05fe97614dadf6837"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 11:15:35"
+    },
+    {
+      "id": 67,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://front-dev-barramento.azurewebsites.net/login",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": {
+          "AppName": "BranchOffice.BFF",
+          "Environment": "Development",
+          "Now": "2024-08-05T14:17:29.650782+00:00",
+          "Git": {
+            "Branch": "2246bc2",
+            "Commit": "2246bc2",
+            "CommitDate": "2024-04-04T19:01:21+00:00",
+            "IsDirty": false,
+            "Sha": "2246bc247eccab1551cd18d05fe97614dadf6837"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 11:17:29"
+    },
+    {
+      "id": 68,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://front-dev-barramento.azurewebsites.net/login",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "BranchOffice.BFF",
+          "Environment": "Development",
+          "Now": "2024-08-05T14:18:02.9498068+00:00",
+          "Git": {
+            "Branch": "2246bc2",
+            "Commit": "2246bc2",
+            "CommitDate": "2024-04-04T19:01:21+00:00",
+            "IsDirty": false,
+            "Sha": "2246bc247eccab1551cd18d05fe97614dadf6837"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 11:18:03"
+    },
+    {
+      "id": 69,
+      "appId": 8,
+      "appUrl": "https://api-hml-conferencia-totvs.azurewebsites.net",
+      "appAuth": "https://api-hml-conferencia-totvs.azurewebsites.net/api/Operador/loginAdTotvs",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "status": 0,
+        "statusText": "Unknown Error",
+        "url": "https://api-hml-conferencia-totvs.azurewebsites.net/",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-hml-conferencia-totvs.azurewebsites.net/: 0 Unknown Error",
+        "error": {
+          "isTrusted": true
+        }
+      },
+      "timestamp": "05/08/2024, 11:18:17"
+    },
+    {
+      "id": 70,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://front-dev-barramento.azurewebsites.net/login",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "BranchOffice.BFF",
+          "Environment": "Development",
+          "Now": "2024-08-05T14:18:32.1310341+00:00",
+          "Git": {
+            "Branch": "2246bc2",
+            "Commit": "2246bc2",
+            "CommitDate": "2024-04-04T19:01:21+00:00",
+            "IsDirty": false,
+            "Sha": "2246bc247eccab1551cd18d05fe97614dadf6837"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 11:18:32"
+    },
+    {
+      "id": 71,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://front-dev-barramento.azurewebsites.net/login",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "BranchOffice.BFF",
+          "Environment": "Development",
+          "Now": "2024-08-05T14:19:18.9118511+00:00",
+          "Git": {
+            "Branch": "2246bc2",
+            "Commit": "2246bc2",
+            "CommitDate": "2024-04-04T19:01:21+00:00",
+            "IsDirty": false,
+            "Sha": "2246bc247eccab1551cd18d05fe97614dadf6837"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 11:19:19"
+    },
+    {
+      "id": 72,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://front-dev-barramento.azurewebsites.net/login",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "BranchOffice.BFF",
+          "Environment": "Development",
+          "Now": "2024-08-05T14:20:35.6529734+00:00",
+          "Git": {
+            "Branch": "2246bc2",
+            "Commit": "2246bc2",
+            "CommitDate": "2024-04-04T19:01:21+00:00",
+            "IsDirty": false,
+            "Sha": "2246bc247eccab1551cd18d05fe97614dadf6837"
+          }
+        }
+      },
+      "timestamp": "05/08/2024, 11:20:35"
+    },
+    {
+      "id": 73,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://front-dev-barramento.azurewebsites.net/login",
+      "endpointId": 3,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/Contact",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "5282757f-60d5-4dfb-bb82-6c455c5b84fc"
+      },
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 401,
+        "statusText": "Unauthorized",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/Contact/5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-dev-bff-branchoffice.azurewebsites.net/api/Contact/5282757f-60d5-4dfb-bb82-6c455c5b84fc: 401 Unauthorized",
+        "error": null
+      },
+      "timestamp": "05/08/2024, 11:23:57"
+    },
+    {
+      "id": 74,
+      "appId": 10,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 401,
+        "statusText": "Unauthorized",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType: 401 Unauthorized",
+        "error": null
+      },
+      "timestamp": "09/08/2024, 09:49:52"
+    },
+    {
+      "id": 75,
+      "appId": 10,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjMyMTExOTUsImV4cCI6MTcyMzIxNDc5NSwiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzIxMTE5MywiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjE4MkNDRDZDQjMyNDJEMURFN0Q1NTE2MTlFQzg5MzE4IiwiaWF0IjoxNzIzMjExMTk1LCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.NE4Az_oJ-Xlbs0KRltoFZsXq8hK2RHX-GRLGCg3PM0O9zuD3FmZdb9VxsNITvZKHhLUg0I07VrvsxTwbUyIBixqPuW-lb_vndfub1op_1c49FMPDsyG9wxcP7LpuZ3pfHVsW4fLTQbmBUdgDCoRQCsrrZ8T_QJa2s8dHjea_7zGePBW5opEbNsHVMSmCIT5QlKs3ZsWvyd-2IJVJ2nMlrZCHFKIFS7JICSJlNjX4DRrjUufoxnY4Dtg1mfGbfvtf8RR96WdSI2hWTJCHcmr6v5nEQs9oshlqQXxZRmsBe-ioSVfGXfP9045seZJPFMLSpFeeS_CeP_y4M_LfHJohPQ"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": [
+          {
+            "id": 2,
+            "name": "Gerente de Filial"
+          },
+          {
+            "id": 3,
+            "name": "Gerente de Regional"
+          },
+          {
+            "id": 4,
+            "name": "Diretor de Regional"
+          },
+          {
+            "id": 5,
+            "name": "Inspetor de Qualidade"
+          }
+        ]
+      },
+      "timestamp": "09/08/2024, 10:47:11"
     }
   ]
 }

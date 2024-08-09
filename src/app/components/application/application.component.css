@@ -45,8 +45,6 @@ h3{
   display: none;
 }
 
-
-
 .green-background {
   background-color: rgb(108, 255, 108);
   color: black; /* Opcional, para melhor contraste */
@@ -73,7 +71,6 @@ h3{
  background-color:var(--yellowJ);
 
 }
-
 
 .button-detalhes{
  padding: 2vh;
@@ -173,6 +170,57 @@ h3{
   padding: 2px 5px;
 }
 
+.error-card {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.auth-params {
+  max-width: 440px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-params-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-param {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.auth-form-field {
+  flex: 1;
+}
+
+.visibility-toggle {
+  padding: 0;
+}
+
+.submit-button {
+  align-self: flex-start;
+}
+
+.noItems {
+  color: #888;
+  font-size: 18px;
+}
+
+.auth-label{
+  font-size: 18px !important; /* Ajuste o tamanho da fonte conforme necessário */
+}
+
+.open-auth{
+  margin-bottom: 30px;
+}
 
 
 

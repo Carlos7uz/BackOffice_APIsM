@@ -125,7 +125,8 @@ textarea {
   background-color: white;
   position: sticky;
   bottom: 0;
-  width: 100%;
+  width: 20%;
+  z-index: 1 !important;
 }
 
 .mat-dialog-content {
@@ -135,4 +136,45 @@ textarea {
   overflow: auto;
 }
 
+.details-box {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+.details-title {
+  font-size: 1.5em;
+  margin-bottom: 16px;
+  color: #4CAF50; /* Verde para indicar sucesso */
+}
+
+.details-section {
+  margin-bottom: 16px;
+}
+
+.details-section p {
+  margin: 0;
+}
+
+.error {
+  border-color: #f44336;
+  background-color: #fce4e4;
+}
+
+.error-title {
+  color: #f44336;
+}
+
+.json-output {
+  padding: 8px;
+  border-radius: 4px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+.form-req{
+  width: 40%;
+}

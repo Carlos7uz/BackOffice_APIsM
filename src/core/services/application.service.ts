@@ -14,8 +14,13 @@ export class ApplicationService {
 
   private endpointIdCounter = 1;
   private paramIdCounter = 1;
+  private authIdCounter = 1;
 
   constructor(private http: HttpClient, private spinner: NgxSpinnerService) { }
+
+  getNextAuthParamId(): number {
+    return this.authIdCounter++;
+  }
 
   getNextEndpointId(): number {
     return this.endpointIdCounter++;

@@ -17,10 +17,11 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule, validateBasis } from '@angular/flex-layout';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRadioModule } from '@angular/material/radio';
 
 //Erro quando input esta invalido
 export class errorInput implements ErrorStateMatcher {
@@ -50,7 +51,8 @@ export class errorInput implements ErrorStateMatcher {
     MatDialogModule,
     MatExpansionModule,
     FlexLayoutModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatRadioModule
 
   ],
   templateUrl: './new-api.component.html',
@@ -86,13 +88,27 @@ export class NewApiComponent {
     nameFormControl: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
     appUrlFormControl: ['', [Validators.required, Validators.pattern(this.urlPattern), Validators.minLength(3), Validators.maxLength(100)]],
     authUrlFormControl: ['', [Validators.minLength(3), Validators.maxLength(100)]],
+    authFormat: ['', Validators.required],
+    authParams: this.formBuilder.array([]),
     endpoints: this.formBuilder.array([])
     });
     this.endpoints.controls.forEach(() => this.detailsVisible.push(true));
   }
 
+  get authParams(): FormArray {
+    return this.formNewApi.get('authParams') as FormArray;
+  }
+
   get endpoints(): FormArray {
     return this.formNewApi.get('endpoints') as FormArray;
+  }
+
+  createAuthParamGroup(): FormGroup {
+    return this.formBuilder.group({
+      id: [this.applicationService.getNextAuthParamId()],
+      authParamName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(32)]],
+      authParamValue: ['']
+    })
   }
 
   createEndpointGroup(): FormGroup {
@@ -102,7 +118,6 @@ export class NewApiComponent {
       endpointUrlFormControl: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       params: this.formBuilder.array([])
     });
-
   }
 
   createParamGroup(): FormGroup {
@@ -113,6 +128,10 @@ export class NewApiComponent {
       required: [false],
       paramUrl: [false]
     });
+  }
+
+  addAuthParam(): void{
+    this.authParams.push(this.createAuthParamGroup());
   }
 
   addEndpoint(): void {
@@ -170,12 +189,22 @@ export class NewApiComponent {
       const formValue = this.formNewApi.value;
       let endpointId = 1; // Counter for endpoint IDs
       let paramId = 1; // Counter for parameter IDs
+      let authId = 1;
 
       const aplicativo: Application = {
         id: 0,  // Assuming 0 for new records
         nameFormControl: formValue.nameFormControl,
         appUrlFormControl: formValue.appUrlFormControl,
         authUrlFormControl: formValue.authUrlFormControl,
+        authFormat: formValue.authFormat,
+        authParams: formValue.authParams.map((paramAuth: any) => {
+          const currentAuthId = authId++;
+          return {
+            id: currentAuthId,
+            authParamName: paramAuth.authParamName,
+            authParamValue: paramAuth.authParamValue
+          }
+        }),
         endpoints: formValue.endpoints.map((endpoint: any) => {
           const currentEndpointId = endpointId++; // Assign unique ID to each endpoint
           return {

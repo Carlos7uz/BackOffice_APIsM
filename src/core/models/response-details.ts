@@ -5,5 +5,4 @@ export interface ResponseDetails {
   type: string;
   headers: any;
   body: any;
-
 }

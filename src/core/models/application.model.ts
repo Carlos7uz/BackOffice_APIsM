@@ -3,7 +3,15 @@ export interface Application {
   nameFormControl: string;
   appUrlFormControl: string;
   authUrlFormControl?: string;
+  authFormat: string;
+  authParams: AuthParameter[];
   endpoints: Endpoint[];
+}
+
+export interface AuthParameter {
+  id: number;
+  authParamName: string;
+  authParamValue: string;
 }
 
 export interface Endpoint {
