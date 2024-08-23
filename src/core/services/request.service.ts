@@ -24,22 +24,9 @@ export class RequestService {
 
   compareAndDisplayRequests(applications: Application[], requests: Request[]): void {
     requests.slice().reverse().forEach(request => {
-      const app = applications.find(application => application.id === request.appId);
-      if (app) {
-        const endpoint = app.endpoints.find(endpoint => endpoint.id === request.endpointId);
-        if (endpoint) {
-          console.log(`App: ${app.id}, Endpoint: ${endpoint.id}`);
-        } else {
-          console.log(`Endpoint com id ${request.endpointId} não encontrado no aplicativo ${app.id}`);
-        }
-      } else {
-        console.log(`Aplicativo com id ${request.appId} não encontrado`);
-      }
+      applications.find(application => application.id === request.appId);
     });
   }
-
-
-
 
   getRequestsForEndpoint(aplicativoId: number, endpointId: number): Request[] {
     return this.requests.filter(request =>
@@ -70,6 +57,8 @@ export class RequestService {
       );
   }
 
+
+
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An error occurred';
     if (error.error instanceof ErrorEvent) {
@@ -79,7 +68,6 @@ export class RequestService {
       // Server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    console.error(errorMessage);
     return throwError(errorMessage);
   }
 }

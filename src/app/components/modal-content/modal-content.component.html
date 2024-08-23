@@ -9,7 +9,7 @@
 
 <div class="subtitle-modal" fxLayout="column" fxLayoutAlign="space-between start">
   <p mat-dialog-title class="sub-title">
-    <strong>URL: </strong>{{app.appUrlFormControl}}{{endpoint.endpointUrlFormControl}}
+    <strong>URL: </strong>{{app.appUrlFormControl}}
   </p>
   <p mat-dialog-title class="sub-title">
     <strong>Endpoint: </strong><span [ngClass]="{
@@ -38,7 +38,10 @@
             </div>
           </ng-container>
           <ng-template #noItems>
-            <span class="noItems">Não existem itens na lista</span>
+            <div class="text-center">
+              <span class="noItems">Não é necessário fornecer parâmetros.<br/> Caso a autenticação não seja necessária, você já pode executar o teste.</span>
+              <mat-icon class="mat-18">thumb_up</mat-icon>
+            </div>
           </ng-template>
       </mat-tab>
 
@@ -64,7 +67,7 @@
         <div fxLayout="center" fxLayoutAlign="center">
           <textarea
             formControlName="body"
-            placeholder="{ ''Key'': ''Value'', ''Key''': ''Value'', }"
+            [placeholder]="'{\n \'Key\': \'Value\';\n \'Key\': \'Value\';\n}'"
             style="width: 80%; height: 200px;"
           >
           </textarea>
@@ -73,16 +76,19 @@
     </mat-tab-group>
 
     <div class="details-box" *ngIf="currentView === 'details'">
-      <h3 class="details-title">Detalhes da execução do endpoint</h3>
+      <h3 class="details-title">Detalhes</h3>
       <div class="details-section">
         <p><strong>Status:</strong> {{executionDetails.status}} {{executionDetails.statusText}}</p>
         <p><strong>Url:</strong> {{executionDetails.url}}</p>
-        <p><strong>Tipo:</strong> {{executionDetails.type}}</p>
       </div>
       <div class="details-section">
         <p><strong>Cabeçalhos:</strong></p>
-        <div *ngFor="let header of executionDetails.headers | keyvalue">
-          <p><strong>{{header.key}}:</strong> {{header.value}}</p>
+        <div class="header-detail" *ngFor="let header of this.headers.value">
+          <p>
+            <span class="header-key" (click)="truncatedText.toggleValue()">{{ header.key }}</span>
+            <br>
+            <span *ngIf="truncatedText.showValue">{{ header.value }}</span>
+          </p>
         </div>
       </div>
       <div class="details-section">
@@ -105,6 +111,8 @@
   </form>
 
   <footer fxLayout="row" fxLayoutAlign="end center" mat-dialog-actions   >
-    <button mat-flat-button class="button-execute" (click)="executeRequest()">Executar</button>
+    <button mat-flat-button class="button-execute" (click)="executeRequest()" *ngIf="currentView !== 'details' && currentView !== 'error'">
+      Executar
+    </button>
   </footer>
 </div>

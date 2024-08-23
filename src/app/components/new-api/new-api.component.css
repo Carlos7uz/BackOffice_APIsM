@@ -57,7 +57,8 @@ strong{
 }
 
 .boxAddParam{
-  margin-bottom: 4vh;
+  display: block;
+  margin-bottom: 2vh;
 }
 
 .end-description{
@@ -140,6 +141,8 @@ strong{
   color: white;
   background-color: var(--yellowJhover);
 }
+
+
 /*
 .end-param-box{
   padding: 16px;

@@ -1,4 +1,3 @@
-import { RequestHistoryService } from './../../../core/services/request-history.service';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, Inject, ViewEncapsulation } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -17,6 +16,9 @@ import { HttpRequestService } from '../../../core/services/http-request.service'
 import { HttpErrorResponse } from '@angular/common/http';
 import { ResponseDetails } from '../../../core/models/response-details';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { TruncatedTextPipe } from '../../../core/pipes/truncated-text.pipe';
+import { AuthService } from '../../../core/services/auth.service';
+
 
 @Component({
   selector: 'app-modal-content',
@@ -32,6 +34,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
     FormsModule,
     FlexLayoutModule,
     ReactiveFormsModule,
+    TruncatedTextPipe
   ],
   templateUrl: './modal-content.component.html',
   styleUrl: './modal-content.component.css'
@@ -46,7 +49,14 @@ export class ModalContentComponent {
   errorDetails: any;
   responseHttp: any;
   endpointRequests: { [key: number]: Request[] } = {};
+  showFullText: boolean = false
 
+  truncatedText = {
+    showValue: false,
+    toggleValue: () => {
+      this.truncatedText.showValue = !this.truncatedText.showValue;
+    }
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -55,6 +65,7 @@ export class ModalContentComponent {
     public dialogRef: MatDialogRef<ModalContentComponent>,
     private spinner: NgxSpinnerService,
     private cdr: ChangeDetectorRef,
+    private authService: AuthService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.app = data.app;
@@ -66,6 +77,8 @@ export class ModalContentComponent {
       headers: this.fb.array([]),
       body: ['']
     });
+
+    this.addTokenToHeader();
   }
 
   /*
@@ -100,10 +113,11 @@ export class ModalContentComponent {
   }
 
   addHeader(): void {
+    const token = this.authService.getStoredToken();
     this.headers.push(this.fb.group({
       id: [''],
       key: ['Authorization', Validators.required],
-      value: ['Bearer', Validators.required]
+      value: [`Bearer ${token}`, Validators.required]
     }));
   }
 
@@ -255,4 +269,15 @@ export class ModalContentComponent {
     });
   }
   //Fim metodos ExecuteRequest
+
+  private addTokenToHeader(): void {
+    const token = this.authService.getStoredToken();
+    if (token) {
+      this.headers.push(this.fb.group({
+        id: [''],
+        key: ['Authorization', Validators.required],
+        value: [`Bearer ${token}`, Validators.required]
+      }));
+    }
+  }
 }

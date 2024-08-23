@@ -39,11 +39,12 @@
   <mat-radio-group formControlName="authFormat" class="format-selection">
     <mat-radio-button value="JSON">JSON</mat-radio-button>
     <mat-radio-button value="x-www-form-urlencoded">x-www-form-urlencoded</mat-radio-button>
+    <mat-radio-button value="">Nenhum</mat-radio-button>
   </mat-radio-group>
 
   <div formArrayName="authParams">
     <div *ngFor="let authParam of authParams.controls; let i = index" [formGroupName]="i">
-      <div class="auth-param-group">
+      <div class="auth-param-group" fxLayout="row" fxLayoutGap="10px" fxLayoutalign="start center">
 
         <mat-form-field class="auth-param-name" appearance="outline">
           <mat-label>Nome do Parâmetro</mat-label>
@@ -64,6 +65,9 @@
           <input type="text" matInput formControlName="authParamValue">
         </mat-form-field>
 
+        <button mat-icon-button type="button" class="remove" (click)="authParams.removeAt(i)">
+          <mat-icon class="mat-18">delete</mat-icon>
+        </button>
       </div>
     </div>
     <button class="add-params-auth" mat-button type="button" (click)="addAuthParam()">Adicionar Parâmetro de Autenticação</button>

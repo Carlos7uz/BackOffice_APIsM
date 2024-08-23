@@ -178,3 +178,30 @@ textarea {
 .form-req{
   width: 40%;
 }
+
+.text-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  margin-top: 15vh;
+}
+
+.noItems {
+  white-space: normal;
+  line-height: 1.5;
+  font-size: 19px;
+}
+
+.header-detail{
+  white-space: pre-wrap; /* quebra a linha automaticamente */
+  word-break: break-word; /* quebra o texto em palavras */
+  hyphens: auto; /* quebra o texto em sílabas */
+  padding: 2px 5px;
+}
+
+.header-key{
+  cursor: pointer;
+}

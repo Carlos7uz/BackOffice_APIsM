@@ -88,7 +88,7 @@ export class NewApiComponent {
     nameFormControl: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
     appUrlFormControl: ['', [Validators.required, Validators.pattern(this.urlPattern), Validators.minLength(3), Validators.maxLength(100)]],
     authUrlFormControl: ['', [Validators.minLength(3), Validators.maxLength(100)]],
-    authFormat: ['', Validators.required],
+    authFormat: ['', Validators.nullValidator],
     authParams: this.formBuilder.array([]),
     endpoints: this.formBuilder.array([])
     });
@@ -225,7 +225,7 @@ export class NewApiComponent {
         })
       };
 
-      this.applicationService.addAplicativo(aplicativo).subscribe({
+      this.applicationService.addApplication(aplicativo).subscribe({
         next: () => {
           alert('Cadastrado com sucesso!');
           this.router.navigate(['']).then(() => {

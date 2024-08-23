@@ -14,14 +14,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { ApplicationService } from '../../../core/services/application.service';
 import { Request } from '../../../core/models/request.model';
 import { RequestService } from '../../../core/services/request.service';
-import { forkJoin, map } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
+import { forkJoin, tap } from 'rxjs';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AuthService } from '../../../core/services/auth.service';
 import { AuthRequest } from '../../../core/models/auth-request.model';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { HttpClient } from '@angular/common/http';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-application',
@@ -33,12 +34,13 @@ import { NgxSpinnerService } from 'ngx-spinner';
     MatDialogModule,
     MatExpansionModule,
     MatIconModule,
+    MatFormFieldModule,
     MatTooltipModule,
     FlexLayoutModule,
     ModalContentComponent,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   templateUrl: './application.component.html',
   styleUrls: ['./application.component.css']
@@ -61,7 +63,15 @@ export class ApplicationComponent implements OnInit {
   authRequest: AuthRequest[] = [];
   authParamsVisible: boolean = false;
 
+  timer: any;
+  timeRemaining: number = 0;
+
+  //add 23/08
+  searchTerms: { [key: string]: string } = {}; // Armazena os termos de busca para cada endpoint
+  filteredRequests: { [key: string]: any[] } = {}; // Armazena as requests filtradas para cada endpoint
+
   constructor(
+    private http: HttpClient,
     private applicationService: ApplicationService,
     private requestService: RequestService,
     private route: ActivatedRoute,
@@ -82,6 +92,16 @@ export class ApplicationComponent implements OnInit {
     });
 
     this.visibilityStates = new Array(this.authParams.length).fill(false);
+
+    this.selectedApplication?.endpoints.forEach(endpoint => {
+      this.filterRequests(endpoint.id);
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
   }
 
   toggleVisibility(index: number) {
@@ -92,6 +112,12 @@ export class ApplicationComponent implements OnInit {
     this.applicationService.getApplication(id).subscribe(application => {
       this.selectedApplication = application;
       this.detailsVisible = this.selectedApplication.endpoints.map(() => false);
+
+      //add 23/08
+    this.selectedApplication.endpoints.forEach(endpoint => {
+      this.searchTerms[endpoint.id] = ''; // Inicializa os termos de busca como strings vazias
+      this.filteredRequests[endpoint.id] = []; // Copia as requests para serem filtradas
+    });
 
       // Se authParams não existir, inicialize-o como um array vazio
       const authParams = this.selectedApplication.authParams || [];
@@ -108,17 +134,14 @@ export class ApplicationComponent implements OnInit {
       forkJoin(requests$).subscribe(requestsArray => {
         requestsArray.forEach((requests, index) => {
           const endpointId = this.selectedApplication.endpoints[index].id;
-          this.endpointRequests[endpointId] = requests.reverse();
+          this.endpointRequests[endpointId] = Array.isArray(requests) ? requests.reverse() : [];
+          this.filteredRequests[endpointId] = [...this.endpointRequests[endpointId]]; // Inicializa filteredRequests com os requests
         });
 
         // Comparar e exibir as requisições
         this.requestService.compareAndDisplayRequests([this.selectedApplication], requestsArray.flat());
       });
     });
-  }
-
-  toggleAuthParamsVisibility() {
-    this.authParamsVisible = !this.authParamsVisible;
   }
 
   initAuthParams(authParams: AuthParameter[] = []): FormGroup[] {
@@ -144,14 +167,12 @@ export class ApplicationComponent implements OnInit {
       const urlEncodedBody = authParamsArray.map((param: any) =>
         `${encodeURIComponent(param.authParamName)}=${encodeURIComponent(param.authParamValue)}`
       ).join('&');
-      console.log('Body montado (x-www-form-urlencoded) ->\n', urlEncodedBody);
       bodyFormated = urlEncodedBody;
     } else {
       const bodyJson = authParamsArray.reduce((acc: any, curr: any) => {
         acc[curr.authParamName] = curr.authParamValue;
         return acc;
       }, {});
-      console.log('Body montado ->\n', JSON.stringify(bodyJson, null, 2));
       bodyFormated = bodyJson;
     }
 
@@ -163,11 +184,52 @@ export class ApplicationComponent implements OnInit {
         console.log('Response:', response);
         const token = this.authService.getStoredToken();
         console.log('Stored Token:', token);
+
         this.spinner.hide();
         alert('Token disponibilizado');
+
+        this.accessToken = token;
+
+        if (this.accessToken) {
+          this.startTimer();
+        } else {
+          alert('Erro ao copiar token');
+        }
       });
     }
+  }
 
+  startTimer() {
+    this.timeRemaining = 59 * 60; // 59 minutos em segundos
+    this.timer = setInterval(() => {
+      this.timeRemaining--;
+
+      if (this.timeRemaining <= 0) {
+        clearInterval(this.timer);
+        alert('O tempo para o token expirou.');
+      }
+
+      // Verifica se o token é válido
+      if (!this.accessToken) {
+        clearInterval(this.timer);
+        alert('Token não encontrado. Contagem encerrada.');
+      }
+    }, 1000); // Atualiza a cada segundo
+  }
+
+  checkClipboard() {
+    if (document.hasFocus()) {
+      navigator.clipboard.readText().then(text => {
+        const storedToken = this.authService.getStoredToken();
+        if (text !== storedToken) {
+          clearInterval(this.timer);
+          alert('Token não encontrado no clipboard. Contagem encerrada.');
+        }
+      }).catch(err => {
+        console.error('Erro ao acessar o clipboard:', err);
+        return;
+      });
+    }
   }
 
   getStoredToken(){
@@ -179,31 +241,48 @@ export class ApplicationComponent implements OnInit {
     }).catch(err => {
       alert(`Erro ao copiar token: ${err}`);
     })
-  }else{
-    alert('Nenhum token encontrado.');
+    }else{
+      alert('Nenhum token encontrado.');
+    }
   }
+
+  formatTime(seconds: number): string {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${this.pad(minutes)}:${this.pad(secs)}`;
+  }
+
+  pad(number: number): string {
+    return number < 10 ? '0' + number : '' + number;
   }
 
   detailsEndpoint(i: number): void {
     this.detailsVisible[i] = !this.detailsVisible[i];
-    /*
-    const endpoint = this.selectedApplication.endpoints[i];
-    const panel = this.endpointRequests[endpoint.id];
-    if (panel.expanded) {
-      panel.expanded = false;
-    } else {
-      panel.expanded = true;
-    }
-    */
   }
 
   getRequestsByAppAndEndpoint(appId: number, endpointId: number) {
     return this.requestService.getRequestsByAppAndEndpoint(appId, endpointId)
   }
 
+  // add23/08
+  filterRequests(endpointId: number): void {
+    const term = this.searchTerms[endpointId].toLowerCase(); // Obtém o termo de busca em minúsculas
+
+    if (term) {
+      this.filteredRequests[endpointId] = this.endpointRequests[endpointId].filter(request =>
+        (request.timestamp || '').toLowerCase().includes(term) || // Filtra pela data
+        ((request.response?.status || request.error?.status)?.toString() || '').includes(term) || // Filtra pelo status
+        ((request.response?.statusText || request.error?.statusText) || '').toLowerCase().includes(term) || // Filtra pelo statusText
+        ((request.response?.url || request.error?.url) || '').toLowerCase().includes(term) // Filtra pela URL
+      );
+    } else {
+      this.filteredRequests[endpointId] = [...this.endpointRequests[endpointId]]; // Restaura todas as requests
+    }
+  }
+
   openTest(endpoint: Endpoint, app: Application, parameter: Parameter): void {
     const dialogRef = this.dialog.open(ModalContentComponent, {
-      width: '50%',
+      width: '65%',
       height: '90%',
       data: {
         parameter,
@@ -221,6 +300,49 @@ export class ApplicationComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: string) => {
       console.log('The dialog was closed');
       console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  executeAllGetRequests(): void {
+    if (!this.selectedApplication) {
+      alert('Nenhuma aplicação selecionada.');
+      return;
+    }
+
+    // Filtra os endpoints para pegar apenas os que são GET
+    const getEndpoints = this.selectedApplication.endpoints.filter(endpoint => endpoint.reqFormControl === 'GET');
+
+    // Mapeia as requisições GET
+    const requests$ = getEndpoints.map(endpoint =>
+      this.requestService.getRequestsByAppAndEndpoint(this.selectedApplication.id, endpoint.id)
+    );
+
+    // Executa todas as requisições em paralelo
+    forkJoin(requests$).pipe(
+      tap(results => {
+        // Formata os resultados para o modal
+        const formattedResults = getEndpoints.map((endpoint, index) => ({
+          endpoint: endpoint.endpointUrlFormControl,
+          requests: results[index]
+        }));
+
+        // Abre o modal com os resultados formatados
+        this.openResultModal(formattedResults);
+      })
+    ).subscribe();
+  }
+
+  openResultModal(results: any[]): void {
+    const dialogRef = this.dialog.open(ModalContentComponent, {
+      width: '80%',
+      height: '80%',
+      data: {
+        results: results
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('Modal fechado');
     });
   }
 }

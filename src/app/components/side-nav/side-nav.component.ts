@@ -37,6 +37,7 @@ export class SideNavComponent {
   appItems: { label: string, route: string }[] = [];
   navItems = [
     { label: 'Home', route: '', icon: 'home'},
+    { label: 'Collections', route: '/collections', icon: 'layers'},
     { label: 'New app', route: '/newapi', icon: 'add'},
     { label: 'Profile', route: '/profile', icon: 'person'},
   ]

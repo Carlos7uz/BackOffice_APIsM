@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  justify-content: space-between; /* Distribui o espaço entre os elementos */
+  justify-content: space-around; /* Distribui o espaço entre os elementos */
   align-items: center; /* Alinha os elementos verticalmente ao centro */
   padding: 0; /* Ajuste conforme necessário */
 }
@@ -46,26 +46,25 @@ h3{
 }
 
 .green-background {
-  background-color: rgb(108, 255, 108);
+  background-color: rgb(198, 255, 198);
   color: black; /* Opcional, para melhor contraste */
   padding: 0 5px; /* Opcional, para adicionar algum espaço interno */
   border-radius: 3px; /* Opcional, para bordas arredondadas */
 }
 
 .yellow-background {
-  background-color: yellow;
+  background-color: rgb(255, 255, 168);
   color: black;
   padding: 0 5px;
   border-radius: 3px;
 }
 
 .red-background {
-  background-color: rgb(255, 87, 87);
+  background-color: #ffb7b7;
   color: black;
   padding: 0 5px;
   border-radius: 3px;
 }
-
 
 .action{
  background-color:var(--yellowJ);
@@ -104,14 +103,11 @@ h3{
 }
 
 .action-edit:hover{
-
-
   border-radius: 20px;
   background-color: rgb(255, 197, 72);
 }
 
 .action-trash:hover{
-
   border-radius: 20px;
   background-color: rgb(255, 53, 53);
 }
@@ -146,7 +142,6 @@ h3{
   width: 100% !important;
   margin-bottom: 4vh !important;
   padding: 1vh;
-
 }
 
 .example-card{
@@ -176,7 +171,7 @@ h3{
 }
 
 .auth-params {
-  max-width: 440px;
+  width: 100%;
 }
 
 .auth-form {
@@ -222,5 +217,55 @@ h3{
   margin-bottom: 30px;
 }
 
+.auth-expansio-header.mat-expanded .mat-icon {
+  color: green !important;
+}
 
 
+.auth-expansion {
+  transition: height 0.3s ease;
+}
+
+.auth-expansion-header {
+  min-height: 48px; /* Altura mínima quando fechado (tamanho de um botão) */
+}
+
+.auth-expansion.mat-expanded .auth-expansion-header {
+  min-height: 64px; /* Altura mínima quando aberto */
+}
+
+.auth-expansion.mat-expanded {
+  height: auto; /* Permite que o conteúdo se expanda */
+  overflow: visible;
+}
+
+.auth-expansion {
+  height: 48px; /* Altura do botão quando fechado */
+  overflow: hidden;
+}
+
+.title-expansion-panel{
+  font-size: 20px !important;
+  margin: 0;
+}
+
+.content{
+  margin-top: 20px;
+}
+
+.exec-all-gets{
+  color: white !important;
+  background-color: var(--yellowJ) !important;
+}
+
+.h3-token-timer{
+  margin-top: 2vh;
+}
+
+.token-time{
+  margin-top: 3vh;
+}
+
+.search-history{
+  width: 100% !important;
+}

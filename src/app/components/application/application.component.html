@@ -2,42 +2,51 @@
     <!-- Exibindo detalhes da aplicação -->
   <div class="container">
     <h1>{{selectedApplication.nameFormControl}}</h1>
+    <h2><strong>Url: </strong>{{selectedApplication.appUrlFormControl}}</h2>
     <mat-icon class="config-app">settings</mat-icon>
   </div>
 
-  <h2><strong>Url: </strong>{{selectedApplication.appUrlFormControl}}</h2>
-
-  <h2><strong>Auth: </strong>{{selectedApplication.authUrlFormControl}}</h2>
-
-  <button class="open-auth" mat-raised-button color="primary" (click)="toggleAuthParamsVisibility()">Configurar Autenticação</button>
-
   <!-- Exibindo e editando authParams -->
-  <section *ngIf="authParamsVisible" class="auth-params">
-    <form [formGroup]="authForm" class="auth-form">
-      <ng-container *ngIf="authParams.length; else noItems">
-        <div formArrayName="authParams" class="auth-params-list">
-          <div *ngFor="let paramAuth of authParams.controls; let i = index" [formGroupName]="i" class="auth-param">
-            <mat-form-field appearance="outline" class="auth-form-field">
-              <mat-label class="auth-label">{{ paramAuth.get('authParamName')?.value }}</mat-label>
-              <div fxlayput="row" fxLayoutAlign="space-between center" class="div-teste">
-                <input matInput [type]="visibilityStates[i] ? 'text' : 'password'" formControlName="authParamValue" class="auth-input">
-                <button type="button" mat-icon-button (click)="toggleVisibility(i)" [matTooltip]="visibilityStates[i] ? 'Ocultar' : 'Mostrar'" class="visibility-toggle">
-                  <mat-icon>{{ visibilityStates[i] ? 'visibility' : 'visibility_off' }}</mat-icon>
-                </button>
+  <section class="auth-params">
+    <mat-expansion-panel [hideToggle]="false" class="auth-expasion" >
+        <mat-expansion-panel-header  class="auth-expansio-header" >
+          <mat-panel-title fxLayout="row" fxLayoutAlign="center center" class="title-expansion-panel"><mat-icon>lock</mat-icon> Auth: {{selectedApplication.authUrlFormControl}} </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form [formGroup]="authForm" class="auth-form">
+          <ng-container *ngIf="authParams.length; else noItems">
+            <div formArrayName="authParams" class="auth-params-list">
+              <div *ngFor="let paramAuth of authParams.controls; let i = index" [formGroupName]="i" class="auth-param">
+                <mat-form-field appearance="outline" class="auth-form-field">
+                  <mat-label class="auth-label">{{ paramAuth.get('authParamName')?.value }}</mat-label>
+                  <div fxlayput="row" fxLayoutAlign="space-between center" class="div-teste">
+                    <input matInput [type]="visibilityStates[i] ? 'text' : 'password'" formControlName="authParamValue" class="auth-input">
+                    <button type="button" mat-icon-button (click)="toggleVisibility(i)" [matTooltip]="visibilityStates[i] ? 'Ocultar' : 'Mostrar'" class="visibility-toggle">
+                      <mat-icon>{{ visibilityStates[i] ? 'visibility' : 'visibility_off' }}</mat-icon>
+                    </button>
+                  </div>
+                </mat-form-field>
               </div>
-            </mat-form-field>
-          </div>
-        </div>
-        <button mat-raised-button color="primary" (click)="receiveAuthorization()" class="submit-button">Receber autorização</button>
-        <button mat-raised-button color="warn" (click)="getStoredToken()" class="submit-button">Copiar Token</button>
-      </ng-container>
-      <ng-template #noItems>
-        <span class="noItems">Não é necessário</span>
-      </ng-template>
-    </form>
+            </div>
+            <button mat-raised-button color="primary" (click)="receiveAuthorization()" class="submit-button">Receber autorização</button>
+          </ng-container>
+          <ng-template #noItems>
+            <span class="noItems">Não é necessário</span>
+          </ng-template>
+        </form>
+    </mat-expansion-panel>
   </section>
 
-  <h3>Testar endpoints:</h3>
+  <div class="token-time" *ngIf="timeRemaining > 0" fxLayout="row" fxLayoutAlign="space-between end">
+    <h3 class="h3-token-timer">Token expira em: {{ formatTime(timeRemaining) }}</h3>
+
+    <button mat-raised-button color="warn" (click)="getStoredToken()" class="submit-button">Copiar Token</button>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-between end">
+    <h3>Testar endpoints:</h3>
+
+    <button class="exec-all-gets" mat-flat-button (click)="executeAllGetRequests()">exec all gets</button>
+  </div>
 
   <section class="content" >
     <ul class="endpoints">
@@ -46,10 +55,13 @@
           <mat-card-header fxLayout="row" fxLayoutAlign="space-between start">
             <mat-card-title>
               <span [ngClass]="{
-                'green-background': endpoint.reqFormControl === 'GET' || endpoint.reqFormControl === 'POST',
-                'yellow-background': endpoint.reqFormControl === 'PUT',
-                'red-background': endpoint.reqFormControl === 'DELETE'
-              }">{{endpoint.reqFormControl}}</span> {{endpoint.endpointUrlFormControl}}
+                  'green-background': endpoint.reqFormControl === 'GET' || endpoint.reqFormControl === 'POST',
+                  'yellow-background': endpoint.reqFormControl === 'PUT',
+                  'red-background': endpoint.reqFormControl === 'DELETE'
+                }"
+              >
+                {{endpoint.reqFormControl}}
+              </span> {{endpoint.endpointUrlFormControl}}
             </mat-card-title>
             <mat-card-actions align="end">
               <button mat-mini-fab class="action" (click)="openTest(endpoint, selectedApplication, parameter)">
@@ -58,40 +70,60 @@
             </mat-card-actions>
           </mat-card-header>
 
-          <mat-expansion-panel class="extension-history" (click)="detailsEndpoint(i)">
-            <mat-expansion-panel-header class="box-history">
-              <mat-panel-title>Histórico de requisições:</mat-panel-title>
-            </mat-expansion-panel-header>
+          <mat-accordion [multi]="false">
+            <mat-expansion-panel class="extension-history" (click)="detailsEndpoint(i)">
+              <mat-expansion-panel-header class="box-history">
+                <mat-panel-title>Histórico de requisições</mat-panel-title>
+              </mat-expansion-panel-header>
 
-            <mat-card-content class="extension-history-open">
-              <mat-accordion>
-                <mat-expansion-panel class="extension-history-endpoint" *ngFor="let request of endpointRequests[endpoint.id]"  [ngClass]="{'error-card': request.error}">
-                  <mat-expansion-panel-header>
-                    <mat-panel-title fxLayout="row" fxLayoutGap="25px" >
-                      <p><strong>Date:</strong> {{ request.timestamp }}</p>
-                      <p><strong>Status:</strong> {{ request.response?.status || request.error?.status }} {{ request.response?.statusText || request.error?.statusText }}</p>
-                      <p><strong>Method:</strong> {{ request.endpointReq }}</p>
-                      <p><strong>URL:</strong> {{ request.response?.url || request.error?.url }}</p>
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-                  <div class="example-card" [ngClass]="{'error-card': request.error}">
-                    <p *ngIf="!request.error"><strong>Headers:</strong></p>
-                    <ul class="ul-headers" *ngIf="!request.error">
-                      <li class="li-headers" *ngFor="let header of request.headers">
-                        {{ header.key }}: {{ header.value }}
-                      </li>
-                    </ul>
-                    <p *ngIf="request.error"><strong>Error Details:</strong></p>
-                    <p *ngIf="request.error">{{ request.error.message }}</p>
-                    <p><strong>Body enviado:</strong> {{ request.body | json }}</p>
-                    <p><strong>Response:</strong></p>
-                    <pre *ngIf="!request.error">{{ request.response?.body | json }}</pre>
-                  </div>
-                </mat-expansion-panel>
-                <p *ngIf="!endpointRequests[endpoint.id] || endpointRequests[endpoint.id].length === 0">No requests found.</p>
-              </mat-accordion>
-            </mat-card-content>
-          </mat-expansion-panel>
+              <mat-card-content>
+                <mat-form-field class="search-history" appearance="outline">
+                  <mat-label>Pesquisar no histórico</mat-label>
+                  <input matInput type="search" [(ngModel)]="searchTerms[endpoint.id]" (ngModelChange)="filterRequests(endpoint.id)" placeholder="Buscar por status, método, URL, etc.">
+                </mat-form-field>
+              </mat-card-content>
+
+              <mat-card-content class="extension-history-open">
+                <mat-accordion [multi]="true">
+                  <mat-expansion-panel
+                    class="extension-history-endpoint"
+                    *ngFor="let request of filteredRequests[endpoint.id]"
+                    [ngClass]="{'error-card': request.error}"
+                  > <!--alteração *ngFor="let request of endpointRequests[endpoint.id]"-->
+                    <mat-expansion-panel-header>
+                      <mat-panel-title fxLayout="row" fxLayoutGap="25px" >
+                        <p><strong>Date:</strong> {{ request.timestamp }}</p>
+                        <p>
+                          <strong>Status:</strong>
+                          {{ request.response?.status || request.error?.status }}
+                          {{ request.response?.statusText || request.error?.statusText }}
+                        </p>
+                        <p><strong>Method:</strong> {{ request.endpointReq }}</p>
+                        <p><strong>URL:</strong> {{ request.response?.url || request.error?.url }}</p>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="example-card" [ngClass]="{'error-card': request.error}">
+                      <p><strong>Headers:</strong></p>
+                      <ul class="ul-headers">
+                        <li class="li-headers" *ngFor="let header of request.headers">
+                          {{ header.key }}: {{ header.value }}
+                        </li>
+                      </ul>
+                      <p *ngIf="request.error"><strong>Error Details:</strong></p>
+                      <p *ngIf="request.error">{{ request.error.message }}</p>
+                      <p><strong>Body enviado:</strong> {{ request.body | json }}</p>
+                      <p><strong>Response:</strong></p>
+                      <pre>{{ request.response?.body | json }}</pre>
+                    </div>
+                  </mat-expansion-panel>
+                  <p *ngIf="!endpointRequests[endpoint.id] || endpointRequests[endpoint.id].length === 0">
+                    No requests found.
+                  </p>
+                </mat-accordion>
+              </mat-card-content>
+            </mat-expansion-panel>
+
+          </mat-accordion>
         </mat-card>
       </li>
     </ul>

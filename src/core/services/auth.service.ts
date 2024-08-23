@@ -1,58 +1,37 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { AuthParam, AuthRequest } from '../models/auth-request.model';
+import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
+import { AuthParam } from '../models/auth-request.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private tokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
-
   private storedToken: string | null = null;
+  private readonly TOKEN_KEY = 'access_token';
 
   constructor(private http: HttpClient) {}
 
   authenticate(authUrl: string, authFormat: string, body: any ): Observable<any> {
     let headers = new HttpHeaders({'Content-Type': this.getContentType(authFormat)});
 
-    /*
-    if (authFormat === 'JSON') {
-      body = this.getJsonBody(authRequest.authParam);
-    } else {
-      body = this.getUrlEncodedBody(authRequest.authParam);
-    }
-    */
-
-    return this.http.post(authUrl, body, { headers })
-      .pipe(
-        tap((response: any) => {
-          // Armazenar o access_token
-          if (response.access_token) {
-            this.storedToken = response.access_token;
-          }
-        })
-      );
+    return this.http.post(authUrl, body, { headers }).pipe(
+      tap((response: any) => {
+        // Armazenar o access_token
+        if (response.access_token) {
+          this.storedToken = response.access_token;
+        }
+      }),
+      catchError(error => {
+        console.error('Authentication error:', error);
+        return throwError(() => new Error('Authentication failed'));
+      })
+    );
   }
 
   private getContentType(format: string): string {
     return format === 'JSON' ? 'application/json' : 'application/x-www-form-urlencoded';
-  }
-
-  private getJsonBody(params: AuthParam[]): any {
-    let body: any = {};
-    params.forEach(param => {
-      body[param.name] = param.value;
-    });
-    return body;
-  }
-
-  private getUrlEncodedBody(params: AuthParam[]): HttpParams {
-    let body = new HttpParams();
-    params.forEach(param => {
-      body = body.append(param.name, param.value);
-    });
-    return body;
   }
 
   // Método para recuperar o token armazenado

@@ -1,0 +1,26 @@
+<div class="errors-grid">
+  <h2>Erros recentes</h2>
+  <div class="dashboard" *ngIf="errorRequests.length > 0; else noErrors">
+    <div class="card" *ngFor="let errorRequest of errorRequests">
+      <mat-card class="error-card">
+        <mat-card-title>
+          <strong>Data:</strong> {{ errorRequest.timestamp }}
+          <span class="mat-end">
+            <button  mat-icon-button (click)="redirectToApp(errorRequest.appId)">
+              <mat-icon class="info">info</mat-icon>
+            </button>
+          </span>
+        </mat-card-title>
+        <mat-card-content>
+          <p><strong>Url:</strong> {{ errorRequest.appUrl }}</p>
+          <p><strong>Endpoint:</strong> {{ errorRequest.endpointReq}} {{ errorRequest.endpointUrl }}</p>
+          <p><strong>Status:</strong> {{ errorRequest.response?.status || errorRequest.error?.status }} {{errorRequest.error?.statusText}}</p>
+          <!-- <p><strong>Erro:</strong> {{ errorRequest.error?.message }}</p> -->
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <ng-template #noErrors>
+    <p>No error requests found.</p>
+  </ng-template>
+</div>

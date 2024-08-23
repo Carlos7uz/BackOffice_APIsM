@@ -1,0 +1,48 @@
+<div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+  <h1>Coleções</h1>
+
+  <button class="button-add-collection" mat-flat-button ><mat-icon class="icon-add-collection">add</mat-icon> Adicionar coleção</button>
+</div>
+
+<h4>Coleções são um conjunto de APIs com o proposito de testar um fluxo expecifico</h4>
+
+<mat-card class="content" *ngFor="let collection of collections">
+  <mat-card-header class="collection-header" fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-card-title class="collection-title">
+      <h2>{{ collection.name }}</h2>
+    </mat-card-title>
+
+    <div class="row"></div>
+
+    <mat-card-actions align="end">
+      <button class="button-add-collection" mat-mini-fab ><mat-icon class="icon-add-collection">play_arrow</mat-icon></button>
+    </mat-card-actions>
+  </mat-card-header>
+
+  <mat-expansion-panel class="expansion-panel">
+    <mat-expansion-panel-header class="box-history">
+      <mat-panel-title>{{ collection.description }}</mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-card-content>
+      <mat-expansion-panel class="request-itens" *ngFor="let request of collection.requests" [hideToggle]="false">
+
+        <mat-expansion-panel-header>
+          <mat-panel-title  fxLayout="row" fxLayoutGap="100">
+            <p>{{ request.id }}</p>
+            <p>{{ request.method }} {{ request.url }}</p>
+            <p>tudo certo "Raio" / deu errado "X"</p>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        Panel body
+        <div align="end">
+          <button mat-button>Executar unidade</button>
+        </div>
+      </mat-expansion-panel>
+    </mat-card-content>
+  </mat-expansion-panel>
+</mat-card>
+
+<footer class="footer"></footer>
+
+

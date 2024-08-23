@@ -65,14 +65,14 @@
               "paramNameFormControl": "name",
               "value": "",
               "required": false,
-              "paramUrl": true
+              "paramUrl": false
             },
             {
               "id": 3,
               "paramNameFormControl": "status",
               "value": "",
               "required": false,
-              "paramUrl": true
+              "paramUrl": false
             }
           ]
         },
@@ -86,7 +86,7 @@
               "paramNameFormControl": "id",
               "value": "",
               "required": false,
-              "paramUrl": false
+              "paramUrl": true
             },
             {
               "id": 5,
@@ -107,7 +107,7 @@
               "paramNameFormControl": "id",
               "value": "",
               "required": false,
-              "paramUrl": false
+              "paramUrl": true
             },
             {
               "id": 7,
@@ -455,6 +455,134 @@
           "reqFormControl": "GET",
           "endpointUrlFormControl": "/api/ContactType",
           "params": []
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "nameFormControl": "TESTETESTET",
+      "appUrlFormControl": "https://api-hml-doublecheck.azurewebsites.net",
+      "authUrlFormControl": "",
+      "authFormat": "",
+      "authParams": [],
+      "endpoints": [
+        {
+          "id": 1,
+          "reqFormControl": "GET",
+          "endpointUrlFormControl": "/",
+          "params": []
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "nameFormControl": "Exemplo",
+      "appUrlFormControl": "https://api-prd-conference.azurewebsites.net",
+      "authUrlFormControl": "https://rickandmortyapi.com/auth",
+      "authFormat": "x-www-form-urlencoded",
+      "authParams": [
+        {
+          "id": 1,
+          "authParamName": "username",
+          "authParamValue": ""
+        },
+        {
+          "id": 2,
+          "authParamName": "password",
+          "authParamValue": ""
+        }
+      ],
+      "endpoints": [
+        {
+          "id": 1,
+          "reqFormControl": "POST",
+          "endpointUrlFormControl": "/api/crachamotorista",
+          "params": [
+            {
+              "id": 1,
+              "paramNameFormControl": "cpf",
+              "value": "",
+              "required": false,
+              "paramUrl": true
+            },
+            {
+              "id": 2,
+              "paramNameFormControl": "codCracha",
+              "value": "",
+              "required": false,
+              "paramUrl": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "collections": [
+    {
+      "id": 1,
+      "name": "Pings testes",
+      "description": "Testes de ping para APIs publicas",
+      "requests": [
+        {
+          "id": 1,
+          "url": "https://api.chucknorris.io/jokes/random",
+          "method": "GET",
+          "body": "",
+          "params": [
+            {}
+          ]
+        },
+        {
+          "id": 2,
+          "url": "https://api.kanye.rest",
+          "method": "GET",
+          "body": "",
+          "params": [
+            {}
+          ]
+        },
+        {
+          "id": 3,
+          "url": "https://api.adviceslip.com/advice",
+          "method": "GET",
+          "body": "",
+          "params": [
+            {}
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Infos Teste",
+      "description": "Testes de informações de usuarios github",
+      "requests": [
+        {
+          "id": 1,
+          "url": "https://api.github.com/users/octocat",
+          "method": "GET",
+          "body": "",
+          "params": [
+            {}
+          ]
+        },
+        {
+          "id": 2,
+          "url": "https://api.github.com/users/Carlos7uz",
+          "method": "GET",
+          "body": "",
+          "params": [
+            {}
+          ]
+        },
+        {
+          "id": 3,
+          "url": "https://api.github.com/users/wllcosta",
+          "method": "GET",
+          "body": "",
+          "params": [
+            {}
+          ]
         }
       ]
     }
@@ -2178,6 +2306,3540 @@
         ]
       },
       "timestamp": "09/08/2024, 10:47:11"
+    },
+    {
+      "id": 76,
+      "appId": 10,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer passa ai po"
+        }
+      ],
+      "body": {},
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 401,
+        "statusText": "Unauthorized",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType: 401 Unauthorized",
+        "error": null
+      },
+      "timestamp": "09/08/2024, 11:49:06"
+    },
+    {
+      "id": 77,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM0NzUxMDksImV4cCI6MTcyMzQ3ODcwOSwiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzQ3NTEwOSwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjIyMTZFMTE2MDUwNDdERDFBM0M5NUFFM0ExRkI1MUM5IiwiaWF0IjoxNzIzNDc1MTA5LCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.nDzPMl4j0y_eeF_PLYYIDN5m_IlnPymyuLxM98LTpQ1woJBmBF-sNkajyQlLNe87Yg_H9JYoNJNdjhT_4lzJZf1V7aHj6kBSBNUrdBqFXFVLkovsJ7zWWYQAozeCYHH8jf5bN4kU814BNg2dwoc-CO7Pq7uwW--WQKGe8JL8zkR63pjnNBEmqZTJQnfBzjD4Qi_CTNDRn68fw5I6n16imwlX18WoMFaM6JenHHAzLNjrbzfoIwsUMmgJgTi1tF7BwY8aW9qjwR3-_nr5hk2BsqiUKAyEwE1cGLmak-V0Hq7_YzcW999kbDe6Wai_NZUbXS3pZ5Co0cWu8VohWUbf4w"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": [
+          {
+            "id": 2,
+            "name": "Gerente de Filial"
+          },
+          {
+            "id": 3,
+            "name": "Gerente de Regional"
+          },
+          {
+            "id": 4,
+            "name": "Diretor de Regional"
+          },
+          {
+            "id": 5,
+            "name": "Inspetor de Qualidade"
+          }
+        ]
+      },
+      "timestamp": "12/08/2024, 12:05:55"
+    },
+    {
+      "id": 78,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "BranchOffice.BFF",
+          "Environment": "Development",
+          "Now": "2024-08-14T12:19:07.4800144+00:00",
+          "Git": {
+            "Branch": "2246bc2",
+            "Commit": "2246bc2",
+            "CommitDate": "2024-04-04T19:01:21+00:00",
+            "IsDirty": false,
+            "Sha": "2246bc247eccab1551cd18d05fe97614dadf6837"
+          }
+        }
+      },
+      "timestamp": "14/08/2024, 09:19:07"
+    },
+    {
+      "id": 79,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "BranchOffice.BFF",
+          "Environment": "Development",
+          "Now": "2024-08-14T12:29:06.3978591+00:00",
+          "Git": {
+            "Branch": "2246bc2",
+            "Commit": "2246bc2",
+            "CommitDate": "2024-04-04T19:01:21+00:00",
+            "IsDirty": false,
+            "Sha": "2246bc247eccab1551cd18d05fe97614dadf6837"
+          }
+        }
+      },
+      "timestamp": "14/08/2024, 09:29:06"
+    },
+    {
+      "id": 80,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 3,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/Contact",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "5282757f-60d5-4dfb-bb82-6c455c5b84fc"
+      },
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 401,
+        "statusText": "Unauthorized",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/Contact/5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-dev-bff-branchoffice.azurewebsites.net/api/Contact/5282757f-60d5-4dfb-bb82-6c455c5b84fc: 401 Unauthorized",
+        "error": null
+      },
+      "timestamp": "14/08/2024, 09:31:08"
+    },
+    {
+      "id": 81,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 3,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/Contact",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+          "paramUrl": true
+        }
+      ],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM2Mzg3NTEsImV4cCI6MTcyMzY0MjM1MSwiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzYzODc1MSwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjRBNEU4NEZGRTQ1OTk0MDNENEFCN0ZCQURFNzVDNzM1IiwiaWF0IjoxNzIzNjM4NzUxLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.FxcK1btqQ3fYbThY96Z-uFAlHHxiA3ZXtAHCFOop1OwJM5twhbjSFLRtdSl4sYBwx9qfK3lIDCUtfnbHiq42QhE2aG2chHVIzVyJhDcZmcZpfX4uk_O4YlQuS0BZ5aPQX3JzHBK8U1pfrA639jfy9l2EE6t0JsUTGzo_acfZDBJIhbtGE5YUi1tAlMWix1mJF-GkOXfXdf8WVZMEHGkkL4SLhRCv22S-IApclpjQ4pmj4CDzWS1KdBs5f9Hi7OntQa9KNKK448oJLoC0WrKUNBC-8iknW3M7q1wiSZkRA3YcB0RIYywW8v6RzP_dt0R_7zDJg7kISdSudsEnAelXDQ"
+        }
+      ],
+      "body": {
+        "id": "5282757f-60d5-4dfb-bb82-6c455c5b84fc"
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/Contact/5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": {
+          "id": "5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+          "cpf": "14907620942",
+          "name": "Carlos Luz",
+          "email": "carlosluz12892@gmail.com",
+          "phone": "41920034148",
+          "contactTypeId": 2,
+          "contactType": null,
+          "tagNumber": null
+        }
+      },
+      "timestamp": "14/08/2024, 09:33:09"
+    },
+    {
+      "id": 82,
+      "appId": 8,
+      "appUrl": "https://api-hml-conferencia-totvs.azurewebsites.net",
+      "appAuth": "https://api-hml-conferencia-totvs.azurewebsites.net/api/Operador/loginAdTotvs",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "status": 0,
+        "statusText": "Unknown Error",
+        "url": "https://api-hml-conferencia-totvs.azurewebsites.net/",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-hml-conferencia-totvs.azurewebsites.net/: 0 Unknown Error",
+        "error": {
+          "isTrusted": true
+        }
+      },
+      "timestamp": "14/08/2024, 09:37:35"
+    },
+    {
+      "id": 83,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/character",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "159",
+          "paramUrl": true
+        },
+        {
+          "id": 2,
+          "paramName": "name",
+          "paramValue": "",
+          "paramUrl": true
+        },
+        {
+          "id": 3,
+          "paramName": "status",
+          "paramValue": "",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "159"
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/character/159",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "id": 159,
+          "name": "Hunter",
+          "status": "Dead",
+          "species": "Human",
+          "type": "Clone",
+          "gender": "Male",
+          "origin": {
+            "name": "Earth (Giant Telepathic Spiders Dimension)",
+            "url": "https://rickandmortyapi.com/api/location/42"
+          },
+          "location": {
+            "name": "Earth (Giant Telepathic Spiders Dimension)",
+            "url": "https://rickandmortyapi.com/api/location/42"
+          },
+          "image": "https://rickandmortyapi.com/api/character/avatar/159.jpeg",
+          "episode": [
+            "https://rickandmortyapi.com/api/episode/17"
+          ],
+          "url": "https://rickandmortyapi.com/api/character/159",
+          "created": "2017-12-29T16:03:28.792Z"
+        }
+      },
+      "timestamp": "15/08/2024, 10:24:38"
+    },
+    {
+      "id": 84,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/location",
+      "params": [
+        {
+          "id": 4,
+          "paramName": "id",
+          "paramValue": "ola",
+          "paramUrl": false
+        },
+        {
+          "id": 5,
+          "paramName": "name",
+          "paramValue": "",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "ola"
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/location",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "info": {
+            "count": 126,
+            "pages": 7,
+            "next": "https://rickandmortyapi.com/api/location?page=2",
+            "prev": null
+          },
+          "results": [
+            {
+              "id": 1,
+              "name": "Earth (C-137)",
+              "type": "Planet",
+              "dimension": "Dimension C-137",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/38",
+                "https://rickandmortyapi.com/api/character/45",
+                "https://rickandmortyapi.com/api/character/71",
+                "https://rickandmortyapi.com/api/character/82",
+                "https://rickandmortyapi.com/api/character/83",
+                "https://rickandmortyapi.com/api/character/92",
+                "https://rickandmortyapi.com/api/character/112",
+                "https://rickandmortyapi.com/api/character/114",
+                "https://rickandmortyapi.com/api/character/116",
+                "https://rickandmortyapi.com/api/character/117",
+                "https://rickandmortyapi.com/api/character/120",
+                "https://rickandmortyapi.com/api/character/127",
+                "https://rickandmortyapi.com/api/character/155",
+                "https://rickandmortyapi.com/api/character/169",
+                "https://rickandmortyapi.com/api/character/175",
+                "https://rickandmortyapi.com/api/character/179",
+                "https://rickandmortyapi.com/api/character/186",
+                "https://rickandmortyapi.com/api/character/201",
+                "https://rickandmortyapi.com/api/character/216",
+                "https://rickandmortyapi.com/api/character/239",
+                "https://rickandmortyapi.com/api/character/271",
+                "https://rickandmortyapi.com/api/character/302",
+                "https://rickandmortyapi.com/api/character/303",
+                "https://rickandmortyapi.com/api/character/338",
+                "https://rickandmortyapi.com/api/character/343",
+                "https://rickandmortyapi.com/api/character/356",
+                "https://rickandmortyapi.com/api/character/394"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/1",
+              "created": "2017-11-10T12:42:04.162Z"
+            },
+            {
+              "id": 2,
+              "name": "Abadango",
+              "type": "Cluster",
+              "dimension": "unknown",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/6"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/2",
+              "created": "2017-11-10T13:06:38.182Z"
+            },
+            {
+              "id": 3,
+              "name": "Citadel of Ricks",
+              "type": "Space station",
+              "dimension": "unknown",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/8",
+                "https://rickandmortyapi.com/api/character/14",
+                "https://rickandmortyapi.com/api/character/15",
+                "https://rickandmortyapi.com/api/character/18",
+                "https://rickandmortyapi.com/api/character/21",
+                "https://rickandmortyapi.com/api/character/22",
+                "https://rickandmortyapi.com/api/character/27",
+                "https://rickandmortyapi.com/api/character/42",
+                "https://rickandmortyapi.com/api/character/43",
+                "https://rickandmortyapi.com/api/character/44",
+                "https://rickandmortyapi.com/api/character/48",
+                "https://rickandmortyapi.com/api/character/53",
+                "https://rickandmortyapi.com/api/character/56",
+                "https://rickandmortyapi.com/api/character/61",
+                "https://rickandmortyapi.com/api/character/69",
+                "https://rickandmortyapi.com/api/character/72",
+                "https://rickandmortyapi.com/api/character/73",
+                "https://rickandmortyapi.com/api/character/74",
+                "https://rickandmortyapi.com/api/character/77",
+                "https://rickandmortyapi.com/api/character/78",
+                "https://rickandmortyapi.com/api/character/85",
+                "https://rickandmortyapi.com/api/character/86",
+                "https://rickandmortyapi.com/api/character/95",
+                "https://rickandmortyapi.com/api/character/118",
+                "https://rickandmortyapi.com/api/character/119",
+                "https://rickandmortyapi.com/api/character/123",
+                "https://rickandmortyapi.com/api/character/135",
+                "https://rickandmortyapi.com/api/character/143",
+                "https://rickandmortyapi.com/api/character/152",
+                "https://rickandmortyapi.com/api/character/164",
+                "https://rickandmortyapi.com/api/character/165",
+                "https://rickandmortyapi.com/api/character/187",
+                "https://rickandmortyapi.com/api/character/200",
+                "https://rickandmortyapi.com/api/character/206",
+                "https://rickandmortyapi.com/api/character/209",
+                "https://rickandmortyapi.com/api/character/220",
+                "https://rickandmortyapi.com/api/character/229",
+                "https://rickandmortyapi.com/api/character/231",
+                "https://rickandmortyapi.com/api/character/235",
+                "https://rickandmortyapi.com/api/character/267",
+                "https://rickandmortyapi.com/api/character/278",
+                "https://rickandmortyapi.com/api/character/281",
+                "https://rickandmortyapi.com/api/character/283",
+                "https://rickandmortyapi.com/api/character/284",
+                "https://rickandmortyapi.com/api/character/285",
+                "https://rickandmortyapi.com/api/character/286",
+                "https://rickandmortyapi.com/api/character/287",
+                "https://rickandmortyapi.com/api/character/288",
+                "https://rickandmortyapi.com/api/character/289",
+                "https://rickandmortyapi.com/api/character/291",
+                "https://rickandmortyapi.com/api/character/295",
+                "https://rickandmortyapi.com/api/character/298",
+                "https://rickandmortyapi.com/api/character/299",
+                "https://rickandmortyapi.com/api/character/322",
+                "https://rickandmortyapi.com/api/character/325",
+                "https://rickandmortyapi.com/api/character/328",
+                "https://rickandmortyapi.com/api/character/330",
+                "https://rickandmortyapi.com/api/character/345",
+                "https://rickandmortyapi.com/api/character/359",
+                "https://rickandmortyapi.com/api/character/366",
+                "https://rickandmortyapi.com/api/character/378",
+                "https://rickandmortyapi.com/api/character/385",
+                "https://rickandmortyapi.com/api/character/392",
+                "https://rickandmortyapi.com/api/character/461",
+                "https://rickandmortyapi.com/api/character/462",
+                "https://rickandmortyapi.com/api/character/463",
+                "https://rickandmortyapi.com/api/character/464",
+                "https://rickandmortyapi.com/api/character/465",
+                "https://rickandmortyapi.com/api/character/466",
+                "https://rickandmortyapi.com/api/character/472",
+                "https://rickandmortyapi.com/api/character/473",
+                "https://rickandmortyapi.com/api/character/474",
+                "https://rickandmortyapi.com/api/character/475",
+                "https://rickandmortyapi.com/api/character/476",
+                "https://rickandmortyapi.com/api/character/477",
+                "https://rickandmortyapi.com/api/character/478",
+                "https://rickandmortyapi.com/api/character/479",
+                "https://rickandmortyapi.com/api/character/480",
+                "https://rickandmortyapi.com/api/character/481",
+                "https://rickandmortyapi.com/api/character/482",
+                "https://rickandmortyapi.com/api/character/483",
+                "https://rickandmortyapi.com/api/character/484",
+                "https://rickandmortyapi.com/api/character/485",
+                "https://rickandmortyapi.com/api/character/486",
+                "https://rickandmortyapi.com/api/character/487",
+                "https://rickandmortyapi.com/api/character/488",
+                "https://rickandmortyapi.com/api/character/489",
+                "https://rickandmortyapi.com/api/character/2",
+                "https://rickandmortyapi.com/api/character/1",
+                "https://rickandmortyapi.com/api/character/801",
+                "https://rickandmortyapi.com/api/character/802",
+                "https://rickandmortyapi.com/api/character/803",
+                "https://rickandmortyapi.com/api/character/804",
+                "https://rickandmortyapi.com/api/character/805",
+                "https://rickandmortyapi.com/api/character/806",
+                "https://rickandmortyapi.com/api/character/810",
+                "https://rickandmortyapi.com/api/character/811",
+                "https://rickandmortyapi.com/api/character/812",
+                "https://rickandmortyapi.com/api/character/819",
+                "https://rickandmortyapi.com/api/character/820",
+                "https://rickandmortyapi.com/api/character/818"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/3",
+              "created": "2017-11-10T13:08:13.191Z"
+            },
+            {
+              "id": 4,
+              "name": "Worldender's lair",
+              "type": "Planet",
+              "dimension": "unknown",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/10",
+                "https://rickandmortyapi.com/api/character/81",
+                "https://rickandmortyapi.com/api/character/208",
+                "https://rickandmortyapi.com/api/character/226",
+                "https://rickandmortyapi.com/api/character/340",
+                "https://rickandmortyapi.com/api/character/362",
+                "https://rickandmortyapi.com/api/character/375",
+                "https://rickandmortyapi.com/api/character/382",
+                "https://rickandmortyapi.com/api/character/395"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/4",
+              "created": "2017-11-10T13:08:20.569Z"
+            },
+            {
+              "id": 5,
+              "name": "Anatomy Park",
+              "type": "Microverse",
+              "dimension": "Dimension C-137",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/12",
+                "https://rickandmortyapi.com/api/character/17",
+                "https://rickandmortyapi.com/api/character/96",
+                "https://rickandmortyapi.com/api/character/97",
+                "https://rickandmortyapi.com/api/character/98",
+                "https://rickandmortyapi.com/api/character/99",
+                "https://rickandmortyapi.com/api/character/100",
+                "https://rickandmortyapi.com/api/character/101",
+                "https://rickandmortyapi.com/api/character/108",
+                "https://rickandmortyapi.com/api/character/268",
+                "https://rickandmortyapi.com/api/character/300"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/5",
+              "created": "2017-11-10T13:08:46.060Z"
+            },
+            {
+              "id": 6,
+              "name": "Interdimensional Cable",
+              "type": "TV",
+              "dimension": "unknown",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/20",
+                "https://rickandmortyapi.com/api/character/28",
+                "https://rickandmortyapi.com/api/character/29",
+                "https://rickandmortyapi.com/api/character/34",
+                "https://rickandmortyapi.com/api/character/49",
+                "https://rickandmortyapi.com/api/character/51",
+                "https://rickandmortyapi.com/api/character/54",
+                "https://rickandmortyapi.com/api/character/121",
+                "https://rickandmortyapi.com/api/character/126",
+                "https://rickandmortyapi.com/api/character/129",
+                "https://rickandmortyapi.com/api/character/134",
+                "https://rickandmortyapi.com/api/character/136",
+                "https://rickandmortyapi.com/api/character/145",
+                "https://rickandmortyapi.com/api/character/157",
+                "https://rickandmortyapi.com/api/character/173",
+                "https://rickandmortyapi.com/api/character/184",
+                "https://rickandmortyapi.com/api/character/205",
+                "https://rickandmortyapi.com/api/character/207",
+                "https://rickandmortyapi.com/api/character/214",
+                "https://rickandmortyapi.com/api/character/222",
+                "https://rickandmortyapi.com/api/character/223",
+                "https://rickandmortyapi.com/api/character/224",
+                "https://rickandmortyapi.com/api/character/225",
+                "https://rickandmortyapi.com/api/character/250",
+                "https://rickandmortyapi.com/api/character/254",
+                "https://rickandmortyapi.com/api/character/260",
+                "https://rickandmortyapi.com/api/character/264",
+                "https://rickandmortyapi.com/api/character/266",
+                "https://rickandmortyapi.com/api/character/275",
+                "https://rickandmortyapi.com/api/character/277",
+                "https://rickandmortyapi.com/api/character/279",
+                "https://rickandmortyapi.com/api/character/312",
+                "https://rickandmortyapi.com/api/character/314",
+                "https://rickandmortyapi.com/api/character/315",
+                "https://rickandmortyapi.com/api/character/316",
+                "https://rickandmortyapi.com/api/character/317",
+                "https://rickandmortyapi.com/api/character/318",
+                "https://rickandmortyapi.com/api/character/334",
+                "https://rickandmortyapi.com/api/character/351",
+                "https://rickandmortyapi.com/api/character/358",
+                "https://rickandmortyapi.com/api/character/367",
+                "https://rickandmortyapi.com/api/character/370",
+                "https://rickandmortyapi.com/api/character/373",
+                "https://rickandmortyapi.com/api/character/403",
+                "https://rickandmortyapi.com/api/character/406",
+                "https://rickandmortyapi.com/api/character/407",
+                "https://rickandmortyapi.com/api/character/408",
+                "https://rickandmortyapi.com/api/character/409",
+                "https://rickandmortyapi.com/api/character/410",
+                "https://rickandmortyapi.com/api/character/411",
+                "https://rickandmortyapi.com/api/character/412",
+                "https://rickandmortyapi.com/api/character/413",
+                "https://rickandmortyapi.com/api/character/414",
+                "https://rickandmortyapi.com/api/character/415",
+                "https://rickandmortyapi.com/api/character/416",
+                "https://rickandmortyapi.com/api/character/417",
+                "https://rickandmortyapi.com/api/character/418",
+                "https://rickandmortyapi.com/api/character/457",
+                "https://rickandmortyapi.com/api/character/458",
+                "https://rickandmortyapi.com/api/character/459",
+                "https://rickandmortyapi.com/api/character/709",
+                "https://rickandmortyapi.com/api/character/711"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/6",
+              "created": "2017-11-10T13:09:09.102Z"
+            },
+            {
+              "id": 7,
+              "name": "Immortality Field Resort",
+              "type": "Resort",
+              "dimension": "unknown",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/23",
+                "https://rickandmortyapi.com/api/character/204",
+                "https://rickandmortyapi.com/api/character/320"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/7",
+              "created": "2017-11-10T13:09:17.136Z"
+            },
+            {
+              "id": 8,
+              "name": "Post-Apocalyptic Earth",
+              "type": "Planet",
+              "dimension": "Post-Apocalyptic Dimension",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/25",
+                "https://rickandmortyapi.com/api/character/52",
+                "https://rickandmortyapi.com/api/character/68",
+                "https://rickandmortyapi.com/api/character/110",
+                "https://rickandmortyapi.com/api/character/111",
+                "https://rickandmortyapi.com/api/character/140",
+                "https://rickandmortyapi.com/api/character/156",
+                "https://rickandmortyapi.com/api/character/228",
+                "https://rickandmortyapi.com/api/character/323",
+                "https://rickandmortyapi.com/api/character/342"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/8",
+              "created": "2017-11-10T13:09:22.551Z"
+            },
+            {
+              "id": 9,
+              "name": "Purge Planet",
+              "type": "Planet",
+              "dimension": "Replacement Dimension",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/26",
+                "https://rickandmortyapi.com/api/character/139",
+                "https://rickandmortyapi.com/api/character/202",
+                "https://rickandmortyapi.com/api/character/273"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/9",
+              "created": "2017-11-10T13:09:29.566Z"
+            },
+            {
+              "id": 10,
+              "name": "Venzenulon 7",
+              "type": "Planet",
+              "dimension": "unknown",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/33"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/10",
+              "created": "2017-11-18T11:21:51.643Z"
+            },
+            {
+              "id": 11,
+              "name": "Bepis 9",
+              "type": "Planet",
+              "dimension": "unknown",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/35"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/11",
+              "created": "2017-11-18T11:26:03.325Z"
+            },
+            {
+              "id": 12,
+              "name": "Cronenberg Earth",
+              "type": "Planet",
+              "dimension": "Cronenberg Dimension",
+              "residents": [],
+              "url": "https://rickandmortyapi.com/api/location/12",
+              "created": "2017-11-18T11:29:27.857Z"
+            },
+            {
+              "id": 13,
+              "name": "Nuptia 4",
+              "type": "Planet",
+              "dimension": "unknown",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/40",
+                "https://rickandmortyapi.com/api/character/55",
+                "https://rickandmortyapi.com/api/character/131",
+                "https://rickandmortyapi.com/api/character/132",
+                "https://rickandmortyapi.com/api/character/146",
+                "https://rickandmortyapi.com/api/character/148",
+                "https://rickandmortyapi.com/api/character/163",
+                "https://rickandmortyapi.com/api/character/178",
+                "https://rickandmortyapi.com/api/character/310",
+                "https://rickandmortyapi.com/api/character/386",
+                "https://rickandmortyapi.com/api/character/387"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/13",
+              "created": "2017-11-18T11:30:29.780Z"
+            },
+            {
+              "id": 14,
+              "name": "Giant's Town",
+              "type": "Fantasy town",
+              "dimension": "Fantasy Dimension",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/89",
+                "https://rickandmortyapi.com/api/character/399",
+                "https://rickandmortyapi.com/api/character/400"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/14",
+              "created": "2017-11-18T11:31:15.248Z"
+            },
+            {
+              "id": 15,
+              "name": "Bird World",
+              "type": "Planet",
+              "dimension": "unknown",
+              "residents": [],
+              "url": "https://rickandmortyapi.com/api/location/15",
+              "created": "2017-11-18T11:32:26.752Z"
+            },
+            {
+              "id": 16,
+              "name": "St. Gloopy Noops Hospital",
+              "type": "Space station",
+              "dimension": "unknown",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/105",
+                "https://rickandmortyapi.com/api/character/263",
+                "https://rickandmortyapi.com/api/character/321",
+                "https://rickandmortyapi.com/api/character/383",
+                "https://rickandmortyapi.com/api/character/384",
+                "https://rickandmortyapi.com/api/character/454",
+                "https://rickandmortyapi.com/api/character/455",
+                "https://rickandmortyapi.com/api/character/456",
+                "https://rickandmortyapi.com/api/character/460"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/16",
+              "created": "2017-11-18T11:43:20.075Z"
+            },
+            {
+              "id": 17,
+              "name": "Earth (5-126)",
+              "type": "Planet",
+              "dimension": "Dimension 5-126",
+              "residents": [],
+              "url": "https://rickandmortyapi.com/api/location/17",
+              "created": "2017-11-18T11:41:08.486Z"
+            },
+            {
+              "id": 18,
+              "name": "Mr. Goldenfold's dream",
+              "type": "Dream",
+              "dimension": "Dimension C-137",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/63",
+                "https://rickandmortyapi.com/api/character/80",
+                "https://rickandmortyapi.com/api/character/221",
+                "https://rickandmortyapi.com/api/character/246",
+                "https://rickandmortyapi.com/api/character/304",
+                "https://rickandmortyapi.com/api/character/305",
+                "https://rickandmortyapi.com/api/character/306",
+                "https://rickandmortyapi.com/api/character/396"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/18",
+              "created": "2017-11-18T11:46:22.933Z"
+            },
+            {
+              "id": 19,
+              "name": "Gromflom Prime",
+              "type": "Planet",
+              "dimension": "Replacement Dimension",
+              "residents": [],
+              "url": "https://rickandmortyapi.com/api/location/19",
+              "created": "2017-11-18T11:39:52.165Z"
+            },
+            {
+              "id": 20,
+              "name": "Earth (Replacement Dimension)",
+              "type": "Planet",
+              "dimension": "Replacement Dimension",
+              "residents": [
+                "https://rickandmortyapi.com/api/character/3",
+                "https://rickandmortyapi.com/api/character/4",
+                "https://rickandmortyapi.com/api/character/5",
+                "https://rickandmortyapi.com/api/character/9",
+                "https://rickandmortyapi.com/api/character/11",
+                "https://rickandmortyapi.com/api/character/13",
+                "https://rickandmortyapi.com/api/character/16",
+                "https://rickandmortyapi.com/api/character/31",
+                "https://rickandmortyapi.com/api/character/32",
+                "https://rickandmortyapi.com/api/character/50",
+                "https://rickandmortyapi.com/api/character/58",
+                "https://rickandmortyapi.com/api/character/59",
+                "https://rickandmortyapi.com/api/character/64",
+                "https://rickandmortyapi.com/api/character/66",
+                "https://rickandmortyapi.com/api/character/76",
+                "https://rickandmortyapi.com/api/character/88",
+                "https://rickandmortyapi.com/api/character/103",
+                "https://rickandmortyapi.com/api/character/107",
+                "https://rickandmortyapi.com/api/character/109",
+                "https://rickandmortyapi.com/api/character/113",
+                "https://rickandmortyapi.com/api/character/115",
+                "https://rickandmortyapi.com/api/character/124",
+                "https://rickandmortyapi.com/api/character/128",
+                "https://rickandmortyapi.com/api/character/137",
+                "https://rickandmortyapi.com/api/character/138",
+                "https://rickandmortyapi.com/api/character/141",
+                "https://rickandmortyapi.com/api/character/147",
+                "https://rickandmortyapi.com/api/character/149",
+                "https://rickandmortyapi.com/api/character/151",
+                "https://rickandmortyapi.com/api/character/154",
+                "https://rickandmortyapi.com/api/character/166",
+                "https://rickandmortyapi.com/api/character/167",
+                "https://rickandmortyapi.com/api/character/170",
+                "https://rickandmortyapi.com/api/character/171",
+                "https://rickandmortyapi.com/api/character/172",
+                "https://rickandmortyapi.com/api/character/180",
+                "https://rickandmortyapi.com/api/character/181",
+                "https://rickandmortyapi.com/api/character/182",
+                "https://rickandmortyapi.com/api/character/185",
+                "https://rickandmortyapi.com/api/character/189",
+                "https://rickandmortyapi.com/api/character/190",
+                "https://rickandmortyapi.com/api/character/210",
+                "https://rickandmortyapi.com/api/character/217",
+                "https://rickandmortyapi.com/api/character/218",
+                "https://rickandmortyapi.com/api/character/219",
+                "https://rickandmortyapi.com/api/character/227",
+                "https://rickandmortyapi.com/api/character/230",
+                "https://rickandmortyapi.com/api/character/233",
+                "https://rickandmortyapi.com/api/character/234",
+                "https://rickandmortyapi.com/api/character/236",
+                "https://rickandmortyapi.com/api/character/237",
+                "https://rickandmortyapi.com/api/character/240",
+                "https://rickandmortyapi.com/api/character/241",
+                "https://rickandmortyapi.com/api/character/243",
+                "https://rickandmortyapi.com/api/character/244",
+                "https://rickandmortyapi.com/api/character/245",
+                "https://rickandmortyapi.com/api/character/248",
+                "https://rickandmortyapi.com/api/character/251",
+                "https://rickandmortyapi.com/api/character/255",
+                "https://rickandmortyapi.com/api/character/259",
+                "https://rickandmortyapi.com/api/character/262",
+                "https://rickandmortyapi.com/api/character/265",
+                "https://rickandmortyapi.com/api/character/272",
+                "https://rickandmortyapi.com/api/character/276",
+                "https://rickandmortyapi.com/api/character/280",
+                "https://rickandmortyapi.com/api/character/292",
+                "https://rickandmortyapi.com/api/character/293",
+                "https://rickandmortyapi.com/api/character/324",
+                "https://rickandmortyapi.com/api/character/326",
+                "https://rickandmortyapi.com/api/character/327",
+                "https://rickandmortyapi.com/api/character/332",
+                "https://rickandmortyapi.com/api/character/335",
+                "https://rickandmortyapi.com/api/character/341",
+                "https://rickandmortyapi.com/api/character/346",
+                "https://rickandmortyapi.com/api/character/347",
+                "https://rickandmortyapi.com/api/character/352",
+                "https://rickandmortyapi.com/api/character/353",
+                "https://rickandmortyapi.com/api/character/354",
+                "https://rickandmortyapi.com/api/character/357",
+                "https://rickandmortyapi.com/api/character/360",
+                "https://rickandmortyapi.com/api/character/361",
+                "https://rickandmortyapi.com/api/character/363",
+                "https://rickandmortyapi.com/api/character/365",
+                "https://rickandmortyapi.com/api/character/374",
+                "https://rickandmortyapi.com/api/character/377",
+                "https://rickandmortyapi.com/api/character/390",
+                "https://rickandmortyapi.com/api/character/391",
+                "https://rickandmortyapi.com/api/character/401",
+                "https://rickandmortyapi.com/api/character/402",
+                "https://rickandmortyapi.com/api/character/405",
+                "https://rickandmortyapi.com/api/character/423",
+                "https://rickandmortyapi.com/api/character/435",
+                "https://rickandmortyapi.com/api/character/437",
+                "https://rickandmortyapi.com/api/character/438",
+                "https://rickandmortyapi.com/api/character/439",
+                "https://rickandmortyapi.com/api/character/440",
+                "https://rickandmortyapi.com/api/character/452",
+                "https://rickandmortyapi.com/api/character/453",
+                "https://rickandmortyapi.com/api/character/467",
+                "https://rickandmortyapi.com/api/character/468",
+                "https://rickandmortyapi.com/api/character/469",
+                "https://rickandmortyapi.com/api/character/471",
+                "https://rickandmortyapi.com/api/character/492",
+                "https://rickandmortyapi.com/api/character/493",
+                "https://rickandmortyapi.com/api/character/497",
+                "https://rickandmortyapi.com/api/character/509",
+                "https://rickandmortyapi.com/api/character/510",
+                "https://rickandmortyapi.com/api/character/511",
+                "https://rickandmortyapi.com/api/character/512",
+                "https://rickandmortyapi.com/api/character/513",
+                "https://rickandmortyapi.com/api/character/514",
+                "https://rickandmortyapi.com/api/character/516",
+                "https://rickandmortyapi.com/api/character/517",
+                "https://rickandmortyapi.com/api/character/523",
+                "https://rickandmortyapi.com/api/character/524",
+                "https://rickandmortyapi.com/api/character/526",
+                "https://rickandmortyapi.com/api/character/534",
+                "https://rickandmortyapi.com/api/character/535",
+                "https://rickandmortyapi.com/api/character/536",
+                "https://rickandmortyapi.com/api/character/537",
+                "https://rickandmortyapi.com/api/character/538",
+                "https://rickandmortyapi.com/api/character/539",
+                "https://rickandmortyapi.com/api/character/540",
+                "https://rickandmortyapi.com/api/character/541",
+                "https://rickandmortyapi.com/api/character/561",
+                "https://rickandmortyapi.com/api/character/562",
+                "https://rickandmortyapi.com/api/character/564",
+                "https://rickandmortyapi.com/api/character/570",
+                "https://rickandmortyapi.com/api/character/575",
+                "https://rickandmortyapi.com/api/character/584",
+                "https://rickandmortyapi.com/api/character/585",
+                "https://rickandmortyapi.com/api/character/586",
+                "https://rickandmortyapi.com/api/character/588",
+                "https://rickandmortyapi.com/api/character/590",
+                "https://rickandmortyapi.com/api/character/591",
+                "https://rickandmortyapi.com/api/character/592",
+                "https://rickandmortyapi.com/api/character/667",
+                "https://rickandmortyapi.com/api/character/672",
+                "https://rickandmortyapi.com/api/character/680",
+                "https://rickandmortyapi.com/api/character/684",
+                "https://rickandmortyapi.com/api/character/686",
+                "https://rickandmortyapi.com/api/character/687",
+                "https://rickandmortyapi.com/api/character/688",
+                "https://rickandmortyapi.com/api/character/689",
+                "https://rickandmortyapi.com/api/character/690",
+                "https://rickandmortyapi.com/api/character/691",
+                "https://rickandmortyapi.com/api/character/692",
+                "https://rickandmortyapi.com/api/character/693",
+                "https://rickandmortyapi.com/api/character/694",
+                "https://rickandmortyapi.com/api/character/695",
+                "https://rickandmortyapi.com/api/character/696",
+                "https://rickandmortyapi.com/api/character/697",
+                "https://rickandmortyapi.com/api/character/698",
+                "https://rickandmortyapi.com/api/character/699",
+                "https://rickandmortyapi.com/api/character/700",
+                "https://rickandmortyapi.com/api/character/701",
+                "https://rickandmortyapi.com/api/character/702",
+                "https://rickandmortyapi.com/api/character/703",
+                "https://rickandmortyapi.com/api/character/704",
+                "https://rickandmortyapi.com/api/character/705",
+                "https://rickandmortyapi.com/api/character/706",
+                "https://rickandmortyapi.com/api/character/707",
+                "https://rickandmortyapi.com/api/character/708",
+                "https://rickandmortyapi.com/api/character/710",
+                "https://rickandmortyapi.com/api/character/712",
+                "https://rickandmortyapi.com/api/character/713",
+                "https://rickandmortyapi.com/api/character/714",
+                "https://rickandmortyapi.com/api/character/715",
+                "https://rickandmortyapi.com/api/character/716",
+                "https://rickandmortyapi.com/api/character/717",
+                "https://rickandmortyapi.com/api/character/719",
+                "https://rickandmortyapi.com/api/character/720",
+                "https://rickandmortyapi.com/api/character/721",
+                "https://rickandmortyapi.com/api/character/722",
+                "https://rickandmortyapi.com/api/character/723",
+                "https://rickandmortyapi.com/api/character/724",
+                "https://rickandmortyapi.com/api/character/725",
+                "https://rickandmortyapi.com/api/character/726",
+                "https://rickandmortyapi.com/api/character/727",
+                "https://rickandmortyapi.com/api/character/728",
+                "https://rickandmortyapi.com/api/character/729",
+                "https://rickandmortyapi.com/api/character/730",
+                "https://rickandmortyapi.com/api/character/732",
+                "https://rickandmortyapi.com/api/character/733",
+                "https://rickandmortyapi.com/api/character/734",
+                "https://rickandmortyapi.com/api/character/735",
+                "https://rickandmortyapi.com/api/character/737",
+                "https://rickandmortyapi.com/api/character/738",
+                "https://rickandmortyapi.com/api/character/739",
+                "https://rickandmortyapi.com/api/character/740",
+                "https://rickandmortyapi.com/api/character/741",
+                "https://rickandmortyapi.com/api/character/742",
+                "https://rickandmortyapi.com/api/character/753",
+                "https://rickandmortyapi.com/api/character/754",
+                "https://rickandmortyapi.com/api/character/755",
+                "https://rickandmortyapi.com/api/character/756",
+                "https://rickandmortyapi.com/api/character/757",
+                "https://rickandmortyapi.com/api/character/758",
+                "https://rickandmortyapi.com/api/character/759",
+                "https://rickandmortyapi.com/api/character/760",
+                "https://rickandmortyapi.com/api/character/761",
+                "https://rickandmortyapi.com/api/character/762",
+                "https://rickandmortyapi.com/api/character/763",
+                "https://rickandmortyapi.com/api/character/764",
+                "https://rickandmortyapi.com/api/character/765",
+                "https://rickandmortyapi.com/api/character/766",
+                "https://rickandmortyapi.com/api/character/767",
+                "https://rickandmortyapi.com/api/character/768",
+                "https://rickandmortyapi.com/api/character/769",
+                "https://rickandmortyapi.com/api/character/770",
+                "https://rickandmortyapi.com/api/character/771",
+                "https://rickandmortyapi.com/api/character/772",
+                "https://rickandmortyapi.com/api/character/773",
+                "https://rickandmortyapi.com/api/character/774",
+                "https://rickandmortyapi.com/api/character/775",
+                "https://rickandmortyapi.com/api/character/776",
+                "https://rickandmortyapi.com/api/character/777",
+                "https://rickandmortyapi.com/api/character/778",
+                "https://rickandmortyapi.com/api/character/781",
+                "https://rickandmortyapi.com/api/character/786",
+                "https://rickandmortyapi.com/api/character/788",
+                "https://rickandmortyapi.com/api/character/789",
+                "https://rickandmortyapi.com/api/character/790",
+                "https://rickandmortyapi.com/api/character/791",
+                "https://rickandmortyapi.com/api/character/203",
+                "https://rickandmortyapi.com/api/character/794",
+                "https://rickandmortyapi.com/api/character/800",
+                "https://rickandmortyapi.com/api/character/813",
+                "https://rickandmortyapi.com/api/character/821",
+                "https://rickandmortyapi.com/api/character/826"
+              ],
+              "url": "https://rickandmortyapi.com/api/location/20",
+              "created": "2017-11-18T19:33:01.173Z"
+            }
+          ]
+        }
+      },
+      "timestamp": "15/08/2024, 10:26:13"
+    },
+    {
+      "id": 85,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/location",
+      "params": [
+        {
+          "id": 4,
+          "paramName": "id",
+          "paramValue": "ola",
+          "paramUrl": true
+        },
+        {
+          "id": 5,
+          "paramName": "name",
+          "paramValue": "",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "ola"
+      },
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 500,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/location/ola",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://rickandmortyapi.com/api/location/ola: 500 OK",
+        "error": {
+          "error": "Hey! you must provide an id"
+        }
+      },
+      "timestamp": "15/08/2024, 10:27:00"
+    },
+    {
+      "id": 86,
+      "appId": 10,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 401,
+        "statusText": "Unauthorized",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType: 401 Unauthorized",
+        "error": null
+      },
+      "timestamp": "15/08/2024, 10:29:12"
+    },
+    {
+      "id": 87,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "BranchOffice.BFF",
+          "Environment": "Development",
+          "Now": "2024-08-15T13:30:35.1138748+00:00",
+          "Git": {
+            "Branch": "aa8ec7d",
+            "Commit": "aa8ec7d",
+            "CommitDate": "2024-08-15T00:20:07+00:00",
+            "IsDirty": false,
+            "Sha": "aa8ec7d728cecf7062e39a85dcb263dcb31f47b1"
+          }
+        }
+      },
+      "timestamp": "15/08/2024, 10:30:35"
+    },
+    {
+      "id": 88,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/character",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "159",
+          "paramUrl": true
+        },
+        {
+          "id": 2,
+          "paramName": "name",
+          "paramValue": "",
+          "paramUrl": true
+        },
+        {
+          "id": 3,
+          "paramName": "status",
+          "paramValue": "",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "159"
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/character/159",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "id": 159,
+          "name": "Hunter",
+          "status": "Dead",
+          "species": "Human",
+          "type": "Clone",
+          "gender": "Male",
+          "origin": {
+            "name": "Earth (Giant Telepathic Spiders Dimension)",
+            "url": "https://rickandmortyapi.com/api/location/42"
+          },
+          "location": {
+            "name": "Earth (Giant Telepathic Spiders Dimension)",
+            "url": "https://rickandmortyapi.com/api/location/42"
+          },
+          "image": "https://rickandmortyapi.com/api/character/avatar/159.jpeg",
+          "episode": [
+            "https://rickandmortyapi.com/api/episode/17"
+          ],
+          "url": "https://rickandmortyapi.com/api/character/159",
+          "created": "2017-12-29T16:03:28.792Z"
+        }
+      },
+      "timestamp": "16/08/2024, 08:50:46"
+    },
+    {
+      "id": 89,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/character",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "147",
+          "paramUrl": true
+        },
+        {
+          "id": 2,
+          "paramName": "name",
+          "paramValue": "",
+          "paramUrl": true
+        },
+        {
+          "id": 3,
+          "paramName": "status",
+          "paramValue": "",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "147"
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/character/147",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "id": 147,
+          "name": "Gobo",
+          "status": "Dead",
+          "species": "Alien",
+          "type": "",
+          "gender": "Male",
+          "origin": {
+            "name": "unknown",
+            "url": ""
+          },
+          "location": {
+            "name": "Earth (Replacement Dimension)",
+            "url": "https://rickandmortyapi.com/api/location/20"
+          },
+          "image": "https://rickandmortyapi.com/api/character/avatar/147.jpeg",
+          "episode": [
+            "https://rickandmortyapi.com/api/episode/29"
+          ],
+          "url": "https://rickandmortyapi.com/api/character/147",
+          "created": "2017-12-29T11:38:29.578Z"
+        }
+      },
+      "timestamp": "16/08/2024, 09:00:37"
+    },
+    {
+      "id": 90,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/character",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "147",
+          "paramUrl": true
+        },
+        {
+          "id": 2,
+          "paramName": "name",
+          "paramValue": "",
+          "paramUrl": true
+        },
+        {
+          "id": 3,
+          "paramName": "status",
+          "paramValue": "",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "147"
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/character/147",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "id": 147,
+          "name": "Gobo",
+          "status": "Dead",
+          "species": "Alien",
+          "type": "",
+          "gender": "Male",
+          "origin": {
+            "name": "unknown",
+            "url": ""
+          },
+          "location": {
+            "name": "Earth (Replacement Dimension)",
+            "url": "https://rickandmortyapi.com/api/location/20"
+          },
+          "image": "https://rickandmortyapi.com/api/character/avatar/147.jpeg",
+          "episode": [
+            "https://rickandmortyapi.com/api/episode/29"
+          ],
+          "url": "https://rickandmortyapi.com/api/character/147",
+          "created": "2017-12-29T11:38:29.578Z"
+        }
+      },
+      "timestamp": "16/08/2024, 09:01:46"
+    },
+    {
+      "id": 91,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/character",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "123",
+          "paramUrl": true
+        },
+        {
+          "id": 2,
+          "paramName": "name",
+          "paramValue": "",
+          "paramUrl": true
+        },
+        {
+          "id": 3,
+          "paramName": "status",
+          "paramValue": "",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "123"
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/character/123",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "id": 123,
+          "name": "Fat Morty",
+          "status": "Alive",
+          "species": "Human",
+          "type": "",
+          "gender": "Male",
+          "origin": {
+            "name": "unknown",
+            "url": ""
+          },
+          "location": {
+            "name": "Citadel of Ricks",
+            "url": "https://rickandmortyapi.com/api/location/3"
+          },
+          "image": "https://rickandmortyapi.com/api/character/avatar/123.jpeg",
+          "episode": [
+            "https://rickandmortyapi.com/api/episode/28"
+          ],
+          "url": "https://rickandmortyapi.com/api/character/123",
+          "created": "2017-12-26T17:22:40.315Z"
+        }
+      },
+      "timestamp": "16/08/2024, 09:02:07"
+    },
+    {
+      "id": 92,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/character",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "126",
+          "paramUrl": true
+        },
+        {
+          "id": 2,
+          "paramName": "name",
+          "paramValue": "",
+          "paramUrl": true
+        },
+        {
+          "id": 3,
+          "paramName": "status",
+          "paramValue": "",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "126"
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/character/126",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "id": 126,
+          "name": "Fleeb",
+          "status": "unknown",
+          "species": "Alien",
+          "type": "",
+          "gender": "unknown",
+          "origin": {
+            "name": "unknown",
+            "url": ""
+          },
+          "location": {
+            "name": "Interdimensional Cable",
+            "url": "https://rickandmortyapi.com/api/location/6"
+          },
+          "image": "https://rickandmortyapi.com/api/character/avatar/126.jpeg",
+          "episode": [
+            "https://rickandmortyapi.com/api/episode/19"
+          ],
+          "url": "https://rickandmortyapi.com/api/character/126",
+          "created": "2017-12-26T18:45:42.593Z"
+        }
+      },
+      "timestamp": "16/08/2024, 09:06:27"
+    },
+    {
+      "id": 93,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "BranchOffice.BFF",
+          "Environment": "Development",
+          "Now": "2024-08-16T12:07:11.0198091+00:00",
+          "Git": {
+            "Branch": "82c1ccb",
+            "Commit": "82c1ccb",
+            "CommitDate": "2024-08-16T02:31:07+00:00",
+            "IsDirty": false,
+            "Sha": "82c1ccb4adf5e798caf184a575b84e0b2b7bddb6"
+          }
+        }
+      },
+      "timestamp": "16/08/2024, 09:07:11"
+    },
+    {
+      "id": 94,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 401,
+        "statusText": "Unauthorized",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType: 401 Unauthorized",
+        "error": null
+      },
+      "timestamp": "16/08/2024, 09:08:50"
+    },
+    {
+      "id": 95,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        "Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM4MTAwODMsImV4cCI6MTcyMzgxMzY4MywiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzgxMDA4MiwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjI2M0JFQkM5QTI1NkM2QUZFOTEyNTY2RDQ2RTI1MDdCIiwiaWF0IjoxNzIzODEwMDgzLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.uyIqTpbBjoUfNTkUYhZgVG9EmgN25jvZRjaa_YsWr4gewTaPx4J9CtOIuONeGZ_0WDNtaxTinN2G8vD-UBRjcNGYHszj0k2mQaHvZgB2RwNkR1DgwXg0M8FFbZpzRvNFG-4_c2XmxgJ0BpJIRsaw_UZerr0N6CZn3Qsu0ZKG8L-l6D5LXwYwMKFiAEZ8FWzT32MTLhA4Uiu3qO5yi-IHy1f8pUbjNC0Ft3teerYvyZkufI_zqKoM42N2eJoQQd3qz2NOf0cMIEIo-5dwOcJ_p7KegKhfvYQldjkZGigfzrcXU5cUgmNjV_Ol0wj1MwZxsTnOARfJhRByfL-pnV3HoQ"
+      ],
+      "body": {},
+      "error": {},
+      "timestamp": "16/08/2024, 09:09:01"
+    },
+    {
+      "id": 96,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        "Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM4MTAwODMsImV4cCI6MTcyMzgxMzY4MywiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzgxMDA4MiwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjI2M0JFQkM5QTI1NkM2QUZFOTEyNTY2RDQ2RTI1MDdCIiwiaWF0IjoxNzIzODEwMDgzLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.uyIqTpbBjoUfNTkUYhZgVG9EmgN25jvZRjaa_YsWr4gewTaPx4J9CtOIuONeGZ_0WDNtaxTinN2G8vD-UBRjcNGYHszj0k2mQaHvZgB2RwNkR1DgwXg0M8FFbZpzRvNFG-4_c2XmxgJ0BpJIRsaw_UZerr0N6CZn3Qsu0ZKG8L-l6D5LXwYwMKFiAEZ8FWzT32MTLhA4Uiu3qO5yi-IHy1f8pUbjNC0Ft3teerYvyZkufI_zqKoM42N2eJoQQd3qz2NOf0cMIEIo-5dwOcJ_p7KegKhfvYQldjkZGigfzrcXU5cUgmNjV_Ol0wj1MwZxsTnOARfJhRByfL-pnV3HoQ"
+      ],
+      "body": {},
+      "error": {},
+      "timestamp": "16/08/2024, 09:09:24"
+    },
+    {
+      "id": 97,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM4MTAwODMsImV4cCI6MTcyMzgxMzY4MywiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzgxMDA4MiwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjI2M0JFQkM5QTI1NkM2QUZFOTEyNTY2RDQ2RTI1MDdCIiwiaWF0IjoxNzIzODEwMDgzLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.uyIqTpbBjoUfNTkUYhZgVG9EmgN25jvZRjaa_YsWr4gewTaPx4J9CtOIuONeGZ_0WDNtaxTinN2G8vD-UBRjcNGYHszj0k2mQaHvZgB2RwNkR1DgwXg0M8FFbZpzRvNFG-4_c2XmxgJ0BpJIRsaw_UZerr0N6CZn3Qsu0ZKG8L-l6D5LXwYwMKFiAEZ8FWzT32MTLhA4Uiu3qO5yi-IHy1f8pUbjNC0Ft3teerYvyZkufI_zqKoM42N2eJoQQd3qz2NOf0cMIEIo-5dwOcJ_p7KegKhfvYQldjkZGigfzrcXU5cUgmNjV_Ol0wj1MwZxsTnOARfJhRByfL-pnV3HoQ"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": [
+          {
+            "id": 2,
+            "name": "Gerente de Filial"
+          },
+          {
+            "id": 3,
+            "name": "Gerente de Regional"
+          },
+          {
+            "id": 4,
+            "name": "Diretor de Regional"
+          },
+          {
+            "id": 5,
+            "name": "Inspetor de Qualidade"
+          }
+        ]
+      },
+      "timestamp": "16/08/2024, 09:10:05"
+    },
+    {
+      "id": 98,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM4MTAwODMsImV4cCI6MTcyMzgxMzY4MywiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzgxMDA4MiwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjI2M0JFQkM5QTI1NkM2QUZFOTEyNTY2RDQ2RTI1MDdCIiwiaWF0IjoxNzIzODEwMDgzLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.uyIqTpbBjoUfNTkUYhZgVG9EmgN25jvZRjaa_YsWr4gewTaPx4J9CtOIuONeGZ_0WDNtaxTinN2G8vD-UBRjcNGYHszj0k2mQaHvZgB2RwNkR1DgwXg0M8FFbZpzRvNFG-4_c2XmxgJ0BpJIRsaw_UZerr0N6CZn3Qsu0ZKG8L-l6D5LXwYwMKFiAEZ8FWzT32MTLhA4Uiu3qO5yi-IHy1f8pUbjNC0Ft3teerYvyZkufI_zqKoM42N2eJoQQd3qz2NOf0cMIEIo-5dwOcJ_p7KegKhfvYQldjkZGigfzrcXU5cUgmNjV_Ol0wj1MwZxsTnOARfJhRByfL-pnV3HoQ"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": [
+          {
+            "id": 2,
+            "name": "Gerente de Filial"
+          },
+          {
+            "id": 3,
+            "name": "Gerente de Regional"
+          },
+          {
+            "id": 4,
+            "name": "Diretor de Regional"
+          },
+          {
+            "id": 5,
+            "name": "Inspetor de Qualidade"
+          }
+        ]
+      },
+      "timestamp": "16/08/2024, 09:12:52"
+    },
+    {
+      "id": 99,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM4MTAwODMsImV4cCI6MTcyMzgxMzY4MywiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzgxMDA4MiwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjI2M0JFQkM5QTI1NkM2QUZFOTEyNTY2RDQ2RTI1MDdCIiwiaWF0IjoxNzIzODEwMDgzLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.uyIqTpbBjoUfNTkUYhZgVG9EmgN25jvZRjaa_YsWr4gewTaPx4J9CtOIuONeGZ_0WDNtaxTinN2G8vD-UBRjcNGYHszj0k2mQaHvZgB2RwNkR1DgwXg0M8FFbZpzRvNFG-4_c2XmxgJ0BpJIRsaw_UZerr0N6CZn3Qsu0ZKG8L-l6D5LXwYwMKFiAEZ8FWzT32MTLhA4Uiu3qO5yi-IHy1f8pUbjNC0Ft3teerYvyZkufI_zqKoM42N2eJoQQd3qz2NOf0cMIEIo-5dwOcJ_p7KegKhfvYQldjkZGigfzrcXU5cUgmNjV_Ol0wj1MwZxsTnOARfJhRByfL-pnV3HoQ"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": [
+          {
+            "id": 2,
+            "name": "Gerente de Filial"
+          },
+          {
+            "id": 3,
+            "name": "Gerente de Regional"
+          },
+          {
+            "id": 4,
+            "name": "Diretor de Regional"
+          },
+          {
+            "id": 5,
+            "name": "Inspetor de Qualidade"
+          }
+        ]
+      },
+      "timestamp": "16/08/2024, 09:22:45"
+    },
+    {
+      "id": 100,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM4MTAwODMsImV4cCI6MTcyMzgxMzY4MywiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzgxMDA4MiwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjI2M0JFQkM5QTI1NkM2QUZFOTEyNTY2RDQ2RTI1MDdCIiwiaWF0IjoxNzIzODEwMDgzLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.uyIqTpbBjoUfNTkUYhZgVG9EmgN25jvZRjaa_YsWr4gewTaPx4J9CtOIuONeGZ_0WDNtaxTinN2G8vD-UBRjcNGYHszj0k2mQaHvZgB2RwNkR1DgwXg0M8FFbZpzRvNFG-4_c2XmxgJ0BpJIRsaw_UZerr0N6CZn3Qsu0ZKG8L-l6D5LXwYwMKFiAEZ8FWzT32MTLhA4Uiu3qO5yi-IHy1f8pUbjNC0Ft3teerYvyZkufI_zqKoM42N2eJoQQd3qz2NOf0cMIEIo-5dwOcJ_p7KegKhfvYQldjkZGigfzrcXU5cUgmNjV_Ol0wj1MwZxsTnOARfJhRByfL-pnV3HoQ"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": [
+          {
+            "id": 2,
+            "name": "Gerente de Filial"
+          },
+          {
+            "id": 3,
+            "name": "Gerente de Regional"
+          },
+          {
+            "id": 4,
+            "name": "Diretor de Regional"
+          },
+          {
+            "id": 5,
+            "name": "Inspetor de Qualidade"
+          }
+        ]
+      },
+      "timestamp": "16/08/2024, 09:26:21"
+    },
+    {
+      "id": 101,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM4MTAwODMsImV4cCI6MTcyMzgxMzY4MywiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzgxMDA4MiwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjI2M0JFQkM5QTI1NkM2QUZFOTEyNTY2RDQ2RTI1MDdCIiwiaWF0IjoxNzIzODEwMDgzLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.uyIqTpbBjoUfNTkUYhZgVG9EmgN25jvZRjaa_YsWr4gewTaPx4J9CtOIuONeGZ_0WDNtaxTinN2G8vD-UBRjcNGYHszj0k2mQaHvZgB2RwNkR1DgwXg0M8FFbZpzRvNFG-4_c2XmxgJ0BpJIRsaw_UZerr0N6CZn3Qsu0ZKG8L-l6D5LXwYwMKFiAEZ8FWzT32MTLhA4Uiu3qO5yi-IHy1f8pUbjNC0Ft3teerYvyZkufI_zqKoM42N2eJoQQd3qz2NOf0cMIEIo-5dwOcJ_p7KegKhfvYQldjkZGigfzrcXU5cUgmNjV_Ol0wj1MwZxsTnOARfJhRByfL-pnV3HoQ"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": [
+          {
+            "id": 2,
+            "name": "Gerente de Filial"
+          },
+          {
+            "id": 3,
+            "name": "Gerente de Regional"
+          },
+          {
+            "id": 4,
+            "name": "Diretor de Regional"
+          },
+          {
+            "id": 5,
+            "name": "Inspetor de Qualidade"
+          }
+        ]
+      },
+      "timestamp": "16/08/2024, 09:31:51"
+    },
+    {
+      "id": 102,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM4MTAwODMsImV4cCI6MTcyMzgxMzY4MywiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzgxMDA4MiwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjI2M0JFQkM5QTI1NkM2QUZFOTEyNTY2RDQ2RTI1MDdCIiwiaWF0IjoxNzIzODEwMDgzLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.uyIqTpbBjoUfNTkUYhZgVG9EmgN25jvZRjaa_YsWr4gewTaPx4J9CtOIuONeGZ_0WDNtaxTinN2G8vD-UBRjcNGYHszj0k2mQaHvZgB2RwNkR1DgwXg0M8FFbZpzRvNFG-4_c2XmxgJ0BpJIRsaw_UZerr0N6CZn3Qsu0ZKG8L-l6D5LXwYwMKFiAEZ8FWzT32MTLhA4Uiu3qO5yi-IHy1f8pUbjNC0Ft3teerYvyZkufI_zqKoM42N2eJoQQd3qz2NOf0cMIEIo-5dwOcJ_p7KegKhfvYQldjkZGigfzrcXU5cUgmNjV_Ol0wj1MwZxsTnOARfJhRByfL-pnV3HoQ"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": [
+          {
+            "id": 2,
+            "name": "Gerente de Filial"
+          },
+          {
+            "id": 3,
+            "name": "Gerente de Regional"
+          },
+          {
+            "id": 4,
+            "name": "Diretor de Regional"
+          },
+          {
+            "id": 5,
+            "name": "Inspetor de Qualidade"
+          }
+        ]
+      },
+      "timestamp": "16/08/2024, 09:33:12"
+    },
+    {
+      "id": 103,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM4MTIwMjIsImV4cCI6MTcyMzgxNTYyMiwiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzgxMjAxOCwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjI0MUY2OTI5NTVEMUFGMjVFOTA4RTQzODNCRDExQkYzIiwiaWF0IjoxNzIzODEyMDIyLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.u5uZc-Pzys0JyM_N-JtuRsAQRuYNHbYNyaRFEtFJbhJWZJWRGQNfmD2jq8HviSTv4BWxnZTCWdzpl2EhIy7ViYBzTsZEFDF0SMabA6yTMohXNC7xtr2avWH-veGgp3xvdH1HMV7jy9qmVeWz1a1D-H9rPTmPJac2o8b6BUEAnTqluKsjv3UGGzI7nnjVvarGYT0oWgsjjO2gL34Eu8KCd8P1wF5rbrCLY4HoZGCWRX3Okm4Xk6GBWpx8ycOCvQ5zUeu3ggK6yj0IuBTt_clufaU4uho_dYEy6TDC1op1j1wvtGli1pgzgmMz5G02qnG57PUq2CDVOLvn7gg39bLPBg"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": [
+          {
+            "id": 2,
+            "name": "Gerente de Filial"
+          },
+          {
+            "id": 3,
+            "name": "Gerente de Regional"
+          },
+          {
+            "id": 4,
+            "name": "Diretor de Regional"
+          },
+          {
+            "id": 5,
+            "name": "Inspetor de Qualidade"
+          }
+        ]
+      },
+      "timestamp": "16/08/2024, 09:40:42"
+    },
+    {
+      "id": 104,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "AppName": "BranchOffice.BFF",
+          "Environment": "Development",
+          "Now": "2024-08-16T12:46:15.8849746+00:00",
+          "Git": {
+            "Branch": "82c1ccb",
+            "Commit": "82c1ccb",
+            "CommitDate": "2024-08-16T02:31:07+00:00",
+            "IsDirty": false,
+            "Sha": "82c1ccb4adf5e798caf184a575b84e0b2b7bddb6"
+          }
+        }
+      },
+      "timestamp": "16/08/2024, 09:46:16"
+    },
+    {
+      "id": 105,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 401,
+        "statusText": "Unauthorized",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType: 401 Unauthorized",
+        "error": null
+      },
+      "timestamp": "16/08/2024, 09:46:35"
+    },
+    {
+      "id": 106,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM4MTI0MjMsImV4cCI6MTcyMzgxNjAyMywiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzgxMjQyMiwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjJGOTdCNTY0QUU3QUJDNkM3MzNBQThEQkY2MEJBQUU1IiwiaWF0IjoxNzIzODEyNDIzLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.ZpKSLo1gqUfItmmyp1APrdP19kYmNOLf6uboPQ5UD2xoJy8-GggVfq1-y-EnPBkz0x9O0rPfUbR5nU-Ev8oeB6snlc5sjRjJ8aRSyZnNGuiOeO7KEBZKx12jUFuvRwGGlTkatnDYN1Xa21h-IgVoaSBjTX86Oj4kCHNz9rymyT4I2V9cHFxSxmq2azZ9xCrB40USDNxCIHl_gEosHj9KWoyC-G650cw0YGbC5H0__m8DyWMBzz7EG1u_9MpjEohpOZ4G6mY3OJcWEhWk2sVwlLO0oovox5KwOsF4TwsKteyiCtPzipwi-3bNStChaNYL8b79u5mIzl0Gtc5qLhs-_g"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": [
+          {
+            "id": 2,
+            "name": "Gerente de Filial"
+          },
+          {
+            "id": 3,
+            "name": "Gerente de Regional"
+          },
+          {
+            "id": 4,
+            "name": "Diretor de Regional"
+          },
+          {
+            "id": 5,
+            "name": "Inspetor de Qualidade"
+          }
+        ]
+      },
+      "timestamp": "16/08/2024, 09:47:15"
+    },
+    {
+      "id": 107,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 3,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/Contact",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+          "paramUrl": true
+        }
+      ],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM4MTI0MjMsImV4cCI6MTcyMzgxNjAyMywiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzgxMjQyMiwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjJGOTdCNTY0QUU3QUJDNkM3MzNBQThEQkY2MEJBQUU1IiwiaWF0IjoxNzIzODEyNDIzLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.ZpKSLo1gqUfItmmyp1APrdP19kYmNOLf6uboPQ5UD2xoJy8-GggVfq1-y-EnPBkz0x9O0rPfUbR5nU-Ev8oeB6snlc5sjRjJ8aRSyZnNGuiOeO7KEBZKx12jUFuvRwGGlTkatnDYN1Xa21h-IgVoaSBjTX86Oj4kCHNz9rymyT4I2V9cHFxSxmq2azZ9xCrB40USDNxCIHl_gEosHj9KWoyC-G650cw0YGbC5H0__m8DyWMBzz7EG1u_9MpjEohpOZ4G6mY3OJcWEhWk2sVwlLO0oovox5KwOsF4TwsKteyiCtPzipwi-3bNStChaNYL8b79u5mIzl0Gtc5qLhs-_g"
+        }
+      ],
+      "body": {
+        "id": "5282757f-60d5-4dfb-bb82-6c455c5b84fc"
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/Contact/5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": {
+          "id": "5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+          "cpf": "14907620942",
+          "name": "Carlos Luz",
+          "email": "carlosluz12892@gmail.com",
+          "phone": "41920034148",
+          "contactTypeId": 2,
+          "contactType": null,
+          "tagNumber": null
+        }
+      },
+      "timestamp": "16/08/2024, 09:47:48"
+    },
+    {
+      "id": 108,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM4MTI4MjIsImV4cCI6MTcyMzgxNjQyMiwiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzgxMjgyMCwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjBEN0NBMTZFNjBDMjgxQUVEOTk5OUQ4RTM2Qzc1OEJEIiwiaWF0IjoxNzIzODEyODIyLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.AMAAqP7NsFtxTlpvXJbCsByYsyNlZL2rQziQNts_6pYpkYmWyNpwk-tsz8XiNKH0rByCXb-jw5hYzdUvdGE28Es_bCBGy9boVg0FyJpyEtUjTP4I4I0TjN0lxudJtMdLDQ8P7YqKOe3r0IaXZC4bQxDYT-WeZJMCRM46_ugpEhJf5ZVwZ2CuA4QIdodNCaHoDVmIzKPC6P1igr8U_b4PxwOR_3QqzY58QpWxzkqpgeUk4jYK2mBageO6CgjjZM3_F7PyT3DWBcU31cBY5itfWGRuKRWO--g8rQD-bn7o77cPznOlzdAdKiKVGUH9lBJ9jnUPUsiiHqa4hXVq6pJ1Hw"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": [
+          {
+            "id": 2,
+            "name": "Gerente de Filial"
+          },
+          {
+            "id": 3,
+            "name": "Gerente de Regional"
+          },
+          {
+            "id": 4,
+            "name": "Diretor de Regional"
+          },
+          {
+            "id": 5,
+            "name": "Inspetor de Qualidade"
+          }
+        ]
+      },
+      "timestamp": "16/08/2024, 09:53:58"
+    },
+    {
+      "id": 109,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 3,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/Contact",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+          "paramUrl": true
+        }
+      ],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM4MTI4MjIsImV4cCI6MTcyMzgxNjQyMiwiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzgxMjgyMCwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IjBEN0NBMTZFNjBDMjgxQUVEOTk5OUQ4RTM2Qzc1OEJEIiwiaWF0IjoxNzIzODEyODIyLCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.AMAAqP7NsFtxTlpvXJbCsByYsyNlZL2rQziQNts_6pYpkYmWyNpwk-tsz8XiNKH0rByCXb-jw5hYzdUvdGE28Es_bCBGy9boVg0FyJpyEtUjTP4I4I0TjN0lxudJtMdLDQ8P7YqKOe3r0IaXZC4bQxDYT-WeZJMCRM46_ugpEhJf5ZVwZ2CuA4QIdodNCaHoDVmIzKPC6P1igr8U_b4PxwOR_3QqzY58QpWxzkqpgeUk4jYK2mBageO6CgjjZM3_F7PyT3DWBcU31cBY5itfWGRuKRWO--g8rQD-bn7o77cPznOlzdAdKiKVGUH9lBJ9jnUPUsiiHqa4hXVq6pJ1Hw"
+        }
+      ],
+      "body": {
+        "id": "5282757f-60d5-4dfb-bb82-6c455c5b84fc"
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/Contact/5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": {
+          "id": "5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+          "cpf": "14907620942",
+          "name": "Carlos Luz",
+          "email": "carlosluz12892@gmail.com",
+          "phone": "41920034148",
+          "contactTypeId": 2,
+          "contactType": null,
+          "tagNumber": null
+        }
+      },
+      "timestamp": "16/08/2024, 09:54:02"
+    },
+    {
+      "id": 110,
+      "appId": 11,
+      "appUrl": "https://api-hml-doublecheck.azurewebsites.net",
+      "appAuth": "",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/",
+      "params": [],
+      "headers": [],
+      "body": {},
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "status": 0,
+        "statusText": "Unknown Error",
+        "url": "https://api-hml-doublecheck.azurewebsites.net/",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-hml-doublecheck.azurewebsites.net/: 0 Unknown Error",
+        "error": {
+          "isTrusted": true
+        }
+      },
+      "timestamp": "16/08/2024, 10:19:45"
+    },
+    {
+      "id": 111,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM4MTYyODgsImV4cCI6MTcyMzgxOTg4OCwiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzgxNjI4NiwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IkE1RUYxMkE5NTMxOEYzMzFCRjRFNkFGNUI4NkM4QjIyIiwiaWF0IjoxNzIzODE2Mjg4LCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.aUp1WqZCVN2TVTEQ38aa6r5NTDW_ITUE41zf5FC64c5H0HifnhEYa8hz8FUbnUJ8ZuqA0ORPmrDDUXeNVXfwxtiIMIJWynWtl0OvOc5BcNJS2sAWeJFOe0JSvJhzyxKlPzvwbxbdn5Fj_Qu6a6UTeIZxWlzgOmvg21omMDasMJOTTs2ZQ4D5iIygRASFPFQqq3tbOXrVqOSevkJ2mRvONWU5UFCGHPI0Zy1hQeT82IqxB0-bJDu306kPemPiL4roOKm_IcXdSNMdoEMfzJRtv0f0nUvF87c7l3takrOhRbySmkizOTJaKe7ZKRCv54XqdpuwiPAnU9sSaEGIzG9Dxw"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": [
+          {
+            "id": 2,
+            "name": "Gerente de Filial"
+          },
+          {
+            "id": 3,
+            "name": "Gerente de Regional"
+          },
+          {
+            "id": 4,
+            "name": "Diretor de Regional"
+          },
+          {
+            "id": 5,
+            "name": "Inspetor de Qualidade"
+          }
+        ]
+      },
+      "timestamp": "16/08/2024, 10:52:07"
+    },
+    {
+      "id": 112,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 3,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/Contact",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "5282757f-60d5-4dfb-bb82-6c455c5b84fc"
+      },
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 401,
+        "statusText": "Unauthorized",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/Contact/5282757f-60d5-4dfb-bb82-6c455c5b84fc",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://api-dev-bff-branchoffice.azurewebsites.net/api/Contact/5282757f-60d5-4dfb-bb82-6c455c5b84fc: 401 Unauthorized",
+        "error": null
+      },
+      "timestamp": "16/08/2024, 11:36:33"
+    },
+    {
+      "id": 113,
+      "appId": 6,
+      "appUrl": "https://api-dev-bff-branchoffice.azurewebsites.net",
+      "appAuth": "https://authsts-dev.grupomadero.com.br/connect/token",
+      "endpointId": 2,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/ContactType",
+      "params": [],
+      "headers": [
+        {
+          "id": 1,
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlEODdCQjM4N0ZCQTc4MjNBNTEwRDNDM0ZFREE3NEY1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjM4MTkxODksImV4cCI6MTcyMzgyMjc4OSwiaXNzIjoiaHR0cHM6Ly9hdXRoc3RzLWRldi5ncnVwb21hZGVyby5jb20uYnIiLCJhdWQiOlsiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaSIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIl0sImNsaWVudF9pZCI6ImdlcmVuY2lhZG9yX2ZpbGlhbF9mcm9udCIsInN1YiI6ImYxNDNjN2E3LTRkOWItNDkzNC05NDUxLTgzMjgxYzg5MTk3ZCIsImF1dGhfdGltZSI6MTcyMzgxOTE4OSwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJuYW1lIjoiY2FybG9zLnBpbGF0aSIsImp0aSI6IkREQzU2NUYyOEQ4MUU0NDBFNjkyRUVEMTgzNkU4OEQ0IiwiaWF0IjoxNzIzODE5MTg5LCJzY29wZSI6WyJncnVwb21hZGVyb19icmFuY2hvZmZpY2VfYXBpIiwiZ3J1cG9tYWRlcm9fYnJhbmNob2ZmaWNlX2FwaS5hbGxfZW5kX3BvaW50cyIsImdydXBvbWFkZXJvX2lkZW50aXR5X2FkbWluX2FwaSIsImdydXBvbWFkZXJvX21lbnVfYXBpIiwiZ3J1cG9tYWRlcm9fbWVudV9hcGkuYWxsX2VuZF9wb2ludHMiLCJvcGVuaWQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.daGO2zr4NJwn43IhoO3Hq-pzBwIXpVeL0ASZgvCV9t3y_QUWhPoyxNlPJPcypXlAvb7W91yOa1qrqYWSkyNjCYwmd9-NZZUPgqYE4vT0YCEwEC88QJUtn50u4aeWnB_-DcD5L8QSQvGa2GG8UCcJOz1kPM8rcBY57BrQsiB6ZKggcoIv0pg036mLdpWwt39b_xQhYQMuZMlyY9RSNaIdc0JiA8zDSsHr8Vvn6rOHOviyfzfyD14vpMt9lteminsy9UWqG86_HOLXGh37XVddkk5rG5jV5sDNh6JOhbBTeP4Rp-fkh1DoZIlNsSBu7FXcG5co9C0EN8a2Zm5jwCTrnw"
+        }
+      ],
+      "body": {},
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://api-dev-bff-branchoffice.azurewebsites.net/api/ContactType",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {},
+          "lazyInit": null
+        },
+        "body": [
+          {
+            "id": 2,
+            "name": "Gerente de Filial"
+          },
+          {
+            "id": 3,
+            "name": "Gerente de Regional"
+          },
+          {
+            "id": 4,
+            "name": "Diretor de Regional"
+          },
+          {
+            "id": 5,
+            "name": "Inspetor de Qualidade"
+          }
+        ]
+      },
+      "timestamp": "16/08/2024, 11:40:10"
+    },
+    {
+      "id": 114,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/character",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "164",
+          "paramUrl": true
+        },
+        {
+          "id": 2,
+          "paramName": "name",
+          "paramValue": "",
+          "paramUrl": true
+        },
+        {
+          "id": 3,
+          "paramName": "status",
+          "paramValue": "",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "164"
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/character/164",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "id": 164,
+          "name": "Insurance Rick",
+          "status": "unknown",
+          "species": "Human",
+          "type": "",
+          "gender": "Male",
+          "origin": {
+            "name": "unknown",
+            "url": ""
+          },
+          "location": {
+            "name": "Citadel of Ricks",
+            "url": "https://rickandmortyapi.com/api/location/3"
+          },
+          "image": "https://rickandmortyapi.com/api/character/avatar/164.jpeg",
+          "episode": [
+            "https://rickandmortyapi.com/api/episode/10"
+          ],
+          "url": "https://rickandmortyapi.com/api/character/164",
+          "created": "2017-12-29T17:03:08.645Z"
+        }
+      },
+      "timestamp": "19/08/2024, 11:47:20"
+    },
+    {
+      "id": 115,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/character",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "",
+          "paramUrl": true
+        },
+        {
+          "id": 2,
+          "paramName": "name",
+          "paramValue": "morty",
+          "paramUrl": true
+        },
+        {
+          "id": 3,
+          "paramName": "status",
+          "paramValue": "alive",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "name": "morty",
+        "status": "alive"
+      },
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 404,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/character/morty/alive",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://rickandmortyapi.com/api/character/morty/alive: 404 OK",
+        "error": {
+          "error": "There is nothing here."
+        }
+      },
+      "timestamp": "19/08/2024, 11:48:04"
+    },
+    {
+      "id": 116,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 1,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/character",
+      "params": [
+        {
+          "id": 1,
+          "paramName": "id",
+          "paramValue": "",
+          "paramUrl": true
+        },
+        {
+          "id": 2,
+          "paramName": "name",
+          "paramValue": "morty",
+          "paramUrl": false
+        },
+        {
+          "id": 3,
+          "paramName": "status",
+          "paramValue": "",
+          "paramUrl": false
+        }
+      ],
+      "headers": [],
+      "body": {
+        "name": "morty"
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/character",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "info": {
+            "count": 826,
+            "pages": 42,
+            "next": "https://rickandmortyapi.com/api/character?page=2",
+            "prev": null
+          },
+          "results": [
+            {
+              "id": 1,
+              "name": "Rick Sanchez",
+              "status": "Alive",
+              "species": "Human",
+              "type": "",
+              "gender": "Male",
+              "origin": {
+                "name": "Earth (C-137)",
+                "url": "https://rickandmortyapi.com/api/location/1"
+              },
+              "location": {
+                "name": "Citadel of Ricks",
+                "url": "https://rickandmortyapi.com/api/location/3"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/1",
+                "https://rickandmortyapi.com/api/episode/2",
+                "https://rickandmortyapi.com/api/episode/3",
+                "https://rickandmortyapi.com/api/episode/4",
+                "https://rickandmortyapi.com/api/episode/5",
+                "https://rickandmortyapi.com/api/episode/6",
+                "https://rickandmortyapi.com/api/episode/7",
+                "https://rickandmortyapi.com/api/episode/8",
+                "https://rickandmortyapi.com/api/episode/9",
+                "https://rickandmortyapi.com/api/episode/10",
+                "https://rickandmortyapi.com/api/episode/11",
+                "https://rickandmortyapi.com/api/episode/12",
+                "https://rickandmortyapi.com/api/episode/13",
+                "https://rickandmortyapi.com/api/episode/14",
+                "https://rickandmortyapi.com/api/episode/15",
+                "https://rickandmortyapi.com/api/episode/16",
+                "https://rickandmortyapi.com/api/episode/17",
+                "https://rickandmortyapi.com/api/episode/18",
+                "https://rickandmortyapi.com/api/episode/19",
+                "https://rickandmortyapi.com/api/episode/20",
+                "https://rickandmortyapi.com/api/episode/21",
+                "https://rickandmortyapi.com/api/episode/22",
+                "https://rickandmortyapi.com/api/episode/23",
+                "https://rickandmortyapi.com/api/episode/24",
+                "https://rickandmortyapi.com/api/episode/25",
+                "https://rickandmortyapi.com/api/episode/26",
+                "https://rickandmortyapi.com/api/episode/27",
+                "https://rickandmortyapi.com/api/episode/28",
+                "https://rickandmortyapi.com/api/episode/29",
+                "https://rickandmortyapi.com/api/episode/30",
+                "https://rickandmortyapi.com/api/episode/31",
+                "https://rickandmortyapi.com/api/episode/32",
+                "https://rickandmortyapi.com/api/episode/33",
+                "https://rickandmortyapi.com/api/episode/34",
+                "https://rickandmortyapi.com/api/episode/35",
+                "https://rickandmortyapi.com/api/episode/36",
+                "https://rickandmortyapi.com/api/episode/37",
+                "https://rickandmortyapi.com/api/episode/38",
+                "https://rickandmortyapi.com/api/episode/39",
+                "https://rickandmortyapi.com/api/episode/40",
+                "https://rickandmortyapi.com/api/episode/41",
+                "https://rickandmortyapi.com/api/episode/42",
+                "https://rickandmortyapi.com/api/episode/43",
+                "https://rickandmortyapi.com/api/episode/44",
+                "https://rickandmortyapi.com/api/episode/45",
+                "https://rickandmortyapi.com/api/episode/46",
+                "https://rickandmortyapi.com/api/episode/47",
+                "https://rickandmortyapi.com/api/episode/48",
+                "https://rickandmortyapi.com/api/episode/49",
+                "https://rickandmortyapi.com/api/episode/50",
+                "https://rickandmortyapi.com/api/episode/51"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/1",
+              "created": "2017-11-04T18:48:46.250Z"
+            },
+            {
+              "id": 2,
+              "name": "Morty Smith",
+              "status": "Alive",
+              "species": "Human",
+              "type": "",
+              "gender": "Male",
+              "origin": {
+                "name": "unknown",
+                "url": ""
+              },
+              "location": {
+                "name": "Citadel of Ricks",
+                "url": "https://rickandmortyapi.com/api/location/3"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/1",
+                "https://rickandmortyapi.com/api/episode/2",
+                "https://rickandmortyapi.com/api/episode/3",
+                "https://rickandmortyapi.com/api/episode/4",
+                "https://rickandmortyapi.com/api/episode/5",
+                "https://rickandmortyapi.com/api/episode/6",
+                "https://rickandmortyapi.com/api/episode/7",
+                "https://rickandmortyapi.com/api/episode/8",
+                "https://rickandmortyapi.com/api/episode/9",
+                "https://rickandmortyapi.com/api/episode/10",
+                "https://rickandmortyapi.com/api/episode/11",
+                "https://rickandmortyapi.com/api/episode/12",
+                "https://rickandmortyapi.com/api/episode/13",
+                "https://rickandmortyapi.com/api/episode/14",
+                "https://rickandmortyapi.com/api/episode/15",
+                "https://rickandmortyapi.com/api/episode/16",
+                "https://rickandmortyapi.com/api/episode/17",
+                "https://rickandmortyapi.com/api/episode/18",
+                "https://rickandmortyapi.com/api/episode/19",
+                "https://rickandmortyapi.com/api/episode/20",
+                "https://rickandmortyapi.com/api/episode/21",
+                "https://rickandmortyapi.com/api/episode/22",
+                "https://rickandmortyapi.com/api/episode/23",
+                "https://rickandmortyapi.com/api/episode/24",
+                "https://rickandmortyapi.com/api/episode/25",
+                "https://rickandmortyapi.com/api/episode/26",
+                "https://rickandmortyapi.com/api/episode/27",
+                "https://rickandmortyapi.com/api/episode/28",
+                "https://rickandmortyapi.com/api/episode/29",
+                "https://rickandmortyapi.com/api/episode/30",
+                "https://rickandmortyapi.com/api/episode/31",
+                "https://rickandmortyapi.com/api/episode/32",
+                "https://rickandmortyapi.com/api/episode/33",
+                "https://rickandmortyapi.com/api/episode/34",
+                "https://rickandmortyapi.com/api/episode/35",
+                "https://rickandmortyapi.com/api/episode/36",
+                "https://rickandmortyapi.com/api/episode/37",
+                "https://rickandmortyapi.com/api/episode/38",
+                "https://rickandmortyapi.com/api/episode/39",
+                "https://rickandmortyapi.com/api/episode/40",
+                "https://rickandmortyapi.com/api/episode/41",
+                "https://rickandmortyapi.com/api/episode/42",
+                "https://rickandmortyapi.com/api/episode/43",
+                "https://rickandmortyapi.com/api/episode/44",
+                "https://rickandmortyapi.com/api/episode/45",
+                "https://rickandmortyapi.com/api/episode/46",
+                "https://rickandmortyapi.com/api/episode/47",
+                "https://rickandmortyapi.com/api/episode/48",
+                "https://rickandmortyapi.com/api/episode/49",
+                "https://rickandmortyapi.com/api/episode/50",
+                "https://rickandmortyapi.com/api/episode/51"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/2",
+              "created": "2017-11-04T18:50:21.651Z"
+            },
+            {
+              "id": 3,
+              "name": "Summer Smith",
+              "status": "Alive",
+              "species": "Human",
+              "type": "",
+              "gender": "Female",
+              "origin": {
+                "name": "Earth (Replacement Dimension)",
+                "url": "https://rickandmortyapi.com/api/location/20"
+              },
+              "location": {
+                "name": "Earth (Replacement Dimension)",
+                "url": "https://rickandmortyapi.com/api/location/20"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/6",
+                "https://rickandmortyapi.com/api/episode/7",
+                "https://rickandmortyapi.com/api/episode/8",
+                "https://rickandmortyapi.com/api/episode/9",
+                "https://rickandmortyapi.com/api/episode/10",
+                "https://rickandmortyapi.com/api/episode/11",
+                "https://rickandmortyapi.com/api/episode/12",
+                "https://rickandmortyapi.com/api/episode/14",
+                "https://rickandmortyapi.com/api/episode/15",
+                "https://rickandmortyapi.com/api/episode/16",
+                "https://rickandmortyapi.com/api/episode/17",
+                "https://rickandmortyapi.com/api/episode/18",
+                "https://rickandmortyapi.com/api/episode/19",
+                "https://rickandmortyapi.com/api/episode/20",
+                "https://rickandmortyapi.com/api/episode/21",
+                "https://rickandmortyapi.com/api/episode/22",
+                "https://rickandmortyapi.com/api/episode/23",
+                "https://rickandmortyapi.com/api/episode/24",
+                "https://rickandmortyapi.com/api/episode/25",
+                "https://rickandmortyapi.com/api/episode/26",
+                "https://rickandmortyapi.com/api/episode/27",
+                "https://rickandmortyapi.com/api/episode/29",
+                "https://rickandmortyapi.com/api/episode/30",
+                "https://rickandmortyapi.com/api/episode/31",
+                "https://rickandmortyapi.com/api/episode/32",
+                "https://rickandmortyapi.com/api/episode/33",
+                "https://rickandmortyapi.com/api/episode/34",
+                "https://rickandmortyapi.com/api/episode/35",
+                "https://rickandmortyapi.com/api/episode/36",
+                "https://rickandmortyapi.com/api/episode/38",
+                "https://rickandmortyapi.com/api/episode/39",
+                "https://rickandmortyapi.com/api/episode/40",
+                "https://rickandmortyapi.com/api/episode/41",
+                "https://rickandmortyapi.com/api/episode/42",
+                "https://rickandmortyapi.com/api/episode/43",
+                "https://rickandmortyapi.com/api/episode/44",
+                "https://rickandmortyapi.com/api/episode/45",
+                "https://rickandmortyapi.com/api/episode/46",
+                "https://rickandmortyapi.com/api/episode/47",
+                "https://rickandmortyapi.com/api/episode/48",
+                "https://rickandmortyapi.com/api/episode/49",
+                "https://rickandmortyapi.com/api/episode/51"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/3",
+              "created": "2017-11-04T19:09:56.428Z"
+            },
+            {
+              "id": 4,
+              "name": "Beth Smith",
+              "status": "Alive",
+              "species": "Human",
+              "type": "",
+              "gender": "Female",
+              "origin": {
+                "name": "Earth (Replacement Dimension)",
+                "url": "https://rickandmortyapi.com/api/location/20"
+              },
+              "location": {
+                "name": "Earth (Replacement Dimension)",
+                "url": "https://rickandmortyapi.com/api/location/20"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/4.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/6",
+                "https://rickandmortyapi.com/api/episode/7",
+                "https://rickandmortyapi.com/api/episode/8",
+                "https://rickandmortyapi.com/api/episode/9",
+                "https://rickandmortyapi.com/api/episode/10",
+                "https://rickandmortyapi.com/api/episode/11",
+                "https://rickandmortyapi.com/api/episode/12",
+                "https://rickandmortyapi.com/api/episode/14",
+                "https://rickandmortyapi.com/api/episode/15",
+                "https://rickandmortyapi.com/api/episode/16",
+                "https://rickandmortyapi.com/api/episode/18",
+                "https://rickandmortyapi.com/api/episode/19",
+                "https://rickandmortyapi.com/api/episode/20",
+                "https://rickandmortyapi.com/api/episode/21",
+                "https://rickandmortyapi.com/api/episode/22",
+                "https://rickandmortyapi.com/api/episode/23",
+                "https://rickandmortyapi.com/api/episode/24",
+                "https://rickandmortyapi.com/api/episode/25",
+                "https://rickandmortyapi.com/api/episode/26",
+                "https://rickandmortyapi.com/api/episode/27",
+                "https://rickandmortyapi.com/api/episode/28",
+                "https://rickandmortyapi.com/api/episode/29",
+                "https://rickandmortyapi.com/api/episode/30",
+                "https://rickandmortyapi.com/api/episode/31",
+                "https://rickandmortyapi.com/api/episode/32",
+                "https://rickandmortyapi.com/api/episode/33",
+                "https://rickandmortyapi.com/api/episode/34",
+                "https://rickandmortyapi.com/api/episode/35",
+                "https://rickandmortyapi.com/api/episode/36",
+                "https://rickandmortyapi.com/api/episode/38",
+                "https://rickandmortyapi.com/api/episode/39",
+                "https://rickandmortyapi.com/api/episode/40",
+                "https://rickandmortyapi.com/api/episode/41",
+                "https://rickandmortyapi.com/api/episode/42",
+                "https://rickandmortyapi.com/api/episode/43",
+                "https://rickandmortyapi.com/api/episode/44",
+                "https://rickandmortyapi.com/api/episode/45",
+                "https://rickandmortyapi.com/api/episode/46",
+                "https://rickandmortyapi.com/api/episode/47",
+                "https://rickandmortyapi.com/api/episode/48",
+                "https://rickandmortyapi.com/api/episode/49",
+                "https://rickandmortyapi.com/api/episode/51"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/4",
+              "created": "2017-11-04T19:22:43.665Z"
+            },
+            {
+              "id": 5,
+              "name": "Jerry Smith",
+              "status": "Alive",
+              "species": "Human",
+              "type": "",
+              "gender": "Male",
+              "origin": {
+                "name": "Earth (Replacement Dimension)",
+                "url": "https://rickandmortyapi.com/api/location/20"
+              },
+              "location": {
+                "name": "Earth (Replacement Dimension)",
+                "url": "https://rickandmortyapi.com/api/location/20"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/5.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/6",
+                "https://rickandmortyapi.com/api/episode/7",
+                "https://rickandmortyapi.com/api/episode/8",
+                "https://rickandmortyapi.com/api/episode/9",
+                "https://rickandmortyapi.com/api/episode/10",
+                "https://rickandmortyapi.com/api/episode/11",
+                "https://rickandmortyapi.com/api/episode/12",
+                "https://rickandmortyapi.com/api/episode/13",
+                "https://rickandmortyapi.com/api/episode/14",
+                "https://rickandmortyapi.com/api/episode/15",
+                "https://rickandmortyapi.com/api/episode/16",
+                "https://rickandmortyapi.com/api/episode/18",
+                "https://rickandmortyapi.com/api/episode/19",
+                "https://rickandmortyapi.com/api/episode/20",
+                "https://rickandmortyapi.com/api/episode/21",
+                "https://rickandmortyapi.com/api/episode/22",
+                "https://rickandmortyapi.com/api/episode/23",
+                "https://rickandmortyapi.com/api/episode/26",
+                "https://rickandmortyapi.com/api/episode/29",
+                "https://rickandmortyapi.com/api/episode/30",
+                "https://rickandmortyapi.com/api/episode/31",
+                "https://rickandmortyapi.com/api/episode/32",
+                "https://rickandmortyapi.com/api/episode/33",
+                "https://rickandmortyapi.com/api/episode/35",
+                "https://rickandmortyapi.com/api/episode/36",
+                "https://rickandmortyapi.com/api/episode/38",
+                "https://rickandmortyapi.com/api/episode/39",
+                "https://rickandmortyapi.com/api/episode/40",
+                "https://rickandmortyapi.com/api/episode/41",
+                "https://rickandmortyapi.com/api/episode/42",
+                "https://rickandmortyapi.com/api/episode/43",
+                "https://rickandmortyapi.com/api/episode/44",
+                "https://rickandmortyapi.com/api/episode/45",
+                "https://rickandmortyapi.com/api/episode/46",
+                "https://rickandmortyapi.com/api/episode/47",
+                "https://rickandmortyapi.com/api/episode/48",
+                "https://rickandmortyapi.com/api/episode/49",
+                "https://rickandmortyapi.com/api/episode/50",
+                "https://rickandmortyapi.com/api/episode/51"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/5",
+              "created": "2017-11-04T19:26:56.301Z"
+            },
+            {
+              "id": 6,
+              "name": "Abadango Cluster Princess",
+              "status": "Alive",
+              "species": "Alien",
+              "type": "",
+              "gender": "Female",
+              "origin": {
+                "name": "Abadango",
+                "url": "https://rickandmortyapi.com/api/location/2"
+              },
+              "location": {
+                "name": "Abadango",
+                "url": "https://rickandmortyapi.com/api/location/2"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/6.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/27"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/6",
+              "created": "2017-11-04T19:50:28.250Z"
+            },
+            {
+              "id": 7,
+              "name": "Abradolf Lincler",
+              "status": "unknown",
+              "species": "Human",
+              "type": "Genetic experiment",
+              "gender": "Male",
+              "origin": {
+                "name": "Earth (Replacement Dimension)",
+                "url": "https://rickandmortyapi.com/api/location/20"
+              },
+              "location": {
+                "name": "Testicle Monster Dimension",
+                "url": "https://rickandmortyapi.com/api/location/21"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/7.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/10",
+                "https://rickandmortyapi.com/api/episode/11"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/7",
+              "created": "2017-11-04T19:59:20.523Z"
+            },
+            {
+              "id": 8,
+              "name": "Adjudicator Rick",
+              "status": "Dead",
+              "species": "Human",
+              "type": "",
+              "gender": "Male",
+              "origin": {
+                "name": "unknown",
+                "url": ""
+              },
+              "location": {
+                "name": "Citadel of Ricks",
+                "url": "https://rickandmortyapi.com/api/location/3"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/8.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/28"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/8",
+              "created": "2017-11-04T20:03:34.737Z"
+            },
+            {
+              "id": 9,
+              "name": "Agency Director",
+              "status": "Dead",
+              "species": "Human",
+              "type": "",
+              "gender": "Male",
+              "origin": {
+                "name": "Earth (Replacement Dimension)",
+                "url": "https://rickandmortyapi.com/api/location/20"
+              },
+              "location": {
+                "name": "Earth (Replacement Dimension)",
+                "url": "https://rickandmortyapi.com/api/location/20"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/9.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/24"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/9",
+              "created": "2017-11-04T20:06:54.976Z"
+            },
+            {
+              "id": 10,
+              "name": "Alan Rails",
+              "status": "Dead",
+              "species": "Human",
+              "type": "Superhuman (Ghost trains summoner)",
+              "gender": "Male",
+              "origin": {
+                "name": "unknown",
+                "url": ""
+              },
+              "location": {
+                "name": "Worldender's lair",
+                "url": "https://rickandmortyapi.com/api/location/4"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/10.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/25"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/10",
+              "created": "2017-11-04T20:19:09.017Z"
+            },
+            {
+              "id": 11,
+              "name": "Albert Einstein",
+              "status": "Dead",
+              "species": "Human",
+              "type": "",
+              "gender": "Male",
+              "origin": {
+                "name": "Earth (C-137)",
+                "url": "https://rickandmortyapi.com/api/location/1"
+              },
+              "location": {
+                "name": "Earth (Replacement Dimension)",
+                "url": "https://rickandmortyapi.com/api/location/20"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/11.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/12"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/11",
+              "created": "2017-11-04T20:20:20.965Z"
+            },
+            {
+              "id": 12,
+              "name": "Alexander",
+              "status": "Dead",
+              "species": "Human",
+              "type": "",
+              "gender": "Male",
+              "origin": {
+                "name": "Earth (C-137)",
+                "url": "https://rickandmortyapi.com/api/location/1"
+              },
+              "location": {
+                "name": "Anatomy Park",
+                "url": "https://rickandmortyapi.com/api/location/5"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/12.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/3"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/12",
+              "created": "2017-11-04T20:32:33.144Z"
+            },
+            {
+              "id": 13,
+              "name": "Alien Googah",
+              "status": "unknown",
+              "species": "Alien",
+              "type": "",
+              "gender": "unknown",
+              "origin": {
+                "name": "unknown",
+                "url": ""
+              },
+              "location": {
+                "name": "Earth (Replacement Dimension)",
+                "url": "https://rickandmortyapi.com/api/location/20"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/13.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/31"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/13",
+              "created": "2017-11-04T20:33:30.779Z"
+            },
+            {
+              "id": 14,
+              "name": "Alien Morty",
+              "status": "unknown",
+              "species": "Alien",
+              "type": "",
+              "gender": "Male",
+              "origin": {
+                "name": "unknown",
+                "url": ""
+              },
+              "location": {
+                "name": "Citadel of Ricks",
+                "url": "https://rickandmortyapi.com/api/location/3"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/14.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/10"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/14",
+              "created": "2017-11-04T20:51:31.373Z"
+            },
+            {
+              "id": 15,
+              "name": "Alien Rick",
+              "status": "unknown",
+              "species": "Alien",
+              "type": "",
+              "gender": "Male",
+              "origin": {
+                "name": "unknown",
+                "url": ""
+              },
+              "location": {
+                "name": "Citadel of Ricks",
+                "url": "https://rickandmortyapi.com/api/location/3"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/15.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/10"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/15",
+              "created": "2017-11-04T20:56:13.215Z"
+            },
+            {
+              "id": 16,
+              "name": "Amish Cyborg",
+              "status": "Dead",
+              "species": "Alien",
+              "type": "Parasite",
+              "gender": "Male",
+              "origin": {
+                "name": "unknown",
+                "url": ""
+              },
+              "location": {
+                "name": "Earth (Replacement Dimension)",
+                "url": "https://rickandmortyapi.com/api/location/20"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/16.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/15"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/16",
+              "created": "2017-11-04T21:12:45.235Z"
+            },
+            {
+              "id": 17,
+              "name": "Annie",
+              "status": "Alive",
+              "species": "Human",
+              "type": "",
+              "gender": "Female",
+              "origin": {
+                "name": "Earth (C-137)",
+                "url": "https://rickandmortyapi.com/api/location/1"
+              },
+              "location": {
+                "name": "Anatomy Park",
+                "url": "https://rickandmortyapi.com/api/location/5"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/17.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/3"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/17",
+              "created": "2017-11-04T22:21:24.481Z"
+            },
+            {
+              "id": 18,
+              "name": "Antenna Morty",
+              "status": "Alive",
+              "species": "Human",
+              "type": "Human with antennae",
+              "gender": "Male",
+              "origin": {
+                "name": "unknown",
+                "url": ""
+              },
+              "location": {
+                "name": "Citadel of Ricks",
+                "url": "https://rickandmortyapi.com/api/location/3"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/18.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/10",
+                "https://rickandmortyapi.com/api/episode/28"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/18",
+              "created": "2017-11-04T22:25:29.008Z"
+            },
+            {
+              "id": 19,
+              "name": "Antenna Rick",
+              "status": "unknown",
+              "species": "Human",
+              "type": "Human with antennae",
+              "gender": "Male",
+              "origin": {
+                "name": "unknown",
+                "url": ""
+              },
+              "location": {
+                "name": "unknown",
+                "url": ""
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/19.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/10"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/19",
+              "created": "2017-11-04T22:28:13.756Z"
+            },
+            {
+              "id": 20,
+              "name": "Ants in my Eyes Johnson",
+              "status": "unknown",
+              "species": "Human",
+              "type": "Human with ants in his eyes",
+              "gender": "Male",
+              "origin": {
+                "name": "unknown",
+                "url": ""
+              },
+              "location": {
+                "name": "Interdimensional Cable",
+                "url": "https://rickandmortyapi.com/api/location/6"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/20.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/8"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/20",
+              "created": "2017-11-04T22:34:53.659Z"
+            }
+          ]
+        }
+      },
+      "timestamp": "19/08/2024, 11:48:58"
+    },
+    {
+      "id": 117,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 3,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/episode",
+      "params": [
+        {
+          "id": 6,
+          "paramName": "id",
+          "paramValue": "12",
+          "paramUrl": true
+        },
+        {
+          "id": 7,
+          "paramName": "name",
+          "paramValue": "",
+          "paramUrl": true
+        },
+        {
+          "id": 8,
+          "paramName": "episode",
+          "paramValue": "",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "12"
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/episode/12",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "id": 12,
+          "name": "A Rickle in Time",
+          "air_date": "July 26, 2015",
+          "episode": "S02E01",
+          "characters": [
+            "https://rickandmortyapi.com/api/character/1",
+            "https://rickandmortyapi.com/api/character/2",
+            "https://rickandmortyapi.com/api/character/3",
+            "https://rickandmortyapi.com/api/character/4",
+            "https://rickandmortyapi.com/api/character/5",
+            "https://rickandmortyapi.com/api/character/11",
+            "https://rickandmortyapi.com/api/character/64",
+            "https://rickandmortyapi.com/api/character/237",
+            "https://rickandmortyapi.com/api/character/313",
+            "https://rickandmortyapi.com/api/character/437",
+            "https://rickandmortyapi.com/api/character/438",
+            "https://rickandmortyapi.com/api/character/439",
+            "https://rickandmortyapi.com/api/character/440"
+          ],
+          "url": "https://rickandmortyapi.com/api/episode/12",
+          "created": "2017-11-10T12:56:34.953Z"
+        }
+      },
+      "timestamp": "23/08/2024, 10:04:47"
+    },
+    {
+      "id": 118,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 3,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/episode",
+      "params": [
+        {
+          "id": 6,
+          "paramName": "id",
+          "paramValue": "12",
+          "paramUrl": true
+        },
+        {
+          "id": 7,
+          "paramName": "name",
+          "paramValue": "12",
+          "paramUrl": true
+        },
+        {
+          "id": 8,
+          "paramName": "episode",
+          "paramValue": "12",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "12",
+        "name": "12",
+        "episode": "12"
+      },
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 404,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/episode/12/12/12",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://rickandmortyapi.com/api/episode/12/12/12: 404 OK",
+        "error": {
+          "error": "There is nothing here."
+        }
+      },
+      "timestamp": "23/08/2024, 10:05:01"
+    },
+    {
+      "id": 119,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 3,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/episode",
+      "params": [
+        {
+          "id": 6,
+          "paramName": "id",
+          "paramValue": "ola",
+          "paramUrl": true
+        },
+        {
+          "id": 7,
+          "paramName": "name",
+          "paramValue": "",
+          "paramUrl": true
+        },
+        {
+          "id": 8,
+          "paramName": "episode",
+          "paramValue": "",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "ola"
+      },
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 500,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/episode/ola",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://rickandmortyapi.com/api/episode/ola: 500 OK",
+        "error": {
+          "error": "Hey! you must provide an id"
+        }
+      },
+      "timestamp": "23/08/2024, 10:05:08"
+    },
+    {
+      "id": 120,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 3,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/episode",
+      "params": [
+        {
+          "id": 6,
+          "paramName": "id",
+          "paramValue": "159",
+          "paramUrl": true
+        },
+        {
+          "id": 7,
+          "paramName": "name",
+          "paramValue": "",
+          "paramUrl": true
+        },
+        {
+          "id": 8,
+          "paramName": "episode",
+          "paramValue": "",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "159"
+      },
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 404,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/episode/159",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://rickandmortyapi.com/api/episode/159: 404 OK",
+        "error": {
+          "error": "Episode not found"
+        }
+      },
+      "timestamp": "23/08/2024, 10:05:14"
+    },
+    {
+      "id": 121,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 3,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/episode",
+      "params": [
+        {
+          "id": 6,
+          "paramName": "id",
+          "paramValue": "100",
+          "paramUrl": true
+        },
+        {
+          "id": 7,
+          "paramName": "name",
+          "paramValue": "",
+          "paramUrl": true
+        },
+        {
+          "id": 8,
+          "paramName": "episode",
+          "paramValue": "",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "100"
+      },
+      "error": {
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null
+        },
+        "status": 404,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/episode/100",
+        "ok": false,
+        "name": "HttpErrorResponse",
+        "message": "Http failure response for https://rickandmortyapi.com/api/episode/100: 404 OK",
+        "error": {
+          "error": "Episode not found"
+        }
+      },
+      "timestamp": "23/08/2024, 10:05:23"
+    },
+    {
+      "id": 122,
+      "appId": 5,
+      "appUrl": "https://rickandmortyapi.com",
+      "appAuth": "",
+      "endpointId": 3,
+      "endpointReq": "GET",
+      "endpointUrl": "/api/episode",
+      "params": [
+        {
+          "id": 6,
+          "paramName": "id",
+          "paramValue": "50",
+          "paramUrl": true
+        },
+        {
+          "id": 7,
+          "paramName": "name",
+          "paramValue": "",
+          "paramUrl": true
+        },
+        {
+          "id": 8,
+          "paramName": "episode",
+          "paramValue": "",
+          "paramUrl": true
+        }
+      ],
+      "headers": [],
+      "body": {
+        "id": "50"
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "url": "https://rickandmortyapi.com/api/episode/50",
+        "type": "4",
+        "headers": {
+          "normalizedNames": {},
+          "lazyUpdate": null,
+          "headers": {}
+        },
+        "body": {
+          "id": 50,
+          "name": "Forgetting Sarick Mortshall",
+          "air_date": "September 5, 2021",
+          "episode": "S05E09",
+          "characters": [
+            "https://rickandmortyapi.com/api/character/1",
+            "https://rickandmortyapi.com/api/character/2",
+            "https://rickandmortyapi.com/api/character/5",
+            "https://rickandmortyapi.com/api/character/787",
+            "https://rickandmortyapi.com/api/character/788",
+            "https://rickandmortyapi.com/api/character/789",
+            "https://rickandmortyapi.com/api/character/790",
+            "https://rickandmortyapi.com/api/character/791",
+            "https://rickandmortyapi.com/api/character/792",
+            "https://rickandmortyapi.com/api/character/793"
+          ],
+          "url": "https://rickandmortyapi.com/api/episode/50",
+          "created": "2021-10-15T17:00:24.105Z"
+        }
+      },
+      "timestamp": "23/08/2024, 10:05:29"
     }
   ]
 }

@@ -1,0 +1,82 @@
+.requests-grid {
+  overflow-x: auto;
+  padding: 16px;
+}
+
+h2 {
+  font-size: 4vh;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.dashboard {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 35px;
+
+}
+
+.card {
+  flex: 0 0 300px; /* Largura fixa para os cartões */
+  max-width: 300px;
+
+}
+
+.request-card {
+  background: #ffffff; /* Cor de fundo para cartões de requisição */
+  border: 1px solid #ddd; /* Borda leve para cartões */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  min-height: 250px;
+}
+
+
+mat-card-title {
+  font-weight: bold;
+  padding: 1vh;
+  font-size: 17px;
+}
+
+.mat-card-title-success {
+  background: rgb(229, 255, 229); /* Verde */
+}
+
+.mat-card-title-error {
+  background: #ffeeee;
+}
+
+mat-card-content {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  white-space: pre-wrap; /* quebra a linha automaticamente */
+  word-break: break-word; /* quebra o texto em palavras */
+  hyphens: auto; /* quebra o texto em sílabas */
+}
+
+p{
+  margin: 1.5vh;
+}
+
+.noErrors {
+  text-align: center;
+  font-size: 18px;
+  color: #6c757d; /* Cor neutra para a mensagem sem requisições */
+}
+
+
+mat-card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-card-title span:first-child {
+  margin-right: auto;
+}
+
+mat-card-title span:last-child {
+  margin-left: auto;
+}
+
+.info{
+  font-size: 22px !important;
+}
