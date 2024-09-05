@@ -126,7 +126,8 @@ export class NewApiComponent {
       paramNameFormControl: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       value: [''],
       required: [false],
-      paramUrl: [false]
+      paramUrl: [false],
+      queryParamUrl: [false]
     });
   }
 
@@ -176,6 +177,13 @@ export class NewApiComponent {
     }
   }
 
+  toggleQueryUrlParam(param: AbstractControl): void {
+    const control = this.getFormControl(param, 'queryParamUrl');
+    if (control) {
+      control.setValue(!control.value);
+    }
+  }
+
   removeParam(endpointIndex: number, paramIndex: number): void {
     const endpoint = this.endpoints.at(endpointIndex) as FormGroup;
     const params = endpoint.get('params') as FormArray;
@@ -218,7 +226,8 @@ export class NewApiComponent {
                 paramNameFormControl: param.paramNameFormControl,
                 value: param.value,
                 required: param.required,
-                paramUrl: param.paramUrl
+                paramUrl: param.paramUrl,
+                queryParamUrl: param.queryParamUrl
               }
             })
           }

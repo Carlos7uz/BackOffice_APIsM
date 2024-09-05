@@ -1,19 +1,31 @@
+import { HttpErrorResponse } from "@angular/common/http";
+import { CollectionResponse } from "./collection-response.model";
+
 export interface Collection {
   id: number;
   name: string;
   description: string;
-  requests: Request[]
+  requests: CollectionRequests[]
 }
 
-export interface Request{
+export interface CollectionRequests{
   id: number;
   url: string;
+  authUrl: string;
+  authFormat: string;
+  authParams: AuthParamsCollectionRequest[]
   method: string;
-  body: string;
-  params: Params[]
+  body?: any;
+  params?: CollectionParam[]
 }
 
-export interface Params{
+export interface AuthParamsCollectionRequest{
+  id: number;
+  authParamKey: string;
+  authParamKeyValue: string;
+}
+
+export interface CollectionParam{
   id: number;
   paramName: string;
   paramValue: string

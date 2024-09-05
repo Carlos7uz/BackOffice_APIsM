@@ -6,9 +6,13 @@
          matInput
          [formControl]="searchControl"
          [matAutocomplete]="auto"
-         displayWith="displayFn">
+         displayWith="displayFn"
+  >
   <mat-icon matSuffix>search</mat-icon>
-  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    (optionSelected)="onOptionSelected($event)"
+  >
     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
       {{option.nameFormControl}}
     </mat-option>

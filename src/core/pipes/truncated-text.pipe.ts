@@ -19,5 +19,4 @@ export class TruncatedTextPipe implements PipeTransform {
   toggleValue() {
     this.showValue = !this.showValue;
   }
-
 }

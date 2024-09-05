@@ -23,7 +23,7 @@ export class HttpRequestService  {
     url: string,
     endpoint: string,
     method: string,
-    params: {paramName: string, paramValue: string, paramUrl: boolean}[],
+    params: {paramName: string, paramValue: string, paramUrl: boolean, queryParamUrl: boolean}[],
     body: any,
     headers: { key: string, value: string }[]
   ): Observable<ResponseDetails> {
@@ -33,12 +33,15 @@ export class HttpRequestService  {
     params.forEach(param => {
       if (param.paramValue != null && param.paramValue !== '') { // Verificar se o valor não é nulo ou vazio
         if (param.paramUrl) {
-          // Parâmetro de path / antigo query param
+          // Parâmetro de path
           //queryParams.push(`${encodeURIComponent(param.paramName)}=${encodeURIComponent(param.paramValue)}`);
           fullUrl = `${fullUrl}/${encodeURIComponent(param.paramValue)}`;
-        } else {
-          // Parâmetro de URL
+        } else if (param.queryParamUrl) {
+          // Parâmetro de query
+          queryParams.push(`${encodeURIComponent(param.paramName)}=${encodeURIComponent(param.paramValue)}`);
           //fullUrl = `${fullUrl}/${encodeURIComponent(param.paramValue)}`;
+        } else {
+
         }
       }
     });
@@ -88,22 +91,6 @@ export class HttpRequestService  {
         return throwError(new Error(`Invalid method: ${method}`));
     }
   }
-
-/*
-    return this.http.request(method, fullUrl, body, requestOptions).pipe(
-      catchError(this.handleError),
-      map((response: HttpResponse<any>): ResponseDetails => {
-        return {
-          status: response.status,
-          statusText: response.statusText,
-          url: response.url || '',
-          type: response.type.toString(),
-          headers: headers, // Aqui você está retornando os cabeçalhos com a chave e valor que o usuário digitou
-          body: response.body
-        };
-      })
-    );
-    */
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.error('An error occurred:', error);

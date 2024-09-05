@@ -29,13 +29,6 @@ h2 {
   min-height: 250px;
 }
 
-
-mat-card-title {
-  font-weight: bold;
-  padding: 1vh;
-  font-size: 17px;
-}
-
 .mat-card-title-success {
   background: rgb(229, 255, 229); /* Verde */
 }
@@ -67,10 +60,15 @@ mat-card-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  font-weight: bold;
+
+  padding: 1vh;
+  font-size: 17px;
 }
 
 mat-card-title span:first-child {
-  margin-right: auto;
+  margin-right: 0;
 }
 
 mat-card-title span:last-child {

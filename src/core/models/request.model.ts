@@ -21,7 +21,8 @@ export interface Param {
   id: string,
   paramName: string,
   paramValue: string,
-  paramUrl: boolean
+  paramUrl: boolean,
+  queryParamUrl: boolean;
 }
 
 export interface Header{

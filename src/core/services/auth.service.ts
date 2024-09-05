@@ -1,15 +1,12 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
-import { AuthParam } from '../models/auth-request.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private tokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
   private storedToken: string | null = null;
-  private readonly TOKEN_KEY = 'access_token';
 
   constructor(private http: HttpClient) {}
 
@@ -30,36 +27,11 @@ export class AuthService {
     );
   }
 
-  private getContentType(format: string): string {
-    return format === 'JSON' ? 'application/json' : 'application/x-www-form-urlencoded';
-  }
-
-  // Método para recuperar o token armazenado
   getStoredToken(): string | null {
     return this.storedToken;
   }
 
-  login(username: string, password: string): Observable<any> {
-    const url = 'https://example.com/auth/login'; // URL de autenticação
-    const body = { username, password };
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    return this.http.post<any>(url, body, { headers }).pipe(
-      tap(response => {
-        const token = response.access_token;
-        this.tokenSubject.next(token);
-        localStorage.setItem('access_token', token);
-      })
-    );
+  private getContentType(format: string): string {
+    return format === 'JSON' ? 'application/json' : 'application/x-www-form-urlencoded';
   }
-
-  getToken(): string | null {
-    return this.tokenSubject.value;
-  }
-
-  logout(): void {
-    this.tokenSubject.next(null);
-    localStorage.removeItem('access_token');
-  }
-
 }

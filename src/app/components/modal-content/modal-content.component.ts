@@ -18,6 +18,7 @@ import { ResponseDetails } from '../../../core/models/response-details';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { TruncatedTextPipe } from '../../../core/pipes/truncated-text.pipe';
 import { AuthService } from '../../../core/services/auth.service';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -40,6 +41,9 @@ import { AuthService } from '../../../core/services/auth.service';
   styleUrl: './modal-content.component.css'
 })
 export class ModalContentComponent {
+  private requestsSubject = new BehaviorSubject<Request[]>([]);
+  requests$ = this.requestsSubject.asObservable();
+
   form!: FormGroup;
   currentView!: 'details' | 'error';
   app: Application;
@@ -96,7 +100,8 @@ export class ModalContentComponent {
       id: [param.id],
       paramNameFormControl: [param.paramNameFormControl],
       paramValue: [param.value || '', param.required ? Validators.required : null],
-      paramUrl: [param.paramUrl || false]
+      paramUrl: [param.paramUrl || false],
+      queryParamUrl: [param.queryParamUrl || false]
     }));
   }
 
@@ -198,7 +203,8 @@ export class ModalContentComponent {
         id: param.id,
         paramName: param.paramNameFormControl,
         paramValue: param.paramValue,
-        paramUrl: param.paramUrl
+        paramUrl: param.paramUrl,
+        queryParamUrl: param.queryParamUrl
       })),
       headers: this.headers.value
         .filter((header: any) => header.key && header.value)
@@ -255,6 +261,7 @@ export class ModalContentComponent {
         .subscribe({
           next: (requests: Request[]) => {
             this.endpointRequests[this.data.endpointId] = requests;
+            this.requestsSubject.next(requests);
             this.cdr.detectChanges();
             console.log('Histórico atualizado:', requests);
           },

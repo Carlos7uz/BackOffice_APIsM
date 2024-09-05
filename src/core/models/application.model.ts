@@ -27,4 +27,5 @@ export interface Parameter {
   value: string;
   required: boolean;
   paramUrl: boolean;
+  queryParamUrl: boolean;
 }

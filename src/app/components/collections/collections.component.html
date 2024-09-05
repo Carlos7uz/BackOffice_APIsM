@@ -1,7 +1,9 @@
 <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
   <h1>Coleções</h1>
 
-  <button class="button-add-collection" mat-flat-button ><mat-icon class="icon-add-collection">add</mat-icon> Adicionar coleção</button>
+  <button class="button-add-collection" mat-flat-button (click)="goToNewCollection()">
+    <mat-icon class="icon-add-collection" >add</mat-icon> Adicionar coleção
+  </button>
 </div>
 
 <h4>Coleções são um conjunto de APIs com o proposito de testar um fluxo expecifico</h4>
@@ -12,31 +14,86 @@
       <h2>{{ collection.name }}</h2>
     </mat-card-title>
 
-    <div class="row"></div>
-
     <mat-card-actions align="end">
-      <button class="button-add-collection" mat-mini-fab ><mat-icon class="icon-add-collection">play_arrow</mat-icon></button>
+      <button class="button-add-collection" mat-mini-fab (click)="executeCollection(collection)">
+        <mat-icon class="icon-add-collection">play_arrow</mat-icon>
+      </button>
     </mat-card-actions>
   </mat-card-header>
 
-  <mat-expansion-panel class="expansion-panel">
+  <mat-expansion-panel class="expansion-panel" [expanded]="activeCollectionId === collection.id">
     <mat-expansion-panel-header class="box-history">
       <mat-panel-title>{{ collection.description }}</mat-panel-title>
     </mat-expansion-panel-header>
 
     <mat-card-content>
-      <mat-expansion-panel class="request-itens" *ngFor="let request of collection.requests" [hideToggle]="false">
-
+      <button mat-flat-button (click)="toggleAllPanels(collection)">
+        <span *ngIf="!areAllPanelsExpanded(collection)" class="icon-add-collection">abrir todos</span>
+        <span *ngIf="areAllPanelsExpanded(collection)" class="icon-add-collection">fechar todos</span>
+      </button>
+      <div *ngIf="isExecutionActive(collection.id)">Executando requisições...</div>
+      <mat-expansion-panel
+        class="request-itens"
+        *ngFor="let request of collection.requests"
+        [expanded]="(expandedPanels[collection.id] || []).includes(request.id)"> <!--manter assim!-->
         <mat-expansion-panel-header>
-          <mat-panel-title  fxLayout="row" fxLayoutGap="100">
+          <mat-panel-title  fxLayout="row" fxLayoutGap="100" >
             <p>{{ request.id }}</p>
             <p>{{ request.method }} {{ request.url }}</p>
-            <p>tudo certo "Raio" / deu errado "X"</p>
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <mat-icon *ngIf="isRequestSuccessful(request.id, collection.id)" style="color: green;">
+                check_circle
+            </mat-icon>
+
+            <mat-icon *ngIf="hasError(request.id, collection.id)" style="color: red;">
+                report_problem
+            </mat-icon>
+              <!--
+                 <mat-icon *ngIf="isRequestSuccessful(request.id, collection.id)" style="color: green;">
+                check_circle
+              </mat-icon>
+
+              <mat-icon *ngIf="!isRequestSuccessful(request.id, collection.id)" style="color: red;">
+                report_problem
+              </mat-icon>
+              -->
+            </div>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        Panel body
+
+        <div *ngIf="hasResponse(request.id, collection.id)">
+          <div class="response-container">
+            <h2>Resposta</h2>
+            <p><strong>Status:</strong> {{ getResponse(request.id, collection.id)?.status }}</p>
+            <p><strong>Status Text:</strong> {{ getResponse(request.id, collection.id)?.statusText }}</p>
+            <p><strong>URL:</strong> {{ getResponse(request.id, collection.id)?.url }}</p>
+            <p><strong>Body:</strong> {{ getResponse(request.id, collection.id)?.body | json }}</p>
+          </div>
+        </div>
+
+        <div *ngIf="hasError(request.id, collection.id)">
+          <div class="response-container">
+            <h2>Erro</h2>
+            <p><strong>Status:</strong> {{ getErrors(request.id, collection.id)?.status }}</p>
+            <p><strong>Status Text:</strong> {{ getErrors(request.id, collection.id)?.statusText }}</p>
+            <p><strong>URL:</strong> {{ getErrors(request.id, collection.id)?.url }}</p>
+            <p><strong>Mensagem:</strong> {{ getErrors(request.id, collection.id)?.message }}</p>
+            <p><strong>Body:</strong> {{ getErrors(request.id, collection.id)?.body | json }}</p>
+          </div>
+          <!--
+          <ul>
+            <li *ngFor="let error of getErrors(request.id, collection.id)">
+              {{ error.statusText }} ({{ error.status }})
+              <p><strong>Mensagem:</strong> {{ error.message }}</p>
+              <p><strong>URL:</strong> {{ error.url }}</p>
+              <p><strong>Body:</strong> {{ error.body | json }}</p>
+            </li>
+          </ul>
+          -->
+        </div>
+
         <div align="end">
-          <button mat-button>Executar unidade</button>
+          <button mat-button (click)="executeSingleRequest(collection, request)">Executar unidade</button>
         </div>
       </mat-expansion-panel>
     </mat-card-content>

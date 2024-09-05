@@ -7,7 +7,7 @@
   </button>
 </div>
 
-<div class="subtitle-modal" fxLayout="column" fxLayoutAlign="space-between start">
+<div class="subtitle-modal" fxLayout="row" fxLayoutAlign="start start">
   <p mat-dialog-title class="sub-title">
     <strong>URL: </strong>{{app.appUrlFormControl}}
   </p>
@@ -85,7 +85,7 @@
         <p><strong>Cabeçalhos:</strong></p>
         <div class="header-detail" *ngFor="let header of this.headers.value">
           <p>
-            <span class="header-key" (click)="truncatedText.toggleValue()">{{ header.key }}</span>
+            <span class="header-key" (click)="truncatedText.toggleValue()">{{ header.key }} ...</span>
             <br>
             <span *ngIf="truncatedText.showValue">{{ header.value }}</span>
           </p>
@@ -93,7 +93,7 @@
       </div>
       <div class="details-section">
         <p><strong>Payload:</strong></p>
-        <pre class="json-output">{{executionDetails.body | json}}</pre>
+        <pre class="json-output">{{responseHttp | json}}</pre>
       </div>
     </div>
 

@@ -4,7 +4,7 @@
     <div class="card" *ngFor="let request of requests">
       <mat-card class="request-card">
         <mat-card-title [ngClass]="request.response ? 'mat-card-title-success' : 'mat-card-title-error'">
-          <strong>Data:</strong> {{ request.timestamp }}
+          {{ request.timestamp }}
           <span class="mat-end">
             <button  mat-icon-button (click)="redirectToApp(request.appId)">
               <mat-icon class="info">info</mat-icon>

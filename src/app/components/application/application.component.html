@@ -116,7 +116,7 @@
                       <pre>{{ request.response?.body | json }}</pre>
                     </div>
                   </mat-expansion-panel>
-                  <p *ngIf="!endpointRequests[endpoint.id] || endpointRequests[endpoint.id].length === 0">
+                  <p *ngIf="!(requests$ | async)?.length">
                     No requests found.
                   </p>
                 </mat-accordion>

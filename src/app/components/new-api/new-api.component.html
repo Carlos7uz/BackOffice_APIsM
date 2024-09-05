@@ -113,13 +113,6 @@
         </div>
 
         <mat-card-actions *ngIf="detailsVisible[i]">
-          <div class="boxAddParam" fxLayout="row" fxLayoutGap="14px" fxLayoutAlign="start center">
-            <p class="add-param-txt">Parâmetros</p>
-            <button mat-mini-fab type="button" class="addParam" (click)="addParam(i)" matTooltip="Adicionar parâmetro">
-              <mat-icon class="addParamIcon">plus_one</mat-icon>
-            </button>
-          </div>
-
           <div formArrayName="params">
             <div *ngFor="let param of getParamsControls(endpoint); let j = index" [formGroupName]="j">
               <h4>Parâmetro {{j + 1}}</h4>
@@ -144,8 +137,15 @@
               <div class="toggle-container" fxLayout="row" fxLayoutGap="24px" fxLayoutAlign="start center">
                 <mat-slide-toggle color="warn" class="slide-required" [checked]="getFormControl(param, 'required')?.value" (change)="toggleRequired(param)">Obrigatório?</mat-slide-toggle>
                 <mat-slide-toggle color="warn" class="slide-required" [checked]="getFormControl(param, 'paramUrl')?.value" (change)="toggleUrlParam(param)">Parâmetro de url?</mat-slide-toggle>
+                <mat-slide-toggle color="warn" class="slide-required" [checked]="getFormControl(param, 'queryParamUrl')?.value" (change)="toggleQueryUrlParam(param)">Parâmetro de query?</mat-slide-toggle>
               </div>
             </div>
+          </div>
+          <div class="boxAddParam" fxLayout="row" fxLayoutGap="14px" fxLayoutAlign="start center">
+            <p class="add-param-txt">Parâmetros</p>
+            <button mat-mini-fab type="button" class="addParam" (click)="addParam(i)" matTooltip="Adicionar parâmetro">
+              <mat-icon class="addParamIcon">plus_one</mat-icon>
+            </button>
           </div>
         </mat-card-actions>
       </div>

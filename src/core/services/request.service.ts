@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Request } from '../models/request.model';
-import { catchError, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import { Application } from '../models/application.model';
 
 @Injectable({
@@ -11,15 +11,26 @@ export class RequestService {
 
   private apiUrl = '/api/requisicao';
 
+  private requestsSubject = new BehaviorSubject<Request[]>([]);
+  requests$ = this.requestsSubject.asObservable();
+
   private requests: Request[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.loadRequests();
+  }
+
+  private loadRequests(): void {
+    this.getRequests().subscribe(requests => this.requestsSubject.next(requests));
+  }
 
   addRequest(request: Request): Observable<Request> {
-    return this.http.post<Request>(this.apiUrl, request)
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.http.post<Request>(this.apiUrl, request).pipe(
+      tap(() => {
+        this.loadRequests(); // Atualiza a lista de requisições
+      }),
+      catchError(this.handleError)
+    );
   }
 
   compareAndDisplayRequests(applications: Application[], requests: Request[]): void {
@@ -34,14 +45,11 @@ export class RequestService {
     );
   }
 
-  loadRequests(): Observable<Request[]> {
+  getRequests(): Observable<Request[]> {
     return this.http.get<Request[]>(this.apiUrl).pipe(
+      tap(requests => this.requestsSubject.next(requests)), // Atualiza o Subject
       catchError(this.handleError)
     );
-  }
-
-  getRequests(): Observable<Request[]> {
-    return this.loadRequests(); // Utilize o método loadRequests para garantir consistência
   }
 
   getRequestsByAppAndEndpoint(appId: number, endpointId: number): Observable<Request[]> {
@@ -56,8 +64,6 @@ export class RequestService {
         catchError(this.handleError)
       );
   }
-
-
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An error occurred';

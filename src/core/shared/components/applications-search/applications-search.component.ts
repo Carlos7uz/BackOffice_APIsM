@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { debounceTime, distinctUntilChanged, map, Observable, startWith, Subject, switchMap } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { map, Observable, startWith } from 'rxjs';
 import { Application } from '../../../models/application.model';
 import { ApplicationService } from '../../../services/application.service';
 import { MatAutocompleteModule, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,7 +21,6 @@ import { Router } from '@angular/router';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule
-
   ],
   templateUrl: './applications-search.component.html',
   styleUrl: './applications-search.component.css'
@@ -47,8 +46,7 @@ export class ApplicationsSearchComponent implements OnInit {
   private _filter(value: any): Application[] {
     const filterValue = (typeof value === 'string' ? value : '').toLowerCase();
     return this.applications$.filter(application => application.nameFormControl.toLowerCase().includes(filterValue));
-}
-
+  }
 
   onOptionSelected(event: MatAutocompleteSelectedEvent) {
     const selectedApp = event.option.value as Application;
@@ -60,6 +58,6 @@ export class ApplicationsSearchComponent implements OnInit {
 
   displayFn(application: Application): string {
     return application && application.nameFormControl ? application.nameFormControl : '';
-}
+  }
 
 }

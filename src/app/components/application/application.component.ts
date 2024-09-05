@@ -14,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ApplicationService } from '../../../core/services/application.service';
 import { Request } from '../../../core/models/request.model';
 import { RequestService } from '../../../core/services/request.service';
-import { forkJoin, tap } from 'rxjs';
+import { BehaviorSubject, forkJoin, tap } from 'rxjs';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -46,6 +46,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   styleUrls: ['./application.component.css']
 })
 export class ApplicationComponent implements OnInit {
+  private requestsSubject = new BehaviorSubject<Request[]>([]);
+  requests$ = this.requestsSubject.asObservable();
+
   selectedApplication!: Application;
   parameter!: Parameter;
   requests: Request[] = [];
@@ -93,6 +96,10 @@ export class ApplicationComponent implements OnInit {
 
     this.visibilityStates = new Array(this.authParams.length).fill(false);
 
+    this.requestService.requests$.subscribe(requests => {
+      this.requests = requests;
+    });
+
     this.selectedApplication?.endpoints.forEach(endpoint => {
       this.filterRequests(endpoint.id);
     });
@@ -114,10 +121,10 @@ export class ApplicationComponent implements OnInit {
       this.detailsVisible = this.selectedApplication.endpoints.map(() => false);
 
       //add 23/08
-    this.selectedApplication.endpoints.forEach(endpoint => {
-      this.searchTerms[endpoint.id] = ''; // Inicializa os termos de busca como strings vazias
-      this.filteredRequests[endpoint.id] = []; // Copia as requests para serem filtradas
-    });
+      this.selectedApplication.endpoints.forEach(endpoint => {
+        this.searchTerms[endpoint.id] = ''; // Inicializa os termos de busca como strings vazias
+        this.filteredRequests[endpoint.id] = []; // Copia as requests para serem filtradas
+      });
 
       // Se authParams não existir, inicialize-o como um array vazio
       const authParams = this.selectedApplication.authParams || [];
@@ -140,6 +147,8 @@ export class ApplicationComponent implements OnInit {
 
         // Comparar e exibir as requisições
         this.requestService.compareAndDisplayRequests([this.selectedApplication], requestsArray.flat());
+
+        this.requestsSubject.next(requestsArray.flat());
       });
     });
   }
